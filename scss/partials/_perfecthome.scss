@@ -123,14 +123,14 @@ input[type="text"]:focus {
 button,
 button[type="submit"], 
 input[type="submit"] {
-	max-width: 50%;
+	max-width: 66%;
 	padding: 1rem;
 	border-radius: 0;
 	border-style: none;
 	background-color: rgba(255,155,68,1);
 	outline-color: #fff;
 	color: #fff;
-	font-size: 1.5rem;
+	font-size: 1rem;
 	outline-offset: 0;
 
 }
@@ -208,38 +208,36 @@ span.error {
 	text-transform: capitalize;
 }
 .error {
+	color: red;
 	float:left;
 }
 .eliza {
 	font-size: 1rem;
 	color: #878787;
+	a {
+		color: #878787;
+		font-size: 0.9rem;
+		padding: 15px;
+		text-decoration: none;
+		&:hover {
+		outline: 1px solid #878787;
+		}
 }
-.eliza a {
-	color: #878787;
-	font-size: 1.5rem;
-	padding: 15px;
-}
-.eliza a:hover {
-	outline: 1px solid #878787;
 }
 .share {
 	margin: 1rem auto;
 	display: block;
 	height: 65px;
 	
-}
-.fb-share-button {
-	display: block;
-}
-.fb-share-button a {
-	color: #878787;
-	font-size: 1.5rem;
-}
-.fb-share-button a:hover {
-	outline: none;
-}
-.fb-share-button a img {
-	height: 40px;
-	width: auto;
-	opacity: 0.6;
+	.fb-share-button {
+		display: block;
+		height: 80px;
+		 a {
+			color: #878787;
+			font-size: 1.5rem;
+		}
+		&:hover {
+			outline: none;
+		}
+	}
 }

@@ -40,7 +40,7 @@ $("#btn-name").click(function(e) {
  		$(".q2").hide();
 		$(".q3").hide();
 		$('body').css({
-			"background-image" : "url('https://www.dropbox.com/s/3f1o48v63f100a6/tablebeast-hd.jpg?raw=1')" 
+			"background-image" : "url('../img/tablebeast-hd.jpg')"
 		});
  	}
 	 else if (chosen == q2) {
@@ -48,7 +48,7 @@ $("#btn-name").click(function(e) {
  		$(".q1").hide();  
  		$(".q3").hide();
  		$('body').css({
-			"background-image" : "url('https://www.dropbox.com/s/7079ec574nda8rz/couches-hd.jpg?raw=1')"
+			"background-image" : "url('../img/couches-hd.jpg')"
 		});
  	}
 	else { 
@@ -56,14 +56,13 @@ $("#btn-name").click(function(e) {
  		$(".q1").hide(); 
  		$(".q2").hide();
  		$('body').css({
-			"background-image" : "url('https://www.dropbox.com/s/4edthf0jb494dhh/seam2-hd.jpg?raw=1')"
+			"background-image" : "url('../img/seam2-hd.jpg')"
 		});
 	};
 });
 
 // inputs for questionaires------------//
 
- 
 $("#btn-submit1").click(function(e) {
 	e.preventDefault()
 	// $('#questions1').parsley();
