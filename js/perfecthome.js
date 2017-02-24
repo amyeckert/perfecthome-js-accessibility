@@ -3,45 +3,32 @@
 $(document).ready(function() {	
 
 	// HIDE STUFF	----------------//
-	$(".q1").hide();
-	$(".q2").hide();
-	$(".q3").hide();
-	$(".listings").hide();
-	$("#list1").hide();
-	$("#list2").hide();
-	$("#list3").hide();
-	$(".replay").hide();   
-	$("#btn-reset").hide();
-	$(".share").hide();
-	$(".eliza").hide();
+	// $(".q1").hide();
+	// $(".q2").hide();
+	// $(".q3").hide();
+	// $(".listings").hide();
+	// $(".js-list1").hide();
+	// $(".js-list2").hide();
+	// $(".js-list3").hide();
+	// $(".replay").hide();   
+	// $(".btn-reset").hide();
+	// $(".share").hide();
+	// $(".eliza").hide();	
 
-
-// RANDOMLY CHOOSE WHICH QUESTIONAIRE after typing in name --------------------//	
-
-
-
-
-
+// validate name entered
 	$('#name').on('submit', function(event){
 		// if fails
 		event.preventDefault();
-		if (validate()){
-			// proceed with silliness
-			//invoke questionnaire-picker function(); here
+		if (validateName()){
+			// proceed to questionnaire
+			console.log('form is valid');
+			pickQuestions();
 		} else {
-			// 
 			return false;
 		}
 	});
 
-	/*$("#btn-name").click(function(e) {
-	 	e.preventDefault();
-	 	//is this form valid?
-	 	validate();
-		
-make this bit it's own functionto invoke above ^^ 
-		
-		//	PICK A QUESTIONAIRE ------------//
+	var pickQuestions = function(){
 		var q1 = $(".q1");
 	 	var q2 = $(".q2");
 	 	var q3 = $(".q3");
@@ -52,8 +39,9 @@ make this bit it's own functionto invoke above ^^
 	 	$(".firstName").empty().append($("input.firstName").val());
 		
 	 	//need code to check to see what previous selection was, so that it doesn't repeat in it's randomness.
-		// var recentChoice;
+		// var recentChoice; etc.   
 
+		//	PICK A QUESTIONAIRE ------------//
 		if (chosen == q1) {
 	 		$(".q1").show(); 
 	 		$(".q2").hide();
@@ -78,7 +66,7 @@ make this bit it's own functionto invoke above ^^
 				"background-image" : "url('img/seam2-hd.jpg')"
 			});
 		};
-	});*/
+};
 
 	// inputs for questionaires------------//
 
@@ -210,23 +198,28 @@ make this bit it's own functionto invoke above ^^
 	});
 
 	// VALIDATIONS ---------------------------//
-	var errorIsRequired = 'This field is required!';
 
-	var validate = function(){
+	var validateName = function(){
 		var formIsValid = false;
 	 	var playerName = $('.firstName').val();
-
+	 	var errorNameIsRequired = 'Pssst! You missed this one!';
  		//if field is empty, display error msg
 	 	if(!playerName) {
-	 		console.log(errorIsRequired);
+	 		console.log(errorNameIsRequired);
 	 		formIsValid = false;
+			$('.js-error-msg-name').text(errorNameIsRequired);
 	 	} else {
 	 		return true;
 	 	}
-		console.log(playerName);
 		return formIsValid;
 	};
 
+	var validateQ1 = function(){
+		var q1IsValid = false;
+
+
+
+	};
 
 
 
@@ -259,3 +252,4 @@ $("#btn-reset").click(function(e) {
 });	 
 
 }); //closes doc ready
+// };	
