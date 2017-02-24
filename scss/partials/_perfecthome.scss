@@ -86,11 +86,10 @@ a {color: $c-white;
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
-	.js-error-msg-name {
-		// order: 3;
+	p {
 		font-size: 0.7rem;
 		display: block;
-		height: 2rem;
+		height: 1rem;
 		margin: 0;
 		font-style: italic;
 		color: $c-warning;
