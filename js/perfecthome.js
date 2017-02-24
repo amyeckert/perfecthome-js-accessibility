@@ -233,29 +233,29 @@ make this bit it's own functionto invoke above ^^
 
 	// REPLAY BUTTON------------------------//
 
-// $("#btn-reset").click(function(e) {
-// 	var message = document.querySelector(".message").innerHTML = "Find Your Perfect Home!";
+$("#btn-reset").click(function(e) {
+	var message = document.querySelector(".message").innerHTML = "Find Your Perfect Home!";
 
-// 	var reset = document.getElementById("firstName").className = "";
+	var reset = document.getElementById("firstName").className = "";
 	
 
-// 	$(".enter-name").show();
-// 	$("#btn-reset").hide();
-// 	$(".listings").hide();	
-// 	$("#btn-next").show();
-// 	// $("#empty-name").hide();
-// 	$("#empty-name").css("visibility", "hidden");
+	$(".enter-name").show();
+	$("#btn-reset").hide();
+	$(".listings").hide();	
+	$("#btn-next").show();
+	// $("#empty-name").hide();
+	$("#empty-name").css("visibility", "hidden");
 	
 
-//  	console.log(firstName, reset);
+ 	console.log(firstName, reset);
 
-// 	 //clear inputs
-// 	 $(":input").val(" ");
-// 	 $("#btn-next").val("Let's go!");
-// 	 $("#btn-submit1").val("Call the movers!");
-// 	 $("#btn-submit2").val("Get packing!");
-// 	 $("#btn-submit3").val("Call the bank!");
+	 //clear inputs
+	 $(":input").val(" ");
+	 $("#btn-next").val("Let's go!");
+	 $("#btn-submit1").val("Call the movers!");
+	 $("#btn-submit2").val("Get packing!");
+	 $("#btn-submit3").val("Call the bank!");
 
-// });	 
+});	 
 
 }); //closes doc ready
