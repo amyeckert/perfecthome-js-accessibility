@@ -77,14 +77,46 @@ $(document).ready(function() {
 	var validateQ1 = function(){
 		var q1IsValid = false;
 		var questions = $('.js-q1-input');
-		// var question = questions.filter(question => `${questions[0].value}`);
-		// var answers = question.find();
+
+		for (var i = 0; i < questions.length; i++) {
+			var answers = [questions[i].value];
+		}
+		console.log(answers);
+
+		//are all fields filled out?
+		$(":input").each(function() {
+			
+			// if $this is visible (has a css style of disply: none; and is empty- 
+	   		if($.trim($(this) == ':hidden' && $(this).val() === "" )) {
+	   			//do this
+
+	   			console.log("missing an answer somewhere");
+	   			//find the ones that are empty
+
+	   			//add error msg errRequired
+
+	   			q1IsValid = false;
+			} else {
+				console.log('all inputs filled  out');
+				q1IsValid = true;
+			}
+
+		});
+		return q1IsValid;
+	};
 
 
 		// for (var i = 0; i < questions.length; i++) {
+		// 	// put all answers in an array called answers
+		// 	var answers = [questions[i].value];
+		// 	// if any are empty, get the id of the input, add and display error message.
+		// 	// if(answers.is(':empty')) {
+		// 	// 	
+				
 
+		// 	// }
+		// 	console.log(answers);
 		// }
-			console.log(questions);
 
 
 			// if any field is empty, display error msg on that field
@@ -99,7 +131,7 @@ $(document).ready(function() {
 			// }
 		// }
 		// return q1IsValid;	
-	};	
+	// };	
 
 	// STACK OVERFLOW
 	// $("#questions1").submit(function() {
