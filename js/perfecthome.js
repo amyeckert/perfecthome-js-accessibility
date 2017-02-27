@@ -77,33 +77,49 @@ $(document).ready(function() {
 	var validateQ1 = function(){
 		var q1IsValid = false;
 		var questions = $('.js-q1-input');
-
+		console.log(questions);
+		//collect all the answers
 		for (var i = 0; i < questions.length; i++) {
 			var answers = [questions[i].value];
+	 		console.log(answers); 			
+		};
+		if(answers[0] === '') {
+			console.log('missing something');
+			q1IsValid = false;
+		} else {
+			return true;
+			console.log('all filled out');
 		}
-		console.log(answers);
+	 	return q1IsValid;
+	};
 
-		//are all fields filled out?
-		$(":input").each(function() {
 			
-			// if $this is visible (has a css style of disply: none; and is empty- 
-	   		if($.trim($(this) == ':hidden' && $(this).val() === "" )) {
-	   			//do this
+		// var missing = answers.filter(answer => (answers.value === "")); 
+		// console.log(missing);
+		// {
+		// 	console.log('missing something');
+		// 	q1IsValid = false;
 
-	   			console.log("missing an answer somewhere");
+		// } else {
+		// 	console.log('all inputs filled  out');
+		// 	return true;
+		// }	
+
+		// }
+		// }
+
+
+
 	   			//find the ones that are empty
 
 	   			//add error msg errRequired
 
-	   			q1IsValid = false;
-			} else {
-				console.log('all inputs filled  out');
-				q1IsValid = true;
-			}
+	   			// q1IsValid = false;
+			// 
+		// console.log(answers);
 
-		});
-		return q1IsValid;
-	};
+	// 	return q1IsValid;
+	// };
 
 
 		// for (var i = 0; i < questions.length; i++) {
