@@ -24,13 +24,15 @@ $(document).ready(function() {
 
 
 	// VALIDATIONS ---------------------------//
-	// for all text fields
+	//https://formden.com/blog/validate-contact-form-jquery
 
+	//for all inputs:
 	// var isBlank = function(input){
 	// 	var textInputs = $('.js-q1-input');
 	// 	console.log(isBlank);
 	// };
 
+	// for all text fields:
 	var lettersOnly = function(input) {
 		//get all the text inputs
 		var lettersValid = false;
