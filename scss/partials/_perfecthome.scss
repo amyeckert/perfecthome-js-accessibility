@@ -256,5 +256,14 @@ span.error {
 		&:hover {
 		outline: 1px solid #878787;
 		}
+	}
 }
+
+input.isInvalid {
+	outline: 1px solid $c-warning;
+
+}
+input.isValid {
+	outline: 1px solid $c-orange;
+
 }
