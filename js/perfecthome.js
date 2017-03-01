@@ -142,14 +142,24 @@ $(document).ready(function() {
 
 	// fill out forms 
 	var createListing1= function(){
-	    // if this input starts with a vowel, add an n to make an.
-	    var inputText = $(".adj2").val();
-	    if(inputText.match(vowelRegExp)){
-	    	inputText.empty().append('n ' + inputText).val();
+
+	    // if this input starts with a vowel, add an n to make an before it.
+	    var inputStartsWithVowel = $("input.adj2").val();
+		var addN = $(".adj2").prev();
+
+	    if(inputStartsWithVowel.match(vowelRegExp)) {
+	    	// getprevious sibling
+	    	addN.empty().text('an ');
+	    	$(".adj2").empty().append(inputStartsWithVowel).val();
+
+	    	console.log('aeiou');
 		 } else {
-		 	inputText.empty().append(inputText).val();
+		 	addN.empty().text('a ');
+		 	$(".adj2").empty().append(inputStartsWithVowel).val();
+	    	console.log('not aeiou');
 	    	
-		 }
+		 };
+		 console.log(inputStartsWithVowel);
 		// grab the values from the input boxes, then append them to the DOM
 	    $(".adj1").empty().append($("input.adj1").val());
 	    $(".favCountry").empty().append($("input.favCountry").val());
