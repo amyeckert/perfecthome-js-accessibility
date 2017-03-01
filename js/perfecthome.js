@@ -77,7 +77,7 @@ $(document).ready(function() {
 				var emptyInput = $(inputs1[i]).attr('id');
 				var currentErrorMessage = $(inputs1[i]).data('error-msg1');
 				// select the next element, which is the <p> for error msg.
-				$('#' + emptyInput).next().text(currentErrorMessage);
+				$('#' + emptyInput).next().text(currentErrorMessage); // need to add the # here
 					
 				console.log(emptyInput, currentErrorMessage);
 
