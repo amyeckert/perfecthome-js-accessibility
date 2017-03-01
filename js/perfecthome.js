@@ -21,7 +21,7 @@ $(document).ready(function() {
 	// REGEXP -------------------------------//
 	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
 	const lettersRegExp = /[^a-z0-9 ]+$/gi; // allow ONLY alphanumeric and whitespace
-
+	var theRegExp = /\bthe\b/gi; //remove the word the
 	// VALIDATIONS ---------------------------//
 
 	var cleanText = function(inputtext) {
@@ -146,20 +146,27 @@ $(document).ready(function() {
 	    // if this input starts with a vowel, add an n to make an before it.
 	    var inputStartsWithVowel = $("input.adj2").val();
 		var addN = $(".adj2").prev();
-
 	    if(inputStartsWithVowel.match(vowelRegExp)) {
 	    	// getprevious sibling
 	    	addN.empty().text('an ');
 	    	$(".adj2").empty().append(inputStartsWithVowel).val();
-
-	    	console.log('aeiou');
 		 } else {
 		 	addN.empty().text('a ');
 		 	$(".adj2").empty().append(inputStartsWithVowel).val();
-	    	console.log('not aeiou');
-	    	
 		 };
-		 console.log(inputStartsWithVowel);
+
+		 //check for and remove "the" before name of body of water
+
+		 var waterInput = $("input.water").val(); 
+		 if(waterInput.match(theRegExp)) {
+		 	waterInput = waterInput.replace(theRegExp, '');
+	    	$(".water").empty().append(waterInput).val();
+		 } else {
+	    	$(".water").empty().append(waterInput).val();	
+		 };
+
+
+
 		// grab the values from the input boxes, then append them to the DOM
 	    $(".adj1").empty().append($("input.adj1").val());
 	    $(".favCountry").empty().append($("input.favCountry").val());
@@ -172,7 +179,6 @@ $(document).ready(function() {
 	    $(".basement").empty().append($("input.basement").val());
 	    $(".tree").empty().append($("input.tree").val());
 	    $(".artist").empty().append($("input.artist").val());
-	    $(".water").empty().append($("input.water").val());
 	    $(".num1").empty().append($("input.num1").val());
 	    $(".favAnimal").empty().append($("input.favAnimal").val());
 	    $(".verb1").empty().append($("input.verb1").val());
