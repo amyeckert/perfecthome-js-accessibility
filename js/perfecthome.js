@@ -28,10 +28,9 @@ $(document).ready(function() {
 		var lettersValid = false;
 		if(inputtext.replace(lettersRegExp)) {
 			lettersValid = true;
-			console.log('text is letters only');
+			// console.log('text is letters only');
 		} else {
 			//show error msg
-
 			return false;
 		}
 		return lettersValid;
@@ -68,7 +67,7 @@ $(document).ready(function() {
 
 		// check each one is filled out and had only letters and numbers
 		for (var i=0; i<inputs1.length; i++) {
-
+			// get the value of each input
 			var currentAnswer = $(inputs1[i]).val();
 			// check the input is filled out
 			if(currentAnswer === '') {
@@ -82,21 +81,25 @@ $(document).ready(function() {
 				console.log(currentInput, currentErrorMessage);
 
 				q1IsValid = false;
-
 			} else {
-				
-
 				// if it is filled in, remove any thing but a-z, 0-9 and whitespaces
 				cleanText(currentAnswer);
 				console.log(currentAnswer);
-				return true;
-				
+				// q1IsValid = true;	
 			} 
+		} //closes for loop --------------------//
+		
+		if (q1IsValid === false) {
+			// don't submit form
+			console.log('don\'t submit');
+			return;
+		 } 
+		 else{
+			q1IsValid = true;
 		}
-
-		return q1IsValid;
-		console.log('form is valid, ok to submit')
-	}; //closes validateQ1-------------------------//
+		return q1IsValid; 
+		console.log('form ok to submit')
+	}; //closes validateQ1 -------------------------//
 
 	// choose random questionnaire
 	var pickQuestions = function(){
@@ -139,11 +142,9 @@ $(document).ready(function() {
 		};
 	};
 
-
 	// fill out forms 
 	var createListing1= function(){
-
-	    // if this input starts with a vowel, add an n to make an before it.
+	    // if input starts with a vowel, add an n to make an before it.
 	    var inputStartsWithVowel = $("input.adj2").val();
 		var addN = $(".adj2").prev();
 	    if(inputStartsWithVowel.match(vowelRegExp)) {
@@ -156,7 +157,6 @@ $(document).ready(function() {
 		 };
 
 		 //check for and remove "the" before name of body of water
-
 		 var waterInput = $("input.water").val(); 
 		 if(waterInput.match(theRegExp)) {
 		 	waterInput = waterInput.replace(theRegExp, '');
@@ -164,8 +164,6 @@ $(document).ready(function() {
 		 } else {
 	    	$(".water").empty().append(waterInput).val();	
 		 };
-
-
 
 		// grab the values from the input boxes, then append them to the DOM
 	    $(".adj1").empty().append($("input.adj1").val());
@@ -178,11 +176,13 @@ $(document).ready(function() {
 	    $(".gem").empty().append($("input.gem").val());
 	    $(".basement").empty().append($("input.basement").val());
 	    $(".tree").empty().append($("input.tree").val());
-	    $(".artist").empty().append($("input.artist").val());
 	    $(".num1").empty().append($("input.num1").val());
 	    $(".favAnimal").empty().append($("input.favAnimal").val());
 	    $(".verb1").empty().append($("input.verb1").val());
-		
+	};
+
+	//display the listing and hide other stuff
+	var showListing1 = function() {
 	    //	show the listing; 
 	    $(".listings").show();
 		$(".js-list1").show();
@@ -201,7 +201,7 @@ $(document).ready(function() {
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-	};
+	};	
 
 
 	/**********************************/
@@ -226,7 +226,8 @@ $(document).ready(function() {
 		// if function returns true, form is valid, do this stuff: 
 		if(validateQ1()) {
 			console.log('form is valid');
-			createListing1();	
+			createListing1();
+			showListing1();	
 		} else {
 		//if form is not valid, return false;
 			return false;
