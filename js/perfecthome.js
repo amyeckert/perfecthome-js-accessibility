@@ -19,25 +19,18 @@ $(document).ready(function() {
 	var errRequired = 'Pssst! You missed this one!';
 
 	// REGEXP -------------------------------//
-	var vowelRegExp = /^[aeiou]/;
-	// var lettersRegExp = /^[A-Za-z]+$/;
+	const vowelRegExp = /^[aeiou]/;
+	const lettersRegExp = /^[A-Za-z]+$/;
 
 
 	// VALIDATIONS ---------------------------//
 	//https://formden.com/blog/validate-contact-form-jquery
 
-	//for all inputs:
-	// var isBlank = function(input){
-	// 	var textInputs = $('.js-q1-input');
-	// 	console.log(isBlank);
-	// };
-
-	// for all text fields:
-	var lettersOnly = function(input) {
+	var lettersOnly = function(inputtext) {
 		//get all the text inputs
 		var lettersValid = false;
-		var lettersRegExp = /^[A-Za-z]+$/;
-		if(input.value.match(lettersRegExp)) {
+
+		if(inputtext.value.match(lettersRegExp)) {
 			lettersValid = true;
 			console.log('text is letters only');
 		} else { 
@@ -48,7 +41,8 @@ $(document).ready(function() {
 	};
 
 	// var numbersOnly = function(input){
-	// 	$(this).isNumeric();
+	// 	$(this).isNumeric(); && between the parameters set in html?
+
 	// };
 
 
@@ -61,6 +55,7 @@ $(document).ready(function() {
 	 		nameIsValid = false;
 			$('.js-error-msg-name').text(errRequired);
 	 	} else {
+
 	 		return true;
 	 	}
 		return nameIsValid;
@@ -71,87 +66,27 @@ $(document).ready(function() {
 
 		//get all the input objects
 		var inputs1 = $('.js-q1-input');
-		for (var i=0;i<inputs1.length;i++) {
-			var ids = inputs1[i].id;
-			// console.log(ids);
-		};
 
-		// get the values of each field associated with it's id
-		var adj1 = $('.adj1').val();
-		var favCountry = $('.favCountry').val();
-		var bestie = $('.bestie').val();
-		var adj2 = $('.adj2').val();
-		var noun1 = $('.noun1').val();
-		var noun2 = $('.noun2').val();
-		var favCartoon = $('.favCartoon').val();
-		var prez = $('.prez').val();
-		var gem = $('.gem').val();
-		var basement = $('.basement').val();
-		var tree = $('.tree').val();
-		var artist = $('.artist').val();      
-		var water = $('.water').val();
-		var num1 = $('.num1').val();
-		var favAnimal = $('.favAnimal').val();
-		var verb1 = $('.verb1').val();
-		
-		var answers = [adj1, favCountry, bestie, adj2, noun1, noun2, favCartoon, prez, gem, basement, tree, artist, water, num1, favAnimal, verb1];
-		// not sure how to do this to simplify the above^^ or if it's necessary: 
-		// var answers = [
-		// 	{ name: id, text:adj1 },
+		for (var i=0; i<inputs1.length; i++) {
 
-		// ];
-		console.log(inputs1, answers);
+			var currentAnswer = $(inputs1[i]).val();
 
-		for(var i = 0; i< answers.length; i++) {
-			if(answers === '') {
-				console.log('this one missing');
+			if(currentAnswer === '') {
+				console.log('this one is missing');
+
+				var emptyInput = $(inputs1[i]).attr('id');
+				var currentErrorMessage = $(inputs1[i]).data('error-msg1');
+				// select the next element, which is the <p> for error msg.
+				$('#' + emptyInput).next().text(currentErrorMessage);
+					
+				console.log(emptyInput, currentErrorMessage);
 
 				q1IsValid = false;
-			} else {
-				//check individual fields for correct typoe, range, etc.
-				if(!adj1){
-					$('.js-error-msg').text(errRequired);
-					q1IsValid = false;
-				} else if(adj1) {
-					adj1.trim();
-					lettersOnly(adj1);
-					console.log('adj1 letters ok');
-
-					q1IsValid = true;
-
-				}
-				return true; 	
 			}
-			return q1IsValid;
-		};
-	
-	 	
-		// // collect all the answers and id's for each question
-		// for (var i = 0; i < inputs.length; i++) {
-		// 	var answers = [inputs[i].value]; 
-		// 	console.log(answers, ids);
-		
-		// 	// for (var i = 0; i < answers.length; i++) {
-		// 		//find which answers are empty
-		// 		if(answers[0] === '') {
-		// 			console.log('missing this one');
-		// 			q1IsValid = false;
-		// 		} else {
-		// 			return true;
-		// 		}
-		// 	// };
-		// };
-		// return q1IsValid;
+		}
+		return q1IsValid;
 
-	// or individual fields as-you-go validation: 
-	$('.adj1').on('input', function(){
-
-
-	});
-
-
-
-	}; //closes validateQ1
+	}; //closes validateQ1-------------------------//
 
 	// choose random questionnaire
 	var pickQuestions = function(){
@@ -238,14 +173,12 @@ $(document).ready(function() {
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-
-
 	};
 
 
 	/**********************************/
 
-	// validates name is entered, chooses questionnaire
+	// validates that name is entered, chooses questionnaire
 	$('#name').on('submit', function(e){
 		e.preventDefault();
 		// if fails
@@ -265,7 +198,7 @@ $(document).ready(function() {
 		// if function returns true, form is valid, do this stuff: 
 		if(validateQ1()) {
 			console.log('form is valid');
-			// createListing1();	
+			createListing1();	
 		} else {
 		//if form is not valid, return false;
 			return false;

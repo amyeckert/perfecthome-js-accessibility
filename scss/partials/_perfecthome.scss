@@ -259,11 +259,11 @@ span.error {
 	}
 }
 
-input.isInvalid {
+.isInvalid {
 	outline: 1px solid $c-warning;
 
 }
-input.isValid {
+.isValid {
 	outline: 1px solid $c-orange;
 
 }
