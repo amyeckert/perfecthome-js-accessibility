@@ -40,8 +40,6 @@ $(document).ready(function() {
 	// 	$(this).isNumeric(); && between the parameters set in html?
 
 	// };
-
-
 	var validateName = function(){
 		var nameIsValid = false;
 	 	var playerName = $('.firstName').val();
@@ -85,18 +83,18 @@ $(document).ready(function() {
 				// if it is filled in, remove any thing but a-z, 0-9 and whitespaces
 				cleanText(currentAnswer);
 				console.log(currentAnswer);
-				// q1IsValid = true;	
+				q1IsValid = true;	
 			} 
 		} //closes for loop --------------------//
 		
-		if (q1IsValid === false) {
-			// don't submit form
-			console.log('don\'t submit');
-			return;
-		 } 
-		 else{
-			q1IsValid = true;
-		}
+		// if (q1IsValid === false) {
+		// 	// don't submit form
+		// 	console.log('don\'t submit');
+		// 	return;
+		//  } 
+		//  else{
+		// 	q1IsValid = true;
+		// }
 		return q1IsValid; 
 		console.log('form ok to submit')
 	}; //closes validateQ1 -------------------------//
