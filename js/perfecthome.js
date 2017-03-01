@@ -16,25 +16,22 @@ $(document).ready(function() {
 	$(".eliza").hide();
 
 	// ERROR MESSAGES-------------------------//
-	var errRequired = 'Pssst! You missed this one!';
+	// var errRequired = 'Pssst! What\'s your name?';
 
 	// REGEXP -------------------------------//
-	const vowelRegExp = /^[aeiou]/;
-	const lettersRegExp = /^[A-Za-z]+$/;
-
+	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
+	const lettersRegExp = /[^a-z0-9 ]+$/gi; // allow ONLY alphanumeric and whitespace
 
 	// VALIDATIONS ---------------------------//
-	//https://formden.com/blog/validate-contact-form-jquery
 
-	var lettersOnly = function(inputtext) {
-		//get all the text inputs
+	var cleanText = function(inputtext) {
 		var lettersValid = false;
-
-		if(inputtext.value.match(lettersRegExp)) {
+		if(inputtext.replace(lettersRegExp)) {
 			lettersValid = true;
 			console.log('text is letters only');
-		} else { 
-			console.log('error');
+		} else {
+			//show error msg
+
 			return false;
 		}
 		return lettersValid;
@@ -53,7 +50,9 @@ $(document).ready(function() {
  		//if field is empty, display error msg
 	 	if(!playerName) {
 	 		nameIsValid = false;
-			$('.js-error-msg-name').text(errRequired);
+			var nameError = $('.firstName').data('error-msg-name');
+			$('.js-error-msg-name').text(nameError);
+			console.log(nameError);
 	 	} else {
 
 	 		return true;
@@ -67,25 +66,36 @@ $(document).ready(function() {
 		//get all the input objects
 		var inputs1 = $('.js-q1-input');
 
+		// check each one is filled out and had only letters and numbers
 		for (var i=0; i<inputs1.length; i++) {
 
 			var currentAnswer = $(inputs1[i]).val();
-
+			// check the input is filled out
 			if(currentAnswer === '') {
-				console.log('this one is missing');
 
-				var emptyInput = $(inputs1[i]).attr('id');
+				//if it is empty
+				var currentInput = $(inputs1[i]).attr('id');
 				var currentErrorMessage = $(inputs1[i]).data('error-msg1');
 				// select the next element, which is the <p> for error msg.
-				$('#' + emptyInput).next().text(currentErrorMessage); // need to add the # here
-					
-				console.log(emptyInput, currentErrorMessage);
+				$('#' + currentInput).next().text(currentErrorMessage); // need to add the # here
+				console.log('this one is missing');
+				console.log(currentInput, currentErrorMessage);
 
 				q1IsValid = false;
-			}
-		}
-		return q1IsValid;
 
+			} else {
+				
+
+				// if it is filled in, remove any thing but a-z, 0-9 and whitespaces
+				cleanText(currentAnswer);
+				console.log(currentAnswer);
+				return true;
+				
+			} 
+		}
+
+		return q1IsValid;
+		console.log('form is valid, ok to submit')
 	}; //closes validateQ1-------------------------//
 
 	// choose random questionnaire
@@ -132,15 +142,18 @@ $(document).ready(function() {
 
 	// fill out forms 
 	var createListing1= function(){
+	    // if this input starts with a vowel, add an n to make an.
+	    var inputText = $(".adj2").val();
+	    if(inputText.match(vowelRegExp)){
+	    	inputText.empty().append('n ' + inputText).val();
+		 } else {
+		 	inputText.empty().append(inputText).val();
+	    	
+		 }
 		// grab the values from the input boxes, then append them to the DOM
 	    $(".adj1").empty().append($("input.adj1").val());
 	    $(".favCountry").empty().append($("input.favCountry").val());
 	    $(".bestie").empty().append($("input.bestie").val());
-	    $(".adj2").empty().append($("input.adj2").val());
-	    
-	    //	Need rule here: if adj2 starts with a vowel, do this
-	    // else append "n " to the "a" before it.
-
 	    $(".noun1").empty().append($("input.noun1").val());
 		$(".noun2").empty().append($("input.noun2").val());
 	    $(".favCartoon").empty().append($("input.favCartoon").val());
@@ -154,12 +167,11 @@ $(document).ready(function() {
 	    $(".favAnimal").empty().append($("input.favAnimal").val());
 	    $(".verb1").empty().append($("input.verb1").val());
 		
-	    //	show the listing; make this section a function:
-
+	    //	show the listing; 
 	    $(".listings").show();
-		$("#list1").show();
-		$("#list2").hide();
-		$("#list3").hide();
+		$(".js-list1").show();
+		$(".js-list2").hide();
+		$(".js-list3").hide();
 
 		//	change button to replay button
 		$("#btn-next").hide();
@@ -184,7 +196,7 @@ $(document).ready(function() {
 		// if fails
 		if (validateName()){
 			// proceed to questionnaire
-			console.log('form is valid');
+			console.log('name entered');
 			pickQuestions();
 		} else {
 			return false;

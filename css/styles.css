@@ -438,13 +438,15 @@ a {
         flex-direction: row;
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap; }
-  .container p {
+  .container .error {
     font-size: 0.7rem;
     display: block;
     height: 1rem;
     margin: 0;
     font-style: italic;
     color: #ff0044; }
+  .container .listings {
+    color: #3f3f3d; }
 
 select,
 input[type="number"],
@@ -590,3 +592,9 @@ span.error {
     text-decoration: none; }
     .eliza a:hover {
       outline: 1px solid #878787; }
+
+.isInvalid {
+  outline: 1px solid #ff0044; }
+
+.isValid {
+  outline: 1px solid #ff9b44; }

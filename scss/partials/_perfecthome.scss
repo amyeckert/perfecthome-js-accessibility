@@ -86,7 +86,7 @@ a {color: $c-white;
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
-	p {
+	.error {
 		font-size: 0.7rem;
 		display: block;
 		height: 1rem;
@@ -94,6 +94,9 @@ a {color: $c-white;
 		font-style: italic;
 		color: $c-warning;
 
+	}
+	.listings {
+		color: $c-text;
 	}
 	
 }
