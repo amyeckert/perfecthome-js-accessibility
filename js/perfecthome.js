@@ -22,6 +22,7 @@ $(document).ready(function() {
 	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
 	const lettersRegExp = /[^a-z0-9 ]+$/gi; // allow ONLY alphanumeric and whitespace
 	var theRegExp = /\bthe\b/gi; //remove the word the
+	
 	// VALIDATIONS ---------------------------//
 
 	var cleanText = function(inputtext) {
