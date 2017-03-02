@@ -54,11 +54,11 @@
 				<p class="js-error-msg error"></p>
 
 				<label for="favCounty">What is your favorite country?</label>
-				<input id="favCountry" class="js-q1-input favCountry" name="favCountry" type="text" data-error-msg1="seriously?" placeholder="New Zealand? Namibia?" aria-required="true" >
+				<input id="favCountry" class="js-q1-input favCountry" name="favCountry" type="text" data-error-msg1="Seriously, where would you rather be?" placeholder="New Zealand? Namibia?" aria-required="true" >
 				<p class="js-error-msg error"></p>
 
-				<label for="bestie">What is the first name of your best friend?</label>
-				<input id="bestie" class="js-q1-input bestie" name="bestie" type="text" data-error-msg1="you have friends?" placeholder="My bestie is..." aria-required="true" >
+				<label for="bestie">What is your best friend's first name?</label>
+				<input id="bestie" class="js-q1-input bestie" name="bestie" type="text" data-error-msg1="You must have one friend, at least?" placeholder="My bestie is..." aria-required="true" >
 				<p class="js-error-msg error"></p>
 
 				<label for="adj2">Enter another adjective.</label>
@@ -73,11 +73,11 @@
 				<input id="noun2" class="js-q1-input noun2" name="noun2" type="text" data-error-msg1="skipped this one"placeholder="Another person, place, or thing..." aria-required="true">
 				<p class="js-error-msg error"></p>
 
-				<label for="favCartoon">What is the name of your favorite cartoon character?</label>
+				<label for="favCartoon">Who is your favorite cartoon character?</label>
 				<input id="favCartoon" class="js-q1-input favCartoon" name="favCartoon" type="text" data-error-msg1="oops" placeholder="Tigger? Shrek? Peppa Pig?" aria-required="true" >
 				<p class="js-error-msg error"></p>
 
-				<label for="prez">Enter the name of any US President.</label>
+				<label for="prez">Name any US President.</label>
 				<input id="prez" class="js-q1-input prez" name="prez" type="text" data-error-msg1="oops" placeholder="Barack Obama? Millard Fillmore? " aria-required="true" >
 				<p class="js-error-msg error"></p>
 
@@ -98,7 +98,7 @@
 				<p class="js-error-msg error"></p>
 
 				<label for="num1">Enter a number from 0 - 100.</label><br>
-				<input type="number" id="num1" class="js-q1-input num1" name="num1" type="number" data-parsley-range="[0, 100]" data-error-msg1="oops" placeholder="#" aria-required="true" >
+				<input type="number" id="num1" class="js-q1-input num1" name="num1" type="number" min="0" max="100" data-error-msg1="oops" placeholder="#" aria-required="true" >
 				<p class="js-error-msg error"></p>
 
 				<label for="favAnimal">What is your favorite animal?</label>
@@ -120,20 +120,20 @@
 			<form id="questions2" name="questions2">
 
 				<label for="num5">Enter a number from 0 - 10.</label><br>
-				<input id="num5" class="js-q2-input num5" name="num5" type="number" aria-required="true">
+				<input id="num5" class="js-q2-input num5" name="num5" type="number" min="0" max="10"aria-required="true">
 				<p class="js-error-msg error"></p>
 
 				<label for="adj3">Enter an adjective.</label>
 				<input id="adj3" class="js-q2-input adj3" name="adj3" type="text"  data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="js-error-msg error"></p>
 
 				<label for="num2">Enter another number from 0 - 10.</label><br>
-				<input id="num2" class="js-q2-input num2" name="num2" type="number" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num2" class="js-q2-input num2" name="num2" type="number" min="0" max="10"aria-required="true"><p class="js-error-msg error"></p>
 
 				<label for="num3">Enter a number from 0 - 100.</label><br>
-				<input id="num3" class="js-q2-input num3" name="num3" type="number" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num3" class="js-q2-input num3" name="num3" type="number" min="0" max="100"aria-required="true"><p class="js-error-msg error"></p>
 
 				<label for="num4">It's a numbers game! <br> Enter a number from 0 - 10.</label><br>
-				<input id="num4" class="js-q2-input num4" name="num4" type="number" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num4" class="js-q2-input num4" name="num4" type="number" min="0" max="10"aria-required="true"><p class="js-error-msg error"></p>
 
 				<label for="emotion">Enter an emotion.</label>
 				<input id="emotion" class="js-q2-input emotion" name="emotion" type="text"  data-error-msg="oops" placeholder="Joy? Chagrin?" aria-required="true"><p class="js-error-msg error"></p>
@@ -179,10 +179,10 @@
 			<form id="questions3" name="questions3">
 
 				<label for="num6">Enter a number from 0 - 5.</label><br>
-				<input id="num6" class="js-q3-input num6" name="num6" type="number" data-parsley-range="[0, 5]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num6" class="js-q3-input num6" name="num6" type="number" min="0" max="5"data-parsley-range="[0, 5]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="js-error-msg error"></p>
 
 				<label for="num7">Enter a number from 0 - 10.</label><br>
-				<input id="num7" class="js-q3-input num7" name="num7" type="number" data-parsley-range="[0, 10]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num7" class="js-q3-input num7" name="num7" type="number" min="0" max="10"data-parsley-range="[0, 10]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="js-error-msg error"></p>
 
 				<label for="disaster">What is your favorite natural disaster?</label>
 				<input id="disaster" class="js-q3-input disaster" name="disaster" type="text"  data-error-msg="oops" placeholder="Plague? Tsunami?" aria-required="true"><p class="js-error-msg error"></p>
