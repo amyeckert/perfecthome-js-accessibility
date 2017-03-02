@@ -24,22 +24,22 @@ $(document).ready(function() {
 	var theRegExp = /\bthe\b/gi; //remove the word the
 	// VALIDATIONS ---------------------------//
 
-	var cleanText = function(inputtext) {
-		var lettersValid = false;
-		if(inputtext.replace(lettersRegExp)) {
-			lettersValid = true;
-			// console.log('text is letters only');
-		} else {
-			//show error msg
-			return false;
-		}
-		return lettersValid;
+	var cleanText = function(inputText) {
+		// var lettersClean = false;
+		cleanText = inputText.replace(/[^a-z0-9 ]+$/gi, '');
+		// if(inputText.match(/[^a-z0-9 ]+$/gi)) {
+		// 	console.log(inputText + ' has illegal chars');
+		// 	// lettersClean = false;
+		// 	inputText = inputText.replace(/[^a-z0-9 ]+$/gi, '');
+		// } else {
+		// 	// lettersClean = true;
+		// 	console.log('no illegal chars')
+		// 	return inputText;
+		// }
+		console.log(cleanText);
+		return cleanText; //returns t/f 
 	};
 
-	// var numbersOnly = function(input){
-	// 	$(this).isNumeric(); && between the parameters set in html?
-
-	// };
 	var validateName = function(){
 		var nameIsValid = false;
 	 	var playerName = $('.firstName').val();
@@ -63,41 +63,42 @@ $(document).ready(function() {
 		//get all the input objects
 		var inputs1 = $('.js-q1-input');
 
-		// check each one is filled out and had only letters and numbers
+		// check each one is filled out 
 		for (var i=0; i<inputs1.length; i++) {
 			// get the value of each input
 			var currentAnswer = $(inputs1[i]).val();
+			//get the id of each input
+			var currentInputId = $(inputs1[i]).attr('id');
+
+		 	// console.log(currentInputId);
 			// check the input is filled out
 			if(currentAnswer === '') {
-
-				//if it is empty
-				var currentInput = $(inputs1[i]).attr('id');
+				// get the error message
 				var currentErrorMessage = $(inputs1[i]).data('error-msg1');
-				// select the next element, which is the <p> for error msg.
-				$('#' + currentInput).next().text(currentErrorMessage); // need to add the # here
-				console.log('this one is missing');
-				console.log(currentInput, currentErrorMessage);
+				// select the next element- need to add the #, gets the next sibling <p>.
+				// // remove any previous error msg
+				// $('#' + currentInputId).next().text(''); 
+				// add current error message
+				$('#' + currentInputId).next().text(currentErrorMessage); // 
+				console.log(currentInputId +' is missing');
 
 				q1IsValid = false;
+			} else if(currentAnswer !== '' && currentAnswer.match(lettersRegExp)) {
+			 // 	$('#' + currentInputId).next().text(''); 
+				// add current error message
+				console.log(currentInputId + ' Letters only, please!');
+				$('#' + currentInputId).next().text('Letters only, please!');
+			 	q1IsValid = false;
+
 			} else {
-				// if it is filled in, remove any thing but a-z, 0-9 and whitespaces
-				cleanText(currentAnswer);
-				console.log(currentAnswer);
-				q1IsValid = true;	
-			} 
-		} //closes for loop --------------------//
-		
-		// if (q1IsValid === false) {
-		// 	// don't submit form
-		// 	console.log('don\'t submit');
-		// 	return;
-		//  } 
-		//  else{
-		// 	q1IsValid = true;
-		// }
-		return q1IsValid; 
-		console.log('form ok to submit')
+				return = true;
+				console.log(q1IsValid);
+			}
+        
+		} //closes for loop --------------------//		
+		return q1IsValid; //returns t/f
 	}; //closes validateQ1 -------------------------//
+
 
 	// choose random questionnaire
 	var pickQuestions = function(){
@@ -139,6 +140,7 @@ $(document).ready(function() {
 			});
 		};
 	};
+
 
 	// fill out forms 
 	var createListing1= function(){
@@ -202,7 +204,7 @@ $(document).ready(function() {
 	};	
 
 
-	/**********************************/
+	/****  on-submit events  ******************************/
 
 	// validates that name is entered, chooses questionnaire
 	$('#name').on('submit', function(e){
@@ -221,13 +223,13 @@ $(document).ready(function() {
 	// create listings if form is valid------------//
 	$("#questions1").on('submit', function(e) {
 		e.preventDefault();
-		// if function returns true, form is valid, do this stuff: 
+		// if validate returns true, do this stuff: 
 		if(validateQ1()) {
-			console.log('form is valid');
 			createListing1();
 			showListing1();	
 		} else {
-		//if form is not valid, return false;
+			//if form is not valid, return false;
+			console.log('form is not valid');
 			return false;
 		}	 
 	});
