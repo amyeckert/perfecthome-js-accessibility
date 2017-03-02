@@ -20,24 +20,21 @@ $(document).ready(function() {
 
 	// REGEXP -------------------------------//
 	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
-	const lettersRegExp = /[^a-z0-9 ]+$/gi; // allow ONLY alphanumeric and whitespace
 	var theRegExp = /\bthe\b/gi; //remove the word the
 	// VALIDATIONS ---------------------------//
 
+	const lettersRegExp = /[^a-z0-9 ]$/gi; // allow ONLY alphanumeric and whitespace
 	var cleanText = function(inputText) {
-		// var lettersClean = false;
-		cleanText = inputText.replace(/[^a-z0-9 ]+$/gi, '');
-		// if(inputText.match(/[^a-z0-9 ]+$/gi)) {
-		// 	console.log(inputText + ' has illegal chars');
-		// 	// lettersClean = false;
-		// 	inputText = inputText.replace(/[^a-z0-9 ]+$/gi, '');
-		// } else {
-		// 	// lettersClean = true;
-		// 	console.log('no illegal chars')
-		// 	return inputText;
-		// }
-		console.log(cleanText);
-		return cleanText; //returns t/f 
+		var textIsClean = false;
+		if (inputText.match(lettersRegExp)) {
+			console.log(inputText + ' has illegal chars');
+			textIsClean = false;
+		} else {
+		// 	// console.log('no illegal chars')
+			textIsClean = true;
+		}
+		console.log(textIsClean);
+		return textIsClean; //returns t/f 
 	};
 
 	var validateName = function(){
@@ -75,26 +72,31 @@ $(document).ready(function() {
 			if(currentAnswer === '') {
 				// get the error message
 				var currentErrorMessage = $(inputs1[i]).data('error-msg1');
-				// select the next element- need to add the #, gets the next sibling <p>.
 				// // remove any previous error msg
 				// $('#' + currentInputId).next().text(''); 
+
 				// add current error message
 				$('#' + currentInputId).next().text(currentErrorMessage); // 
 				console.log(currentInputId +' is missing');
 
-				q1IsValid = false;
-			} else if(currentAnswer !== '' && currentAnswer.match(lettersRegExp)) {
-			 // 	$('#' + currentInputId).next().text(''); 
-				// add current error message
-				console.log(currentInputId + ' Letters only, please!');
-				$('#' + currentInputId).next().text('Letters only, please!');
-			 	q1IsValid = false;
+				q1IsValid = false;// don't submit form
 
 			} else {
-				return = true;
-				console.log(q1IsValid);
-			}
-        
+				//test for bad characters
+				if(cleanText(currentAnswer)) {
+				// add current error message
+				console.log(currentAnswer + ' has illegal chars');
+
+				// $('#' + currentInputId).next().text('Letters only, please!');
+			 	q1IsValid = true; // ok to submit form
+
+				} else {
+					//remove bad characters 
+					currentAnswer = currentAnswer.replace(lettersRegExp, '');
+					console.log(currentAnswer);
+					q1IsValid = true; // ok to submit form
+				}
+        	}
 		} //closes for loop --------------------//		
 		return q1IsValid; //returns t/f
 	}; //closes validateQ1 -------------------------//
