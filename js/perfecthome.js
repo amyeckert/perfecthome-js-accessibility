@@ -20,25 +20,30 @@ $(document).ready(function() {
 
 	// REGEXP -------------------------------//
 	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
-	var theRegExp = /\bthe\b/gi; //remove the word the
+	const theRegExp = /\bthe\b/gi; //remove the word the
+	const lettersRegExp = /[^a-z0-9 ]+$/gi; // allow ONLY alphanumeric and whitespace
 	
 	// VALIDATIONS ---------------------------//
 
-	const lettersRegExp = /[^a-z0-9 ]$/gi; // allow ONLY alphanumeric and whitespace
 	var cleanText = function(inputText) {
 		var textIsClean = false;
+		var foo = inputText.match(lettersRegExp);
+		console.log(foo);
+		debugger;
 		if (inputText.match(lettersRegExp)) {
-			console.log(inputText + ' has illegal chars');
+			// inputText.replace(lettersRegExp, '');
+			console.log(inputText + ' had illegal chars');
+			//prevent form from submitting
 			textIsClean = false;
 		} else {
-		// 	// console.log('no illegal chars')
+	 		console.log('no illegal chars');
 			textIsClean = true;
 		}
 		console.log(textIsClean);
 		return textIsClean; //returns t/f 
 	};
 
-	var validateName = function(){
+	var validateName = function() {
 		var nameIsValid = false;
 	 	var playerName = $('.firstName').val();
 
@@ -84,17 +89,16 @@ $(document).ready(function() {
 
 			} else {
 				//test for bad characters
-				if(cleanText(currentAnswer)) {
-				// add current error message
-				console.log(currentAnswer + ' has illegal chars');
-
-				// $('#' + currentInputId).next().text('Letters only, please!');
-			 	q1IsValid = true; // ok to submit form
+				if(!cleanText(currentAnswer)) {
+					console.log(currentAnswer + ' has illegal chars');
+					$('#' + currentInputId).next().text('Letters only, please!');
+				 	currentAnswer = currentAnswer.replace(lettersRegExp, '');
+					console.log(currentAnswer);
+				 	q1IsValid = false; // NOT ok to submit form
 
 				} else {
 					//remove bad characters 
-					currentAnswer = currentAnswer.replace(lettersRegExp, '');
-					console.log(currentAnswer);
+					
 					q1IsValid = true; // ok to submit form
 				}
         	}
@@ -228,8 +232,9 @@ $(document).ready(function() {
 		e.preventDefault();
 		// if validate returns true, do this stuff: 
 		if(validateQ1()) {
-			createListing1();
-			showListing1();	
+			// createListing1();
+			// showListing1();	
+			console.log('form is valid');
 		} else {
 			//if form is not valid, return false;
 			console.log('form is not valid');
