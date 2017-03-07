@@ -2,15 +2,12 @@
 <html lang="en">  
 
 <head>
-	
 	<title>Find Your Your Perfect Home!</title>
-
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- 	FONTS -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<!-- 	STYLES -->
-	<!-- <link rel="stylesheet" type="text/css" href="_css/parsley.css"/> -->
 	<link rel="stylesheet" type="text/css" href="css/styles.min.css"/>
 
 </head>
@@ -37,77 +34,76 @@
 				<label class="name" for="firstName">Hi! What is your first name?</label>
 
 				<input id="firstName" class="firstName" name="firstName" type="text" data-error-msg-name="Psst! What's your name?" aria-required="true" autofocus>
-				<p class="js-error-msg-name error"></p>
+				<p class="-nameerror"></p>
 				<input id="btn-name" type="submit" class="btn submit-name" value="Let's go!">
 
 			</form>
 		
 		</div>
 
-		<!-- QESTIONS FOR LISTING 1 -->
 		<div class="q1">
 
 			<form id="questions1" name="questions1">
 					
 				<label for="adj1">Enter an adjective.</label>
 				<input id="adj1" class="js-q1-input adj1" name="adj1" type="text" data-error-msg1="Don't forget this one." placeholder="Adjective..." aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="favCounty">What is your favorite country?</label>
 				<input id="favCountry" class="js-q1-input favCountry" name="favCountry" type="text" data-error-msg1="Honestly, where would you rather be?" placeholder="New Zealand? Namibia?" aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="bestie">What is your best friend's first name?</label>
 				<input id="bestie" class="js-q1-input bestie" name="bestie" type="text" data-error-msg1="I know you have one friend, right?" placeholder="My bestie is..." aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="adj2">Enter another adjective.</label>
 				<input id="adj2" class="js-q1-input adj2" name="adj2" type="text" data-error-msg1="Oops" placeholder="Another adjective..." aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="noun1">Enter an noun.</label>
 				<input id="noun1" class="js-q1-input noun1" name="noun1" type="text" data-error-msg1="a noun is a person, place or thing..." placeholder="A person, place, or thing..." aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="noun2">Enter another noun.</label>
 				<input id="noun2" class="js-q1-input noun2" name="noun2" type="text" data-error-msg1="skipped this one"placeholder="Another person, place, or thing..." aria-required="true">
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="favCartoon">Who is your favorite cartoon character?</label>
 				<input id="favCartoon" class="js-q1-input favCartoon" name="favCartoon" type="text" data-error-msg1="Oopsies!" placeholder="Tigger? Shrek? Peppa Pig?" aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="prez">Name any US President.</label>
 				<input id="prez" class="js-q1-input prez" name="prez" type="text" data-error-msg1="So many to choose from..." placeholder="Barack Obama? Millard Fillmore? " aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="gem">Enter the name of a precious substance.</label>
 				<input id="gem" class="js-q1-input gem" name="gem" type="text" data-error-msg1="My Precioussss...." placeholder="Ruby? Istrian Marble?"data-parsley-error-message="Bling!" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="basement">What's something you'd find in a basement?</label>
 				<input id="basement" class="js-q1-input basement" name="basement" type="text" data-error-msg1="What's that?!" placeholder="Furnace? Mold? Broken toys?" aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="tree">What is your favorite tree?</label>
 				<input id="tree" class="js-q1-input tree" name="tree" type="text" data-error-msg1="Missed this one." placeholder="Mulberry? Dogwood? " aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="water">Name any body of water.</label>
 				<input id="water" class="js-q1-input water" name="water" type="text" data-error-msg1="Make a splash!" placeholder="Lake Como? Gowanus Canal?" aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="num1">Enter a number from 0 - 100.</label><br>
 				<input type="number" id="num1" class="js-q1-input num1" name="num1" type="number" min="0" max="100" data-error-msg1="oops" placeholder="#" aria-required="true">
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="favAnimal">What is your favorite animal?</label>
 				<input id="favAnimal" class="js-q1-input favAnimal" name="favAnimal" type="text" data-error-msg1="Missed this one." placeholder="Pig? Python? Pyrhana?" aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 
 				<label for="verb1">Enter a verb.</label>
 				<input id="verb1" class="js-q1-input verb1" name="verb1" type="text" data-error-msg1="This one is still empty." placeholder="Action!" aria-required="true" >
-				<p class="js-error-msg error"></p>
+				<p class="error"></p>
 	
 				<input id="btn-submit1" type="submit" value="Call the movers!"> 
 				<p class=""></p>
@@ -115,29 +111,28 @@
 			
 		</div>
 	
-		<!-- QESTIONS FOR LISTING 2 -->
 		<div class="q2">
 
 			<form id="questions2" name="questions2">
 
 				<label for="num5">Enter a number from 0 - 10.</label><br>
-				<input id="num5" class="js-q2-input num5" name="num5" type="number" min="0" max="10"aria-required="true">
-				<p class="js-error-msg error"></p>
+				<input id="num5" class="js-q2-input num5" name="num5" type="number" min="0" max="10" placeholder="#" aria-required="true">
+				<p class="error"></p>
 
 				<label for="adj3">Enter an adjective.</label>
-				<input id="adj3" class="js-q2-input adj3" name="adj3" type="text"  data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="js-error-msg error"></p>
+				<input id="adj3" class="js-q2-input adj3" name="adj3" type="text"  data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="error"></p>
 
 				<label for="num2">Enter another number from 0 - 10.</label><br>
-				<input id="num2" class="js-q2-input num2" name="num2" type="number" min="0" max="10"aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num2" class="js-q2-input num2" name="num2" type="number" min="0" max="10" placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="num3">Enter a number from 0 - 100.</label><br>
-				<input id="num3" class="js-q2-input num3" name="num3" type="number" min="0" max="100"aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num3" class="js-q2-input num3" name="num3" type="number" min="0" max="100" placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="num4">It's a numbers game! <br> Enter a number from 0 - 10.</label><br>
-				<input id="num4" class="js-q2-input num4" name="num4" type="number" min="0" max="10"aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num4" class="js-q2-input num4" name="num4" type="number" min="0" max="10" placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="emotion">Enter an emotion.</label>
-				<input id="emotion" class="js-q2-input emotion" name="emotion" type="text"  data-error-msg="oops" placeholder="Joy? Chagrin?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="emotion" class="js-q2-input emotion" name="emotion" type="text"  data-error-msg="oops" placeholder="Joy? Chagrin?" aria-required="true"><p class="error"></p>
 
 				<label for="direction">Choose a direction.</label><br>
 				<select name="direction" form="questions2" id="direction" class="js-q2-input">
@@ -145,19 +140,19 @@
 					<option value="S"> South</option> 
 					<option value="E"> East</option>
 					<option value="w"> West</option>
-				</select><p class="js-error-msg error"></p>
+				</select><p class="error"></p>
 
 				<label for="room">Name any room in a house.</label>
-				<input id="room" class="js-q2-input room" name="room" type="text" data-error-msg="oops" placeholder="Breakfast nook? Bathroom?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="room" class="js-q2-input room" name="room" type="text" data-error-msg="oops" placeholder="Breakfast nook? Bathroom?" aria-required="true"><p class="error"></p>
 
 				<label for="adj4">Enter an adjective.</label>
-				<input id="adj4" class="js-q2-input adj4" type="text"  name="adj4" data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="js-error-msg error"></p>
+				<input id="adj4" class="js-q2-input adj4" type="text"  name="adj4" data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="error"></p>
 
 				<label for="pubInst">Name a public institution or facility.</label>
-				<input id="pubInst" class="js-q2-input pubInst" name="pubInst" type="text"  data-error-msg="oops" placeholder="Prison? Elementary School?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="pubInst" class="js-q2-input pubInst" name="pubInst" type="text"  data-error-msg="oops" placeholder="Prison? Elementary School?" aria-required="true"><p class="error"></p>
 
 				<label for="favCity">What's your favorite city?</label>
-				<input id="favCity" class="js-q2-input favCity" name="favCity" type="text" data-error-msg="oops" placeholder="Fresno? Nairobi? Brasilia?..." aria-required="true"><p class="js-error-msg error"></p>
+				<input id="favCity" class="js-q2-input favCity" name="favCity" type="text" data-error-msg="oops" placeholder="Fresno? Nairobi? Brasilia?..." aria-required="true"><p class="error"></p>
 
 				<label for="landmark">Pick one!</label><br>
 				<select name="landmark" form="questions2" id="landmark" class="js-q2-input">
@@ -168,41 +163,40 @@
 					<option value="nauru"> Island of Nauru</option>
 					<option value="canal"> Panama Canal</option>
 					<option value="amazon"> Amazon Rainforest</option>
-				</select><p class="js-error-msg error"></p>
+				</select><p class="error"></p>
 
 				<input id="btn-submit2" type="submit" class="btn" value="Get packing!">
-				<p class="js-error-msg error"></p>	
+				<p class=""></p>	
 			</form>	
 				
 		</div>
 
-		<!-- QESTIONS FOR LISTING 3 -->
 		<div class="q3">
 			<form id="questions3" name="questions3">
 
 				<label for="num6">Enter a number from 0 - 5.</label><br>
-				<input id="num6" class="js-q3-input num6" name="num6" type="number" min="0" max="5"data-parsley-range="[0, 5]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num6" class="js-q3-input num6" name="num6" type="number" min="0" max="5"data-parsley-range="[0, 5]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="num7">Enter a number from 0 - 10.</label><br>
-				<input id="num7" class="js-q3-input num7" name="num7" type="number" min="0" max="10"data-parsley-range="[0, 10]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="num7" class="js-q3-input num7" name="num7" type="number" min="0" max="10"data-parsley-range="[0, 10]"  data-error-msg="oops" placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="disaster">What is your favorite natural disaster?</label>
-				<input id="disaster" class="js-q3-input disaster" name="disaster" type="text"  data-error-msg="oops" placeholder="Plague? Tsunami?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="disaster" class="js-q3-input disaster" name="disaster" type="text"  data-error-msg="oops" placeholder="Plague? Tsunami?" aria-required="true"><p class="error"></p>
 
 				<label for="clothing">Name an article of clothing.</label>
-				<input id="clothing" class="js-q3-input clothing" name="clothing" type="text"  data-error-msg="oops" placeholder="Socks? Tie?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="clothing" class="js-q3-input clothing" name="clothing" type="text"  data-error-msg="oops" placeholder="Socks? Tie?" aria-required="true"><p class="error"></p>
 
 				<label for="mood">How would you describe your mood today?</label>
-				<input id="mood" class="js-q3-input mood" name="mood" type="text"  data-error-msg="oops" placeholder="Pensive? Disgusted?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="mood" class="js-q3-input mood" name="mood" type="text"  data-error-msg="oops" placeholder="Pensive? Disgusted?" aria-required="true"><p class="error"></p>
 
 				<label for="adj6">Enter an adjective.</label>
-				<input id="adj6" class="js-q3-input adj6" name="adj6" type="text"  data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="js-error-msg error"></p>
+				<input id="adj6" class="js-q3-input adj6" name="adj6" type="text"  data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="error"></p>
 				
 				<label for="urban">Name a common feature of urban environments, plural.</label>
-				<input id="urban" class="js-q3-input urban" name="urban" type="text"  data-error-msg="oops" placeholder="Sidewalks? Car alarms?"><p class="js-error-msg error"></p>
+				<input id="urban" class="js-q3-input urban" name="urban" type="text"  data-error-msg="oops" placeholder="Sidewalks? Car alarms?"><p class="error"></p>
 
 				<label for="verb2">Enter a verb ending in -ing.</label>
-				<input id="verb2" class="js-q3-input verb2" name="verb2" type="text"  data-error-msg="oops" placeholder="Chewing? Cogitating?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="verb2" class="js-q3-input verb2" name="verb2" type="text"  data-error-msg="oops" placeholder="Chewing? Cogitating?" aria-required="true"><p class="error"></p>
 
 				<label for="time">Pick one!</label><br>
 				<select name="time" form="questions3" id="time" class="js-q3-input">
@@ -211,27 +205,26 @@
 					<option value="day">Day</option>
 					<option value="week">Week</option>
 					<option value="month">Month</option>
-				</select><p class="js-error-msg error"></p>
+				</select><p class="error"></p>
 
 				<label for="pluAnimals">What is your least favorite animal, plural.</label>
-				<input id="pluAnimals" class="js-q3-input pluAnimals" name="pluAnimals" type="text" data-error-msg="oops" placeholder="Rabbits? Tigers?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="pluAnimals" class="js-q3-input pluAnimals" name="pluAnimals" type="text" data-error-msg="oops" placeholder="Rabbits? Tigers?" aria-required="true"><p class="error"></p>
 
 				<label for="room2">Name any room in a house.</label>
-				<input id="room2" class="js-q3-input room2" name="room2" type="text" data-error-msg="oops" placeholder="Breakfast nook? Bathroom?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="room2" class="js-q3-input room2" name="room2" type="text" data-error-msg="oops" placeholder="Breakfast nook? Bathroom?" aria-required="true"><p class="error"></p>
 
 				<label for="adj7">Enter an adjective.</label>
-				<input id="adj7" class="js-q3-input adj7" name="adj7" type="text" data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="js-error-msg error"></p>
+				<input id="adj7" class="js-q3-input adj7" name="adj7" type="text" data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="error"></p>
 
 				<label for="verb3">Enter a verb.</label>
-				<input id="verb3" class="js-q3-input verb3" name="verb3" type="text" data-error-msg="oops" placeholder="Argue? Relax?" aria-required="true"><p class="js-error-msg error"></p>
+				<input id="verb3" class="js-q3-input verb3" name="verb3" type="text" data-error-msg="oops" placeholder="Argue? Relax?" aria-required="true"><p class="error"></p>
 
 				<input id="btn-submit3" class="btn" type="submit" value="Call the bank!">
-				<p class="js-error-msg"></p>	
+				<p class=""></p>	
 			</form>
 		
 		</div>
 
-		<!-- LISTINGS -->
 		<div class="listings">
 
 			<div id="" class="js-list1 listing1">
@@ -264,15 +257,10 @@
 
 	</div>
 
-	<!--	JQUERY, etc. -->
+	<!-- JQUERY, etc. -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<!-- <script src="_js/bootstrap.min.js"></script> -->
 
-	<!-- 	FORM VALIDATION -->
-	<!-- <script src="parsley.min.js"></script> -->
-
-	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.4.3/parsley.js"></script> -->
-<!--	CUSTOM JS -->
+	<!-- CUSTOM JS -->
 	<script src="js/perfecthome.js"></script>
 
 

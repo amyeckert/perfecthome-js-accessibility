@@ -3,8 +3,8 @@
 $(document).ready(function() {	
 
 	// HIDE STUFF	----------------//
-	// $(".q1").hide();
-	$(".q2").hide();
+	$(".q1").hide();
+	// $(".q2").hide();
 	$(".q3").hide();
 	$(".listings").hide();
 	$(".js-list1").hide();
@@ -111,7 +111,7 @@ $(document).ready(function() {
 	}; //closes validateQ1 -------------------------//
 
 
-	// choose random questionnaire
+	// choose random questionnaire by choosing a namespace?
 	var pickQuestions = function(){
 		var q1 = $(".q1");
 	 	var q2 = $(".q2");
@@ -191,30 +191,119 @@ $(document).ready(function() {
 	    $(".verb1").empty().append($("input.verb1").val());
 	};
 
+	var createListing2 = function(){
+
+  		var dir = $("#direction option:selected" ).text();
+		var landmark = $("#landmark :selected").text();
+		
+		$(".num5").empty().append($("input.num5").val());
+		$(".adj3").empty().append($("input.adj3").val());
+		$(".num2").empty().append($("input.num2").val());
+		$(".num3").empty().append($("input.num3").val());
+		$(".num4").empty().append($("input.num4").val());
+		$(".emotion").empty().append($("input.emotion").val());
+		$(".direction").empty().append(dir);
+		$(".room").empty().append($("input.room").val());
+		$(".adj4").empty().append($("input.adj4").val());
+		$(".pubInst").empty().append($("input.pubInst").val());
+		$(".favCity").empty().append($("input.favCity").val());
+		$(".landmark").empty().append(landmark);
+	};
+
+	var createListing3 = function(){
+
+		var time = $("#time option:selected" ).text();
+
+		$(".num6").empty().append($("input.num6").val());
+		$(".num7").empty().append($("input.num7").val());
+		$(".disaster").empty().append($("input.disaster").val());
+		$(".clothing").empty().append($("input.clothing").val());
+		$(".mood").empty().append($("input.mood").val());
+		$(".adj6").empty().append($("input.adj6").val());
+		$(".adj7").empty().append($("input.adj7").val());
+		$(".urban").empty().append($("input.urban").val());
+		$(".room2").empty().append($("input.room2").val());
+		$(".verb2").empty().append($("input.verb2").val());
+		$(".time").empty().append(time);
+		$(".pluAnimals").empty().append($("input.pluAnimals").val());
+		$(".verb3").empty().append($("input.verb3").val());	
+	};
+
 	//display the listing and hide other stuff
-	var showListing1 = function() {
-	    //	show the listing; 
-	    $(".listings").show();
-		$(".js-list1").show();
-		$(".js-list2").hide();
-		$(".js-list3").hide();
+	// these could be set up as an if or switch statement 
+	var showListing = function() {
+		var allForms = $('.questionnaire');
+		console.log(allForms);
 
-		//	change button to replay button
-		$("#btn-next").hide();
-		$(".replay").show();
+		for (var i=0; i<allForms.length; i++) {
+			var formToShow = $('').attr('id');
+		};
+		
+		if(formToShow === 'q1') {
+		    //	show the listing; 
+		    $(".listings").show();
+			$(".js-list1").show();
+			$(".js-list2").hide();
+			$(".js-list3").hide();
 
-	    // hide the questions
-	    $(".q1").hide();
-		$("#btn-reset").show();
-		$(".share").show();
-		$(".eliza").show();
+			//	change button to replay button
+			$("#btn-next").hide();
+			$(".replay").show();
 
-	    //change the h1 message
-	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-	};	
+		    // hide the questions
+		    $(".q1").hide();
+			$("#btn-reset").show();
+			$(".share").show();
+			$(".eliza").show();
 
+		    //change the h1 message
+		   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
+				
+		};
+		if(formToShow ==='q2') {
+			//	show the listing
+			$(".listings").show();
+			$("#list1").hide();
+			$("#list2").show();
+			$("#list3").hide();
 
-	/****  on-submit events  ******************************/
+			//	change button to replay button
+			$("#btn-next").hide();
+			$(".replay").show();
+
+			// hide the questions
+			$(".q2").hide();
+			$("#btn-reset").show();	
+
+			$(".share").show();
+			$(".eliza").show(); 
+
+		    //change the h1 message
+		   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
+
+		};	
+		if(formToShow ==='q3') {
+			$(".listings").show();
+			$("#list1").hide();
+			$("#list2").hide();
+			$("#list3").show();
+
+			//	change button to replay button
+			$("#btn-next").hide();
+			$(".replay").show();
+
+			// hide the questions
+			$(".q3").hide();
+			$("#btn-reset").show();
+
+			$(".share").show();
+			$(".eliza").show();
+
+			var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
+		};
+	};
+
+	//-------  ON-SUBMIT EVENTS -------------------------//
 
 	// validates that name is entered, chooses questionnaire
 	$('#name').on('submit', function(e){
@@ -229,7 +318,7 @@ $(document).ready(function() {
 		}
 	});
 
-	// create listings if form is valid------------//
+	// assemble listing only if form is valid------------//
 	$("#questions1").on('submit', function(e) {
 		e.preventDefault();
 		if(!validateQ1()) {
@@ -238,128 +327,58 @@ $(document).ready(function() {
 			return false;
 		} else {
 			createListing1();
-			showListing1();	
+			showListing();	
 		}	 
 	});
 
-
-	//--------------
-	// $("#btn-submit2").on('submit', function(e) {
-	// 	e.preventDefault()
-	// 	//are all fields filled out?
-	// 	if(validateQ2()) {
-	// 		console.log('form is valid');
-	// 	} else {
-	// 		return false;
-	// 	}
-
-	// 	// var dir = $("#direction option:selected" ).text();
-	// 	// var landmark = $("#landmark :selected").text();
-		
-	// 	// $(".num5").empty().append($("input.num5").val());
-	// 	// $(".adj3").empty().append($("input.adj3").val());
-	// 	// $(".num2").empty().append($("input.num2").val());
-	// 	// $(".num3").empty().append($("input.num3").val());
-	// 	// $(".num4").empty().append($("input.num4").val());
-	// 	// $(".emotion").empty().append($("input.emotion").val());
-	// 	// $(".direction").empty().append(dir);
-	// 	// $(".room").empty().append($("input.room").val());
-	// 	// $(".adj4").empty().append($("input.adj4").val());
-	// 	// $(".pubInst").empty().append($("input.pubInst").val());
-	// 	// $(".favCity").empty().append($("input.favCity").val());
-	// 	// $(".landmark").empty().append(landmark);
-
-	// 	// //	show the listing
-	// 	// $(".listings").show();
-	// 	// $("#list1").hide();
-	// 	// $("#list2").show();
-	// 	// $("#list3").hide();
-
-	// 	// //	change button to replay button
-	// 	// $("#btn-next").hide();
-	// 	// $(".replay").show();
-
-	// 	// // hide the questions
-	// 	// $(".q2").hide();
-	// 	// $("#btn-reset").show();	
-
-	// 	// $(".share").show();
-	// 	// $(".eliza").show(); 
-
-	//  //    //change the h1 message
-	//  //   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
-	// });
-
-	// $("#btn-submit3").click(function(e) {
-	// 	e.preventDefault()
-	// 	// $('#questions3').parsley();
-
-	// 	var time = $("#time option:selected" ).text();
-
-	// 	$(".num6").empty().append($("input.num6").val());
-	// 	$(".num7").empty().append($("input.num7").val());
-	// 	$(".disaster").empty().append($("input.disaster").val());
-	// 	$(".clothing").empty().append($("input.clothing").val());
-	// 	$(".mood").empty().append($("input.mood").val());
-	// 	$(".adj6").empty().append($("input.adj6").val());
-	// 	$(".adj7").empty().append($("input.adj7").val());
-	// 	$(".urban").empty().append($("input.urban").val());
-	// 	$(".room2").empty().append($("input.room2").val());
-	// 	$(".verb2").empty().append($("input.verb2").val());
-	// 	$(".time").empty().append(time);
-	// 	$(".pluAnimals").empty().append($("input.pluAnimals").val());
-	// 	$(".verb3").empty().append($("input.verb3").val());
-		
-	// 	//	show the listing
-	// 	$(".listings").show();
-	// 	$("#list1").hide();
-	// 	$("#list2").hide();
-	// 	$("#list3").show();
-
-	// 	//	change button to replay button
-	// 	$("#btn-next").hide();
-	// 	$(".replay").show();
-
-	// 	// hide the questions
-	// 	$(".q3").hide();
-	// 	$("#btn-reset").show();
-
-	// 	$(".share").show();
-	// 	$(".eliza").show();
-
-	// 	var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
-	// });
-
-
-
-
+	$("#btn-submit2").on('submit', function(e) {
+		e.preventDefault();
+		if(!validateQ2()) {
+			$('#btn-submit2').next().text('Please correct the errors and THEN start packing.');
+			console.log('form is not valid');
+			return false;
+		} else {
+			createListing2();
+			showListing();	   		
+		}
+	});
+	
+	$("#btn-submit3").click('submit', function(e) {
+		e.preventDefault();
+		if(!validateQ3()) {
+			$('#btn-submit3').next().text('Please correct the errors and THEN call the bank.');
+			console.log('form is not valid');
+			return false;
+		} else {
+			createListing3();
+			showListing();	   		
+		}
+	});
 
 
 	// REPLAY BUTTON------------------------//
 
-// $("#btn-reset").click(function(e) {
-// 	var message = document.querySelector(".message").innerHTML = "Find Your Perfect Home!";
+	// $("#btn-reset").click(function(e) {
+	// 	var message = document.querySelector(".message").innerHTML = "Find Your Perfect Home!";
 
-// 	var reset = document.getElementById("firstName").className = "";
-	
+	// 	var reset = document.getElementById("firstName").className = "";
+		
+	// 	$(".enter-name").show();
+	// 	$("#btn-reset").hide();
+	// 	$(".listings").hide();	
+	// 	$("#btn-next").show();
+	// 	// $("#empty-name").hide();
+	// 	$("#empty-name").css("visibility", "hidden");
+		
+	//  console.log(firstName, reset);
 
-// 	$(".enter-name").show();
-// 	$("#btn-reset").hide();
-// 	$(".listings").hide();	
-// 	$("#btn-next").show();
-// 	// $("#empty-name").hide();
-// 	$("#empty-name").css("visibility", "hidden");
-	
+	// 	 //clear inputs
+	// 	 $(":input").val(" ");
+	// 	 $("#btn-next").val("Let's go!");
+	// 	 $("#btn-submit1").val("Call the movers!");
+	// 	 $("#btn-submit2").val("Get packing!");
+	// 	 $("#btn-submit3").val("Call the bank!");
 
-//  	console.log(firstName, reset);
-
-// 	 //clear inputs
-// 	 $(":input").val(" ");
-// 	 $("#btn-next").val("Let's go!");
-// 	 $("#btn-submit1").val("Call the movers!");
-// 	 $("#btn-submit2").val("Get packing!");
-// 	 $("#btn-submit3").val("Call the bank!");
-
-// });	 
+	// });	 
 
 }); //closes doc ready	
