@@ -21,22 +21,9 @@ $(document).ready(function() {
 	// REGEXP -------------------------------//
 	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
 	var theRegExp = /\bthe\b/gi; //remove the word the
+	const lettersRegExp = /[^a-z ]$/gi; // allow ONLY alphabetic and whitespace
+	const numbersRegExp = /[^0-9]$/gi;
 	// VALIDATIONS ---------------------------//
-
-	const lettersRegExp = /[^a-z0-9 ]$/gi; // allow ONLY alphanumeric and whitespace
-	var cleanText = function(inputText) {
-		var textIsClean = false;
-		if (inputText.match(lettersRegExp)) {
-			console.log(inputText + ' has illegal chars');
-			textIsClean = false;
-		} else {
-		// 	// console.log('no illegal chars')
-			textIsClean = true;
-		}
-		console.log(textIsClean);
-		return textIsClean; //returns t/f 
-	};
-
 	var validateName = function(){
 		var nameIsValid = false;
 	 	var playerName = $('.firstName').val();
@@ -54,51 +41,75 @@ $(document).ready(function() {
 		return nameIsValid;
 	};
 
-	var validateQ1 = function() {
-		var q1IsValid = false;
+	var cleanText = function(inputText) {
+		var textIsClean = true;
+		if (inputText.match(lettersRegExp)) {
+			console.log(inputText + ' has illegal chars');
+			textIsClean = false;
+		} 
+		return textIsClean; //returns t/f 
+	};
 
-		//get all the input objects
+	var cleanNumbers = function(inputText) {
+		var numbersClean = true;
+		if (inputText.match(numbersRegExp)) {
+			console.log(inputText = ' can\'t have letters');
+			numbersClean = false;
+		}
+		return numbersClean; //returns t/f 
+	};
+
+	var validateQ1 = function() {
+		var form1IsValid = true;
 		var inputs1 = $('.js-q1-input');
 
-		// check each one is filled out 
+		// check each one is filled out correctly
 		for (var i=0; i<inputs1.length; i++) {
-			// get the value of each input
 			var currentAnswer = $(inputs1[i]).val();
-			//get the id of each input
 			var currentInputId = $(inputs1[i]).attr('id');
+			var currentErrorMessage = $(inputs1[i]).data('error-msg1');
+			var currentInputType = $(inputs1[i]).attr('type');
+			
 
-		 	// console.log(currentInputId);
+			console.log(currentInputType);
 			// check the input is filled out
 			if(currentAnswer === '') {
-				// get the error message
-				var currentErrorMessage = $(inputs1[i]).data('error-msg1');
-				// // remove any previous error msg
-				// $('#' + currentInputId).next().text(''); 
+				// remove any previous error msg
+				$('#' + currentInputId).next().text(''); 
 
 				// add current error message
 				$('#' + currentInputId).next().text(currentErrorMessage); // 
 				console.log(currentInputId +' is missing');
 
-				q1IsValid = false;// don't submit form
+				form1IsValid = false; 
+
+			} else if (currentInputType === 'number') {
+				if(!cleanNumbers(currentAnswer)) {
+					currentErrorMessage = 'Please use only numbers, thanks!';
+					$('#' + currentInputId).next().text(currentErrorMessage);
+					form1IsValid = false;
+				} 
+				else {
+					$('#' + currentInputId).next().text('');
+					
+				}
+			} else if (currentInputType ==='text') {
+				if (!cleanText(currentAnswer)) {
+					currentErrorMessage = 'Please use only letters, thanks!';
+					$('#' + currentInputId).next().text(currentErrorMessage);
+					form1IsValid = false;
+				} 
+				else {
+					$('#' + currentInputId).next().text('');
+				}
 
 			} else {
-				//test for bad characters
-				if(cleanText(currentAnswer)) {
-				// add current error message
-				console.log(currentAnswer + ' has illegal chars');
+				console.log('form is valid ok to submit');
+				return true;
+			}	
+		} // closes for loop ------------------------//
 
-				// $('#' + currentInputId).next().text('Letters only, please!');
-			 	q1IsValid = true; // ok to submit form
-
-				} else {
-					//remove bad characters 
-					currentAnswer = currentAnswer.replace(lettersRegExp, '');
-					console.log(currentAnswer);
-					q1IsValid = true; // ok to submit form
-				}
-        	}
-		} //closes for loop --------------------//		
-		return q1IsValid; //returns t/f
+		return form1IsValid; //returns t/f
 	}; //closes validateQ1 -------------------------//
 
 
@@ -225,14 +236,14 @@ $(document).ready(function() {
 	// create listings if form is valid------------//
 	$("#questions1").on('submit', function(e) {
 		e.preventDefault();
-		// if validate returns true, do this stuff: 
-		if(validateQ1()) {
-			createListing1();
-			showListing1();	
-		} else {
+		if(!validateQ1()) {
 			//if form is not valid, return false;
 			console.log('form is not valid');
 			return false;
+		} else {
+			// if validateQ1 returns true, do this stuff: 
+			createListing1();
+			showListing1();	
 		}	 
 	});
 
