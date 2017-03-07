@@ -23,11 +23,11 @@ $(document).ready(function() {
 	var theRegExp = /\bthe\b/gi; //remove the word the
 	const lettersRegExp = /[^a-z ]$/gi; // allow ONLY alphabetic and whitespace
 	const numbersRegExp = /[^0-9]$/gi;
+
 	// VALIDATIONS ---------------------------//
 	var validateName = function(){
 		var nameIsValid = false;
 	 	var playerName = $('.firstName').val();
-
  		//if field is empty, display error msg
 	 	if(!playerName) {
 	 		nameIsValid = false;
@@ -35,7 +35,6 @@ $(document).ready(function() {
 			$('.js-error-msg-name').text(nameError);
 			console.log(nameError);
 	 	} else {
-
 	 		return true;
 	 	}
 		return nameIsValid;
@@ -232,16 +231,13 @@ $(document).ready(function() {
 		}
 	});
 
-
 	// create listings if form is valid------------//
 	$("#questions1").on('submit', function(e) {
 		e.preventDefault();
 		if(!validateQ1()) {
-			//if form is not valid, return false;
 			console.log('form is not valid');
 			return false;
 		} else {
-			// if validateQ1 returns true, do this stuff: 
 			createListing1();
 			showListing1();	
 		}	 
