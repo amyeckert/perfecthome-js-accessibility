@@ -25,20 +25,6 @@ $(document).ready(function() {
 	const numbersRegExp = /[^0-9]$/gi;
 
 	// VALIDATIONS ---------------------------//
-	var validateName = function(){
-		var nameIsValid = false;
-	 	var playerName = $('.firstName').val();
- 		//if field is empty, display error msg
-	 	if(!playerName) {
-	 		nameIsValid = false;
-			var nameError = $('.firstName').data('error-msg-name');
-			$('.js-error-msg-name').text(nameError);
-			console.log(nameError);
-	 	} else {
-	 		return true;
-	 	}
-		return nameIsValid;
-	};
 
 	var cleanText = function(inputText) {
 		var textIsClean = true;
@@ -58,6 +44,21 @@ $(document).ready(function() {
 		return numbersClean; //returns t/f 
 	};
 
+	var validateName = function(){
+		var nameIsValid = false;
+	 	var playerName = $('.firstName').val();
+ 		//if field is empty, display error msg
+	 	if(!playerName) {
+	 		nameIsValid = false;
+			var nameError = $('.firstName').data('error-msg-name');
+			$('.js-error-msg-name').text(nameError);
+			console.log(nameError);
+	 	} else {
+	 		return true;
+	 	}
+		return nameIsValid;
+	};
+
 	var validateQ1 = function() {
 		var form1IsValid = true;
 		var inputs1 = $('.js-q1-input');
@@ -67,16 +68,14 @@ $(document).ready(function() {
 			var currentAnswer = $(inputs1[i]).val();
 			var currentInputId = $(inputs1[i]).attr('id');
 			var currentErrorMessage = $(inputs1[i]).data('error-msg1');
-			var currentInputType = $(inputs1[i]).attr('type');
-			
+			var currentInputType = $(inputs1[i]).attr('type');		
 
-			console.log(currentInputType);
 			// check the input is filled out
 			if(currentAnswer === '') {
 				// remove any previous error msg
 				$('#' + currentInputId).next().text(''); 
 
-				// add current error message
+				// add error message
 				$('#' + currentInputId).next().text(currentErrorMessage); // 
 				console.log(currentInputId +' is missing');
 
@@ -104,7 +103,7 @@ $(document).ready(function() {
 
 			} else {
 				console.log('form is valid ok to submit');
-				return true;
+				form1IsValid = true;
 			}	
 		} // closes for loop ------------------------//
 
@@ -152,7 +151,6 @@ $(document).ready(function() {
 			});
 		};
 	};
-
 
 	// fill out forms 
 	var createListing1= function(){
@@ -235,6 +233,7 @@ $(document).ready(function() {
 	$("#questions1").on('submit', function(e) {
 		e.preventDefault();
 		if(!validateQ1()) {
+			$('#btn-submit1').next().text('Please correct the errors and THEN call the movers.');
 			console.log('form is not valid');
 			return false;
 		} else {

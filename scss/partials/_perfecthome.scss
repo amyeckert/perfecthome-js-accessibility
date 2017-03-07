@@ -155,12 +155,21 @@ input[type="submit"] {
 	font-size: 1rem;
 	outline-offset: 0;
 
+	+ p {
+		display: inline-block;
+		font-size: 0.7rem;
+		height: 1rem;
+		margin: 0;
+		font-style: italic;
+		color: $c-warning;
+	}
 }
+
 .submit-name {
 	margin-bottom: 0;
 
 }
-button:hover,
+
 button[type="submit"]:hover, 
 input[type="submit"]:hover {	
 	border-radius: 0;
