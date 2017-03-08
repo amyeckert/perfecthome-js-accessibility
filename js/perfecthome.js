@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 	// HIDE STUFF	----------------//
 	$(".q1").hide();
-	// $(".q2").hide();
+	$(".q2").hide();
 	$(".q3").hide();
 	$(".listings").hide();
 	$(".js-list1").hide();
@@ -15,10 +15,15 @@ $(document).ready(function() {
 	$(".share").hide();
 	$(".eliza").hide();
 
-	// ERROR MESSAGES-------------------------//
-	// var errRequired = 'Pssst! What\'s your name?';
+	// GLOBAL VBARIABLES -------------------------//
+	var q1 = $(".q1");
+ 	var q2 = $(".q2");
+ 	var q3 = $(".q3");
+	var listings = [q1, q2, q3];
+	var chosen = listings[Math.floor(Math.random() * listings.length)];
+	var alliInputs = $('.js-input');
 
-	// REGEXP -------------------------------//
+	// regular expressions  -------------------------------//
 	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
 	var theRegExp = /\bthe\b/gi; //remove the word the
 	const lettersRegExp = /[^a-z ]$/gi; // allow ONLY alphabetic and whitespace
@@ -47,28 +52,33 @@ $(document).ready(function() {
 	var validateName = function(){
 		var nameIsValid = false;
 	 	var playerName = $('.firstName').val();
- 		//if field is empty, display error msg
+	 	var errNameRequired = 'Pssst! What\'s your name?';
+
 	 	if(!playerName) {
 	 		nameIsValid = false;
-			var nameError = $('.firstName').data('error-msg-name');
-			$('.js-error-msg-name').text(nameError);
-			console.log(nameError);
+			$('#' + 'firstName').next().text(errNameRequired);
+			console.log(errNameRequired);
 	 	} else {
 	 		return true;
 	 	}
 		return nameIsValid;
 	};
 
-	var validateQ1 = function() {
-		var form1IsValid = true;
-		var inputs1 = $('.js-q1-input');
+	var validateForm = function() {
+		//which form is visible? 
+		var chosenForm = $('body').find('form:visible').not( '#name' );
+		chosenInputs = $('body').find('input.js-input:visible').not('#firstName');
 
-		// check each one is filled out correctly
-		for (var i=0; i<inputs1.length; i++) {
-			var currentAnswer = $(inputs1[i]).val();
-			var currentInputId = $(inputs1[i]).attr('id');
-			var currentErrorMessage = $(inputs1[i]).data('error-msg1');
-			var currentInputType = $(inputs1[i]).attr('type');		
+		console.log(chosenInputs); 
+
+		var form1IsValid = true;
+	
+		// check if each one is filled out correctly
+		for (var i=0; i<chosenInputs.length; i++) {
+			var currentAnswer = $(chosenInputs[i]).val();
+			var currentInputId = $(chosenInputs[i]).attr('id');
+			var currentErrorMessage = $(chosenInputs[i]).data('error-msg');
+			var currentInputType = $(chosenInputs[i]).attr('type');		
 
 			// check the input is filled out
 			if(currentAnswer === '') {
@@ -108,17 +118,10 @@ $(document).ready(function() {
 		} // closes for loop ------------------------//
 
 		return form1IsValid; //returns t/f
-	}; //closes validateQ1 -------------------------//
+	}; //closes validate -------------------------//
 
-
-	// choose random questionnaire by choosing a namespace?
-	var pickQuestions = function(){
-		var q1 = $(".q1");
-	 	var q2 = $(".q2");
-	 	var q3 = $(".q3");
-		var listings = [q1, q2, q3];
-	 	var chosen = listings[Math.floor(Math.random() * listings.length)];
-
+	var pickForm = function(){
+	 	console.log(chosen);
 	 	$(".enter-name").hide();
 	 	$(".firstName").empty().append($("input.firstName").val());
 		
@@ -303,7 +306,7 @@ $(document).ready(function() {
 		};
 	};
 
-	//-------  ON-SUBMIT EVENTS -------------------------//
+	//-------  BUTTONS/ON-CLICK EVENTS -------------------------//
 
 	// validates that name is entered, chooses questionnaire
 	$('#name').on('submit', function(e){
@@ -312,7 +315,7 @@ $(document).ready(function() {
 		if (validateName()){
 			// proceed to questionnaire
 			console.log('name entered');
-			pickQuestions();
+			pickForm();
 		} else {
 			return false;
 		}
@@ -321,8 +324,10 @@ $(document).ready(function() {
 	// assemble listing only if form is valid------------//
 	$("#questions1").on('submit', function(e) {
 		e.preventDefault();
-		if(!validateQ1()) {
-			$('#btn-submit1').next().text('Please correct the errors and THEN call the movers.');
+
+		// validateForm();
+		if(!validateForm()) {
+			$('button').next().text('Please correct the errors, THEN call the movers.');
 			console.log('form is not valid');
 			return false;
 		} else {
@@ -331,10 +336,10 @@ $(document).ready(function() {
 		}	 
 	});
 
-	$("#btn-submit2").on('submit', function(e) {
+	$("#questions2").on('submit', function(e) {
 		e.preventDefault();
-		if(!validateQ2()) {
-			$('#btn-submit2').next().text('Please correct the errors and THEN start packing.');
+		if(!validateForm()) {
+			$('button').next().text('Please correct the errors, THEN start packing.');
 			console.log('form is not valid');
 			return false;
 		} else {
@@ -343,10 +348,10 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#btn-submit3").click('submit', function(e) {
+	$("#questions3").click('submit', function(e) {
 		e.preventDefault();
-		if(!validateQ3()) {
-			$('#btn-submit3').next().text('Please correct the errors and THEN call the bank.');
+		if(!validateForm()) {
+			$('button').next().text('Please correct the errors, THEN call the bank.');
 			console.log('form is not valid');
 			return false;
 		} else {
