@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-	color: rgba(63,63,61,1);;
+	color: $c-text;
 }
 
 p {
@@ -44,16 +44,10 @@ input {
 	border-radius: 0;
 
 }
-/*select {
-	height: 100%;
-	padding: ;
-	border-radius: 0;
-	font-size: 14px;
-	margin-bottom: 10px;*/
-/*}*/
 option {font-size: 1.2rem;}
 
-a {color: $c-white;
+a {
+	color: $c-white;
 
 	&:hover {
 		color: $c-white;
@@ -78,10 +72,10 @@ a {color: $c-white;
 	opacity: 0.9;
 
 	h1 {
-		 order: 1;
+		 order: 0;
 	}
 	.enter-name {
-		order: 2;
+		order: 1;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
@@ -97,6 +91,7 @@ a {color: $c-white;
 	}
 	.listings {
 		color: $c-text;
+		order: 2
 	}
 	
 }

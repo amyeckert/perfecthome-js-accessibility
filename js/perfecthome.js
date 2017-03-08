@@ -21,7 +21,7 @@ $(document).ready(function() {
 	var q1 = $(".q1");
  	var q2 = $(".q2");
  	var q3 = $(".q3");
-	var listings = [q1, q2, q3];
+	var allQuestions = [q1, q2, q3];
 
 	var allInputs = $('.js-input');
 
@@ -73,11 +73,8 @@ $(document).ready(function() {
 	var validateForm = function() {
 		//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
-		chosenInputs = $('body').find('.js-input:visible').not('#firstName');
-
-		console.log(chosenInputs.value); 
-
-		var form1IsValid = true;
+		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
+		var form1IsValid;
 	
 		// check if each one is filled out correctly
 		for (var i=0; i<chosenInputs.length; i++) {
@@ -90,36 +87,35 @@ $(document).ready(function() {
 			if(currentAnswer === '') {
 				// remove any previous error msg
 				$('#' + currentInputId).next().text(''); 
-
 				// add error message
 				$('#' + currentInputId).next().text(currentErrorMessage); // 
 				console.log(currentInputId +' is missing');
-
 				form1IsValid = false; 
 
-			} else if (currentInputType === 'number') {
-				if(!cleanNumbers(currentAnswer)) {
-					currentErrorMessage = 'Please use only numbers, thanks!';
-					$('#' + currentInputId).next().text(currentErrorMessage);
-					form1IsValid = false;
-				} 
-				else {
-					$('#' + currentInputId).next().text('');
-					
-				}
-			} else if (currentInputType ==='text') {
-				if (!cleanText(currentAnswer)) {
-					currentErrorMessage = 'Please use only letters, thanks!';
-					$('#' + currentInputId).next().text(currentErrorMessage);
-					form1IsValid = false;
-				} 
-				else {
-					$('#' + currentInputId).next().text('');
-				}
-
 			} else {
-				console.log('form is valid ok to submit');
-				form1IsValid = true;
+				if (currentInputType === 'number') {
+					if(!cleanNumbers(currentAnswer)) {
+						currentErrorMessage = 'Please use only numbers, thanks!';
+						$('#' + currentInputId).next().text(currentErrorMessage);
+						form1IsValid = false;
+					} 
+					else {
+						$('#' + currentInputId).next().text('');	
+					}
+				}
+				else if (currentInputType ==='text') {
+					if (!cleanText(currentAnswer)) {
+						currentErrorMessage = 'Please use only letters, thanks!';
+						$('#' + currentInputId).next().text(currentErrorMessage);
+						form1IsValid = false;
+					} 
+					else {
+						$('#' + currentInputId).next().text('');
+					}
+				} else {
+					console.log('form is valid');
+					form1IsValid = true;
+				}
 			}	
 		} // closes for loop ------------------------//
 
@@ -129,10 +125,11 @@ $(document).ready(function() {
 	var pickForm = function(){
 		//clear input values
 		var clearedInputs = $(".js-input").val("");
-		var chosen = listings[Math.floor(Math.random() * listings.length)];
+		//randomly choose a questionnaire
+		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
 	 	console.log(chosen);
 	 	$(".enter-name").hide();
-	 	// $(".firstName").empty().append($("input.firstName").val());
+	 	$(".firstName").empty().append($("input.firstName").val());
 		
 	 	//need code to check to see what previous selection was, so that it doesn't repeat in it's randomness.
 		// var recentChoice; etc.   
@@ -209,7 +206,7 @@ $(document).ready(function() {
 
 	    // hide the questions
 	    $(".q1").hide();
-		$("#btn-reset").show();
+		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
 
@@ -246,7 +243,7 @@ $(document).ready(function() {
 
 		// hide the questions
 		$(".q2").hide();
-		$("#btn-reset").show();	
+		$(".btn-reset").show();	
 		$(".share").show();
 		$(".eliza").show(); 
 
@@ -279,7 +276,7 @@ $(document).ready(function() {
 
 		// hide the questions
 		$(".q3").hide();
-		$("#btn-reset").show();
+		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
 
@@ -295,7 +292,6 @@ $(document).ready(function() {
 		// if fails
 		if (validateName()){
 			// proceed to questionnaire
-			console.log('name entered');
 			pickForm();
 		} else {
 			return false;

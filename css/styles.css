@@ -392,13 +392,6 @@ input {
   margin: 0 0 1.3rem 0;
   border-radius: 0; }
 
-/*select {
-	height: 100%;
-	padding: ;
-	border-radius: 0;
-	font-size: 14px;
-	margin-bottom: 10px;*/
-/*}*/
 option {
   font-size: 1.2rem; }
 
@@ -427,11 +420,11 @@ a {
   color: #3f3f3d;
   opacity: 0.9; }
   .container h1 {
-    -ms-flex-order: 1;
-        order: 1; }
+    -ms-flex-order: 0;
+        order: 0; }
   .container .enter-name {
-    -ms-flex-order: 2;
-        order: 2;
+    -ms-flex-order: 1;
+        order: 1;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: row;
@@ -446,7 +439,9 @@ a {
     font-style: italic;
     color: #ff0044; }
   .container .listings {
-    color: #3f3f3d; }
+    color: #3f3f3d;
+    -ms-flex-order: 2;
+        order: 2; }
 
 select,
 input[type="number"],
