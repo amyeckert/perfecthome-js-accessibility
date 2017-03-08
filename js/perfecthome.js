@@ -59,7 +59,7 @@ $(document).ready(function() {
 		return nameIsValid;
 	};
 
-	var validateQ1 = function() {
+	var validate = function() {
 		var form1IsValid = true;
 		var inputs1 = $('.js-q1-input');
 
