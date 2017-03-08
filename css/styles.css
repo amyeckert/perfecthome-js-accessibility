@@ -363,13 +363,13 @@ body {
   box-sizing: border-box;
   background-image: url("../img/peek-hd.jpg");
   background-repeat: no-repeat;
-  background-size: cover; }
-
-h1 {
+  background-size: cover;
+  font-size: 1rem;
   color: #3f3f3d; }
 
-p {
-  font-size: 1rem; }
+h1 {
+  font-family: "Majesti-Banner-Bold", Georgia, serif;
+  font-size: 2rem; }
 
 /*	FORM FIELD STYLES */
 fieldset,
@@ -386,7 +386,10 @@ legend {
 
 label {
   margin-bottom: 10px;
-  font-size: 01.9rem; }
+  font-size: 1rem; }
+  @media only screen and (min-width: 700px) {
+    label {
+      font-size: 01.9rem; } }
 
 input {
   margin: 0 0 1.3rem 0;

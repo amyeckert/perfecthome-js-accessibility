@@ -10,15 +10,18 @@ body {
 	background-image: url("../img/peek-hd.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+	font-size: 1rem;
+	color: $c-text;
 
 }
 
 h1 {
-	color: $c-text;
+	font-family: $f-title;
+	font-size: 2rem;
+
 }
 
 p {
-	font-size: 1rem;
 }
 
 /*	FORM FIELD STYLES */
@@ -37,7 +40,10 @@ legend {
 }
 label {
 	margin-bottom: 10px;
-	font-size: 01.9rem;
+	font-size: 1rem;
+	@media only screen and (min-width: 700px) {
+		font-size: 01.9rem;
+	}
 }
 input {
 	margin: 0 0 1.3rem 0;
@@ -93,9 +99,7 @@ a {
 		color: $c-text;
 		order: 2
 	}
-	
 }
-
 select,
 input[type="number"],
 input[type="text"] {
