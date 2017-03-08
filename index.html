@@ -43,7 +43,7 @@
 
 		<div class="q1">
 
-			<form id="questions1" name="questions1">
+			<form id="questions1" name="questions1" method='post'>
 					
 				<label for="adj1">Enter an adjective.</label>
 				<input id="adj1" class="js-input adj1" name="adj1" type="text" data-error-msg="Don't forget this one." placeholder="Adjective..." aria-required="true" >
@@ -105,7 +105,7 @@
 				<input id="verb1" class="js-input verb1" name="verb1" type="text" data-error-msg="This one is still empty." placeholder="Action!" aria-required="true" >
 				<p class="error"></p>
 	
-				<button id="btn-submit1" type="submit" value="Call the movers!">Call the movers! </button>	
+				<button id="btn-submit1" type="submit" class="btn" value="">Call the movers!</button>
 				<p class=""></p>
 			</form>	
 			
@@ -113,29 +113,30 @@
 	
 		<div class="q2">
 
-			<form id="questions2" name="questions2">
+			<form id="questions2" name="questions2" method='post'>
 
 				<label for="num5">Enter a number from 0 - 10.</label><br>
-				<input id="num5" class="js-input num5" name="num5" type="number" min="0" max="10" placeholder="#" aria-required="true">
+				<input id="num5" class="js-input num5" name="num5" type="number" min="0" max="10" data-error-msg="oops." placeholder="#" aria-required="true">
 				<p class="error"></p>
 
 				<label for="adj3">Enter an adjective.</label>
 				<input id="adj3" class="js-input adj3" name="adj3" type="text"  data-error-msg="oops" placeholder="Adjective..." aria-required="true"><p class="error"></p>
 
 				<label for="num2">Enter another number from 0 - 10.</label><br>
-				<input id="num2" class="js-input num2" name="num2" type="number" min="0" max="10" placeholder="#" aria-required="true"><p class="error"></p>
+				<input id="num2" class="js-input num2" name="num2" type="number" min="0" max="10" data-error-msg="oops."placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="num3">Enter a number from 0 - 100.</label><br>
-				<input id="num3" class="js-input num3" name="num3" type="number" min="0" max="100" placeholder="#" aria-required="true"><p class="error"></p>
+				<input id="num3" class="js-input num3" name="num3" type="number" min="0" max="100" data-error-msg="oops."placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="num4">It's a numbers game! <br> Enter a number from 0 - 10.</label><br>
-				<input id="num4" class="js-input num4" name="num4" type="number" min="0" max="10" placeholder="#" aria-required="true"><p class="error"></p>
+				<input id="num4" class="js-input num4" name="num4" type="number" min="0" max="10" data-error-msg="oops."placeholder="#" aria-required="true"><p class="error"></p>
 
 				<label for="emotion">Enter an emotion.</label>
 				<input id="emotion" class="js-input emotion" name="emotion" type="text"  data-error-msg="oops" placeholder="Joy? Chagrin?" aria-required="true"><p class="error"></p>
 
 				<label for="direction">Choose a direction.</label><br>
-				<select name="direction" form="questions2" id="direction" class="js-input">
+				<select name="direction" form="questions2" id="direction" class="js-input" data-error-msg="oops.">
+					<option value=""></option>
 					<option value="N"> North</option>
 					<option value="S"> South</option> 
 					<option value="E"> East</option>
@@ -155,7 +156,8 @@
 				<input id="favCity" class="js-input favCity" name="favCity" type="text" data-error-msg="oops" placeholder="Fresno? Nairobi? Brasilia?..." aria-required="true"><p class="error"></p>
 
 				<label for="landmark">Pick one!</label><br>
-				<select name="landmark" form="questions2" id="landmark" class="js-input">
+				<select name="landmark" form="questions2" id="landmark" class="js-input" data-error-msg="oops.">
+					<option value=""></option>
 					<option value="niagara"> Niagara Falls</option>
 					<option value="reef"> Great Barrier Reef</option>
 					<option value="baikal"> Lake Baikal</option>
@@ -165,14 +167,14 @@
 					<option value="amazon"> Amazon Rainforest</option>
 				</select><p class="error"></p>
 
-				<button id="btn-submit2" type="submit" class="btn" value="Get packing!">Get packing!</button>
+				<button id="btn-submit2" type="submit" class="btn" value="">Get packing!</button>
 				<p class=""></p>	
 			</form>	
 				
 		</div>
 
 		<div class="q3">
-			<form id="questions3" name="questions3">
+			<form id="questions3" name="questions3" method='post'>
 
 				<label for="num6">Enter a number from 0 - 5.</label><br>
 				<input id="num6" class="js-input num6" name="num6" type="number" min="0" max="5"data-parsley-range="[0, 5]" data-error-msg="oops" placeholder="#" aria-required="true"><p class="error"></p>
@@ -198,8 +200,9 @@
 				<label for="verb2">Enter a verb ending in -ing.</label>
 				<input id="verb2" class="js-input verb2" name="verb2" type="text"  data-error-msg="oops" placeholder="Chewing? Cogitating?" aria-required="true"><p class="error"></p>
 
-				<label for="time">Pick one!</label><br>
-				<select name="time" form="questions3" id="time" class="js-input">
+				<label for="time">Choose a length of time.</label><br>
+				<select name="time" form="questions3" id="time" class="js-input" data-error-msg="oops.">
+					<option value=""></option>	
 					<option value="minute">Minute</option>
 					<option value="hour">Hour</option>
 					<option value="day">Day</option>
@@ -219,34 +222,33 @@
 				<label for="verb3">Enter a verb.</label>
 				<input id="verb3" class="js-input verb3" name="verb3" type="text" data-error-msg="oops" placeholder="Argue? Relax?" aria-required="true"><p class="error"></p>
 
-				<button id="btn-submit3" class="btn" type="submit" value="Call the bank!">Call the bank!</button>
+				<button id="btn-submit3" class="btn" type="submit" value="">Call the bank!</button>
 				<p class=""></p>	
 			</form>
 		
 		</div>
 
-		<div class="listings">
+		<!-- <div class="listings"> -->
 
-			<div id="" class="js-list1 listing1">
+			<div class="js-list1 listing1">
 
 		 		<p><span class="firstName"></span>, this is something really special! Inspired by the <span class="adj1"></span> chateaus of <span class="favCountry"></span>, Chateau <span class="bestie"></span> is <span class="addN"> </span><span class="adj2"></span> and luxurious retreat that reflects that magical merging of <span class="noun1"></span>  and <span class="noun2"></span>. Created by renowned architects <span class="favCartoon"></span> and <span class="prez"></span>, the estate is a masterpiece of design and craftsmanship featuring intricately inlaid <span class="gem"></span>, hand-planed <span class="tree"></span> flooring,  artisan-painted <span class="basement"></span>, plus an elevator to transport from floor to floor. Luxuriate in sprawling entertaining spaces that flow outside to the stunning infinity pool, tennis courts and the tranquil <span class="water"></span> beyond. Enjoy private access to your own elegantly situated <span class="num1"></span> acre mini-estate. Chateau <span class="bestie"></span> is the crème de la crème in prestigious <span class="favAnimal"></span> <span class="verb1"></span> Ranch.</p>	
 		 	</div>
 
-		 	<div id="" class="js-list2 listing2">
+		 	<div class="js-list2 listing2">
 		 		<p>Downsizing? Simplify your life, <span class="firstName"></span>, with this <span class="num5"></span>-story bungalow with <span class="adj3"></span> essentials. You’ll be thrilled with the newer carpet and windows! This efficient <span class="num2"></span>-bedroom, <span class="num3"></span>-bathroom home will reduce your carbon footprint with its <span class="num4"></span> sq ft of multi-purpose space. Live the dream, waking each morning to <span class="emotion"></span>-inspiring sunrises in the <span class="direction"></span>, work from home as the <span class="room"></span> doubles as a home office. They say location is everything, and you'll be right at home in the <span class="adj4"></span> community with an award-winning <span class="pubInst"></span> on the outskirts of <span class="favCity"></span>, just thirty minutes from the magnificent <span class="landmark">
 		 		</span>.
 		 		</p>
 		 	</div>
 
-		 	<div id="" class="js-list3 listing3">
+		 	<div class="js-list3 listing3">
 				<p><span class="firstName"></span>, you'll &quot;flip&quot; for this one! Take this unique, <span class="num6"></span>-room, <span class="num7"></span>-story home and make it shine again! Structurally sound, with minimal <span class="disaster"></span> damage! Roll up your <span class="clothing"></span> and start building your equity with this <span class="mood"></span>, <span class="adj6"></span> blank canvas! Located in this <span class="adj7"></span>, bleeding-edge neighborhood, just steps from highways and <span class="urban"></span>! Walk out of your <span class="room2"></span> onto the concrete slab patio and enjoy <span class="verb2"></span> in your fenced yard, where your green thumb will be eager to get to work! <span id="time1" class="time"></span>-to-<span class="time"></span> tenant occupied! Do NOT let any of the many backyard <span class="pluAnimals"></span> inside the house! It is a criminal offense to <span class="verb3"></span> on this property! CASH only.
 
 		 		</p>
 		 	</div>
-		</div>
+		<!-- </div> -->
 
-		<button class="btn btn-reset" type="submit" onClick="window.location.reload()">Not exactly what you had in mind?</button>
-
+		<button class="btn btn-reset" type="reset" onClick="window.location.reload()">Not quite what you had in mind?</button>
 
 		<div class="share">
 			<div class="fb-share-button" data-href="http://www.perfecthomequiz.com" data-layout="button" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.perfecthomequiz.com%2F&amp;src=sdkpreparse"><img src="img/fb_icon.svg"></a></div>

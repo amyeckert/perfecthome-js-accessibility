@@ -1,6 +1,8 @@
 // source and inspiration: https://github.com/mjhea0/jquery-madlibs
 
 $(document).ready(function() {	
+	//clear any input values
+	$(".js-input").val("");
 
 	// HIDE STUFF	----------------//
 	$(".q1").hide();
@@ -20,8 +22,8 @@ $(document).ready(function() {
  	var q2 = $(".q2");
  	var q3 = $(".q3");
 	var listings = [q1, q2, q3];
-	var chosen = listings[Math.floor(Math.random() * listings.length)];
-	var alliInputs = $('.js-input');
+
+	var allInputs = $('.js-input');
 
 	// regular expressions  -------------------------------//
 	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
@@ -58,6 +60,10 @@ $(document).ready(function() {
 	 		nameIsValid = false;
 			$('#' + 'firstName').next().text(errNameRequired);
 			console.log(errNameRequired);
+	 	} else if(!cleanText(playerName)){
+	 		nameIsValid = false;
+	 		errNameRequired = 'Please use only letters, thanks!';
+	 		$('#' + 'firstName').next().text(errNameRequired);
 	 	} else {
 	 		return true;
 	 	}
@@ -67,9 +73,9 @@ $(document).ready(function() {
 	var validateForm = function() {
 		//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
-		chosenInputs = $('body').find('input.js-input:visible').not('#firstName');
+		chosenInputs = $('body').find('.js-input:visible').not('#firstName');
 
-		console.log(chosenInputs); 
+		console.log(chosenInputs.value); 
 
 		var form1IsValid = true;
 	
@@ -121,13 +127,16 @@ $(document).ready(function() {
 	}; //closes validate -------------------------//
 
 	var pickForm = function(){
+		//clear input values
+		var clearedInputs = $(".js-input").val("");
+		var chosen = listings[Math.floor(Math.random() * listings.length)];
 	 	console.log(chosen);
 	 	$(".enter-name").hide();
-	 	$(".firstName").empty().append($("input.firstName").val());
+	 	// $(".firstName").empty().append($("input.firstName").val());
 		
 	 	//need code to check to see what previous selection was, so that it doesn't repeat in it's randomness.
 		// var recentChoice; etc.   
-
+  
 		//	PICK A QUESTIONAIRE ------------//
 		if (chosen == q1) {
 	 		$(".q1").show(); 
@@ -154,8 +163,7 @@ $(document).ready(function() {
 			});
 		};
 	};
-
-	// fill out forms 
+	// inject answers into the madlib
 	var createListing1= function(){
 	    // if input starts with a vowel, add an n to make an before it.
 	    var inputStartsWithVowel = $("input.adj2").val();
@@ -192,6 +200,24 @@ $(document).ready(function() {
 	    $(".num1").empty().append($("input.num1").val());
 	    $(".favAnimal").empty().append($("input.favAnimal").val());
 	    $(".verb1").empty().append($("input.verb1").val());
+
+	    //	show the listing; 
+	    // $(".listings").show();
+		$(".js-list1").show();
+		$(".js-list2").hide();
+		$(".js-list3").hide();
+
+	    // hide the questions
+	    $(".q1").hide();
+		$("#btn-reset").show();
+		$(".share").show();
+		$(".eliza").show();
+
+	    //change the h1 message
+	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
+	   	//clear the inputs values
+	 //   	var clearedInputs = $(".js-input").val("");
+		// console.log(clearedInputs);
 	};
 
 	var createListing2 = function(){
@@ -211,6 +237,21 @@ $(document).ready(function() {
 		$(".pubInst").empty().append($("input.pubInst").val());
 		$(".favCity").empty().append($("input.favCity").val());
 		$(".landmark").empty().append(landmark);
+
+		//	show the listing
+		// $(".listings").show();
+		$(".js-list1").hide();
+		$(".js-list2").show();
+		$(".js-list3").hide();
+
+		// hide the questions
+		$(".q2").hide();
+		$("#btn-reset").show();	
+		$(".share").show();
+		$(".eliza").show(); 
+
+	    //change the h1 message
+	   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
 	};
 
 	var createListing3 = function(){
@@ -230,81 +271,21 @@ $(document).ready(function() {
 		$(".time").empty().append(time);
 		$(".pluAnimals").empty().append($("input.pluAnimals").val());
 		$(".verb3").empty().append($("input.verb3").val());	
+
+		// $(".listings").show();
+		$(".js-list1").hide();
+		$(".js-list2").hide();
+		$(".js-list3").show();
+
+		// hide the questions
+		$(".q3").hide();
+		$("#btn-reset").show();
+		$(".share").show();
+		$(".eliza").show();
+
+		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
 	};
 
-	//display the listing and hide other stuff
-	// these could be set up as an if or switch statement 
-	var showListing = function() {
-		var allForms = $('.questionnaire');
-		console.log(allForms);
-
-		for (var i=0; i<allForms.length; i++) {
-			var formToShow = $('').attr('id');
-		};
-		
-		if(formToShow === 'q1') {
-		    //	show the listing; 
-		    $(".listings").show();
-			$(".js-list1").show();
-			$(".js-list2").hide();
-			$(".js-list3").hide();
-
-			//	change button to replay button
-			$("#btn-next").hide();
-			$(".replay").show();
-
-		    // hide the questions
-		    $(".q1").hide();
-			$("#btn-reset").show();
-			$(".share").show();
-			$(".eliza").show();
-
-		    //change the h1 message
-		   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-				
-		};
-		if(formToShow ==='q2') {
-			//	show the listing
-			$(".listings").show();
-			$("#list1").hide();
-			$("#list2").show();
-			$("#list3").hide();
-
-			//	change button to replay button
-			$("#btn-next").hide();
-			$(".replay").show();
-
-			// hide the questions
-			$(".q2").hide();
-			$("#btn-reset").show();	
-
-			$(".share").show();
-			$(".eliza").show(); 
-
-		    //change the h1 message
-		   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
-
-		};	
-		if(formToShow ==='q3') {
-			$(".listings").show();
-			$("#list1").hide();
-			$("#list2").hide();
-			$("#list3").show();
-
-			//	change button to replay button
-			$("#btn-next").hide();
-			$(".replay").show();
-
-			// hide the questions
-			$(".q3").hide();
-			$("#btn-reset").show();
-
-			$(".share").show();
-			$(".eliza").show();
-
-			var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
-		};
-	};
 
 	//-------  BUTTONS/ON-CLICK EVENTS -------------------------//
 
@@ -321,42 +302,39 @@ $(document).ready(function() {
 		}
 	});
 
-	// assemble listing only if form is valid------------//
-	$("#questions1").on('submit', function(e) {
-		e.preventDefault();
 
-		// validateForm();
+	// assemble listing only if form is valid------------//
+	$("#btn-submit1").click(function(e) {
+		e.preventDefault();
 		if(!validateForm()) {
-			$('button').next().text('Please correct the errors, THEN call the movers.');
+			$('#btn-submit1').next().text('Please correct the errors, THEN call the movers.');
 			console.log('form is not valid');
 			return false;
 		} else {
 			createListing1();
-			showListing();	
+				
 		}	 
 	});
 
-	$("#questions2").on('submit', function(e) {
+	$("#btn-submit2").click(function(e) {
 		e.preventDefault();
 		if(!validateForm()) {
-			$('button').next().text('Please correct the errors, THEN start packing.');
+			$('#btn-submit2').next().text('Please correct the errors, THEN start packing.');
 			console.log('form is not valid');
 			return false;
-		} else {
-			createListing2();
-			showListing();	   		
+		} else {		
+			createListing2();			   		
 		}
 	});
 	
-	$("#questions3").click('submit', function(e) {
+	$("#btn-submit3").click(function(e) {
 		e.preventDefault();
 		if(!validateForm()) {
-			$('button').next().text('Please correct the errors, THEN call the bank.');
+			$('#btn-submit3').next().text('Please correct the errors, THEN call the bank.');
 			console.log('form is not valid');
 			return false;
 		} else {
 			createListing3();
-			showListing();	   		
 		}
 	});
 
@@ -373,12 +351,12 @@ $(document).ready(function() {
 	// 	$(".listings").hide();	
 	// 	$("#btn-next").show();
 	// 	// $("#empty-name").hide();
-	// 	$("#empty-name").css("visibility", "hidden");
+	// 	// $("#empty-name").css("visibility", "hidden");
 		
 	//  console.log(firstName, reset);
 
 	// 	 //clear inputs
-	// 	 $(":input").val(" ");
+	// 	 $(":input").val("");
 	// 	 $("#btn-next").val("Let's go!");
 	// 	 $("#btn-submit1").val("Call the movers!");
 	// 	 $("#btn-submit2").val("Get packing!");
