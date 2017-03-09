@@ -46,12 +46,12 @@
 }
 
 @mixin font-size($pixelSize: $baseFontSize) {
+  font-size: #{$pixelSize / $baseFontSize}rem;
   font-size: #{$pixelSize}px;
-  font-size: #{$pixelSize / strip-unit($baseFontSize)}rem;
 }
 
 @mixin line-height($pixelSize: $baseLineHeight) {
+  line-height: #{$pixelSize / $baseFontSize}rem;
   line-height: #{$pixelSize}px;
-  line-height: #{$pixelSize / strip-unit($baseFontSize)}rem;
 
 }

@@ -8,12 +8,33 @@ $c-white: 	#fff;
 $c-peach: 	#fff3e8;
 
 // ------- FONTS -------//
+@font-face {
+  font-family: 'Majesti-Banner-Bold';
+  src: url('Majesti-Banner-Bold.eot'); /* IE9 Compat Modes */
+  src: url('Majesti-Banner-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       // url('Majesti-Banner-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('Majesti-Banner-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('Majesti-Banner-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Majesti-Banner-Bold.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'Majesti-Banner-Heavy';
+  src: url('Majesti-Banner-Heavy.eot'); /* IE9 Compat Modes */
+  src: url('Majesti-Banner-Heavy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       // url('Majesti-Banner-Heavy.woff2') format('woff2'), /* Super Modern Browsers */
+       url('Majesti-Banner-Heavy.woff') format('woff'), /* Pretty Modern Browsers */
+       url('Majesti-Banner-Heavy.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Majesti-Banner-Heavy.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Raleway');
+
+
 $baseFontSize:			16;
 $baseLineHeight:		$baseFontSize * 1.8;
 
 
-$f-text: 	'Open Sans', sans-serif;
-$f-title:   'Majesti-Banner-Bold', Georgia, serif;
+$f-text: 				'Raleway', sans-serif;
+$f-title:   			'Majesti-Banner-Heavy', serif;
 
 // ------- BREAKPOINTS -------//
 $bp-xsmall:				340;

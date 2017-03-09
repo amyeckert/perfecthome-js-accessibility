@@ -62,7 +62,7 @@ $(document).ready(function() {
 			console.log(errNameRequired);
 	 	} else if(!cleanText(playerName)){
 	 		nameIsValid = false;
-	 		errNameRequired = 'Please use only letters, thanks!';
+	 		errNameRequired = '\*Please use only letters, thanks!';
 	 		$('#' + 'firstName').next().text(errNameRequired);
 	 	} else {
 	 		return true;
@@ -74,7 +74,7 @@ $(document).ready(function() {
 		//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
-		var form1IsValid;
+		var form1IsValid = true;
 	
 		// check if each one is filled out correctly
 		for (var i=0; i<chosenInputs.length; i++) {
@@ -88,24 +88,23 @@ $(document).ready(function() {
 				// remove any previous error msg
 				$('#' + currentInputId).next().text(''); 
 				// add error message
-				$('#' + currentInputId).next().text(currentErrorMessage); // 
+				$('#' + currentInputId).next().text('\*' + currentErrorMessage); // 
 				console.log(currentInputId +' is missing');
 				form1IsValid = false; 
 
 			} else {
 				if (currentInputType === 'number') {
 					if(!cleanNumbers(currentAnswer)) {
-						currentErrorMessage = 'Please use only numbers, thanks!';
+						currentErrorMessage = '\*Please use only numbers, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						form1IsValid = false;
 					} 
 					else {
 						$('#' + currentInputId).next().text('');	
 					}
-				}
-				else if (currentInputType ==='text') {
+				} else if (currentInputType ==='text') {
 					if (!cleanText(currentAnswer)) {
-						currentErrorMessage = 'Please use only letters, thanks!';
+						currentErrorMessage = '\*Please use only letters, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						form1IsValid = false;
 					} 
@@ -113,8 +112,7 @@ $(document).ready(function() {
 						$('#' + currentInputId).next().text('');
 					}
 				} else {
-					console.log('form is valid');
-					form1IsValid = true;
+					formIsValid = true;
 				}
 			}	
 		} // closes for loop ------------------------//
@@ -160,7 +158,7 @@ $(document).ready(function() {
 			});
 		};
 	};
-	// inject answers into the madlib
+	// inject answers into the madlibs and grab all text
 	var createListing1= function(){
 	    // if input starts with a vowel, add an n to make an before it.
 	    var inputStartsWithVowel = $("input.adj2").val();
@@ -198,23 +196,24 @@ $(document).ready(function() {
 	    $(".favAnimal").empty().append($("input.favAnimal").val());
 	    $(".verb1").empty().append($("input.verb1").val());
 
+	    // hide the questions
+	    $(".q1").hide();
 	    //	show the listing; 
-	    // $(".listings").show();
+	    $(".listings").show();
 		$(".js-list1").show();
 		$(".js-list2").hide();
 		$(".js-list3").hide();
 
-	    // hide the questions
-	    $(".q1").hide();
+		var myListing = $(".listing1").text();
+		console.log(myListing);
+
 		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-	   	//clear the inputs values
-	 //   	var clearedInputs = $(".js-input").val("");
-		// console.log(clearedInputs);
+	
 	};
 
 	var createListing2 = function(){
@@ -235,14 +234,17 @@ $(document).ready(function() {
 		$(".favCity").empty().append($("input.favCity").val());
 		$(".landmark").empty().append(landmark);
 
+		// hide the questions
+		$(".q2").hide();
 		//	show the listing
-		// $(".listings").show();
+		$(".listings").show();
 		$(".js-list1").hide();
 		$(".js-list2").show();
 		$(".js-list3").hide();
 
-		// hide the questions
-		$(".q2").hide();
+		var myListing = $(".listing2").text();	//get the text of element
+		console.log(myListing);
+
 		$(".btn-reset").show();	
 		$(".share").show();
 		$(".eliza").show(); 
@@ -268,21 +270,24 @@ $(document).ready(function() {
 		$(".time").empty().append(time);
 		$(".pluAnimals").empty().append($("input.pluAnimals").val());
 		$(".verb3").empty().append($("input.verb3").val());	
-
-		// $(".listings").show();
+		
+		// hide the questions
+		$(".q3").hide();
+		//show the listing
+		$(".listings").show();
 		$(".js-list1").hide();
 		$(".js-list2").hide();
 		$(".js-list3").show();
 
-		// hide the questions
-		$(".q3").hide();
+		var myListing = $(".listing3").text();	
+		console.log(myListing);
+
 		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
 
 		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
 	};
-
 
 	//-------  BUTTONS/ON-CLICK EVENTS -------------------------//
 
@@ -303,22 +308,25 @@ $(document).ready(function() {
 	$("#btn-submit1").click(function(e) {
 		e.preventDefault();
 		if(!validateForm()) {
-			$('#btn-submit1').next().text('Please correct the errors, THEN call the movers.');
+			$('#btn-submit1').next().text('\*Please correct the errors, THEN call the movers.');
 			console.log('form is not valid');
 			return false;
 		} else {
-			createListing1();
-				
+			$('#btn-submit1').next().text('');
+			console.log('form is valid');
+			createListing1();				
 		}	 
 	});
 
 	$("#btn-submit2").click(function(e) {
 		e.preventDefault();
 		if(!validateForm()) {
-			$('#btn-submit2').next().text('Please correct the errors, THEN start packing.');
+			$('#btn-submit2').next().text('\*Please correct the errors, THEN start packing.');
 			console.log('form is not valid');
 			return false;
-		} else {		
+		} else {
+		$('#btn-submit2').next().text('');
+			console.log('form is valid');		
 			createListing2();			   		
 		}
 	});
@@ -326,38 +334,14 @@ $(document).ready(function() {
 	$("#btn-submit3").click(function(e) {
 		e.preventDefault();
 		if(!validateForm()) {
-			$('#btn-submit3').next().text('Please correct the errors, THEN call the bank.');
+			$('#btn-submit3').next().text('\*Please correct the errors, THEN call the bank.');
 			console.log('form is not valid');
 			return false;
 		} else {
+			$('#btn-submit3').next().text('');
+			console.log('form is valid');
 			createListing3();
 		}
 	});
-
-
-	// REPLAY BUTTON------------------------//
-
-	// $("#btn-reset").click(function(e) {
-	// 	var message = document.querySelector(".message").innerHTML = "Find Your Perfect Home!";
-
-	// 	var reset = document.getElementById("firstName").className = "";
-		
-	// 	$(".enter-name").show();
-	// 	$("#btn-reset").hide();
-	// 	$(".listings").hide();	
-	// 	$("#btn-next").show();
-	// 	// $("#empty-name").hide();
-	// 	// $("#empty-name").css("visibility", "hidden");
-		
-	//  console.log(firstName, reset);
-
-	// 	 //clear inputs
-	// 	 $(":input").val("");
-	// 	 $("#btn-next").val("Let's go!");
-	// 	 $("#btn-submit1").val("Call the movers!");
-	// 	 $("#btn-submit2").val("Get packing!");
-	// 	 $("#btn-submit3").val("Call the bank!");
-
-	// });	 
 
 }); //closes doc ready	
