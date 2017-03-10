@@ -205,7 +205,7 @@ $(document).ready(function() {
 		$(".js-list3").hide();
 
 		var myListing = $(".listing1").text();
-		console.log(myListing);
+		shareListing(myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
@@ -243,11 +243,12 @@ $(document).ready(function() {
 		$(".js-list3").hide();
 
 		var myListing = $(".listing2").text();	//get the text of element
-		console.log(myListing);
+		shareListing(myListing);
 
 		$(".btn-reset").show();	
 		$(".share").show();
 		$(".eliza").show(); 
+
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
@@ -280,13 +281,27 @@ $(document).ready(function() {
 		$(".js-list3").show();
 
 		var myListing = $(".listing3").text();	
-		console.log(myListing);
+		shareListing(myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
+		// load the listing into fb share code
 
 		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
+	};
+
+	//-------  SHARE LISTING ON FACEBOOK -------------------------//
+
+	// dynamically change content of <meta property="og:description" content=" $myListing" /> so it gets
+	//grabbed by the FB share functionality
+	var shareListing = function(myListing){
+		$("meta[property='og:description']").attr("content").innerHTML = myListing;
+		// ogDescription = myListing;
+		// $("meta[property='og:description']").text(myListing);
+
+		console.log(myListing);
+
 	};
 
 	//-------  BUTTONS/ON-CLICK EVENTS -------------------------//
@@ -302,7 +317,6 @@ $(document).ready(function() {
 			return false;
 		}
 	});
-
 
 	// assemble listing only if form is valid------------//
 	$("#btn-submit1").click(function(e) {
@@ -343,5 +357,7 @@ $(document).ready(function() {
 			createListing3();
 		}
 	});
+	
+
 
 }); //closes doc ready	

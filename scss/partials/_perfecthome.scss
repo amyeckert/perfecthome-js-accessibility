@@ -18,18 +18,21 @@ h1 {
 	margin: 0 0 12px 0;
 	font-family: $f-title;
 	@include font-size(40);
-	letter-spacing: 1px;
 	text-align: center;
-	@include line-height(46);
 
 	@include bp(small) {
-		@include font-size(60);
-		margin: 0 0 30px 0;
+		@include font-size(55);
+		margin: 30px 0;
 		
 	}
+	@include bp(medium) {
+		@include font-size(60);
+		@include line-height(60);
+	}
+	@include bp(xlarge) {
+		@inlcude font-size(110);
+	}
 }
-
-p {}
 
 /*	FORM FIELD STYLES */
 fieldset, 
@@ -38,7 +41,7 @@ label,
 legend {
 	width: 100%;
 	margin: 0;
-	padding: 0;
+	padding: 0 0 0 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
@@ -49,7 +52,7 @@ label {
 	font-size: $baseFontSize;
 
 	@include bp(small){
-		@include font-size(20);
+		@include font-size(18);
 	}
 }
 
@@ -58,7 +61,7 @@ input[type="number"],
 input[type="text"] {
 	box-sizing: border-box;
 	display: block;
-	margin: 10px 0 3px 0;
+	margin: 5px 0 3px 0;
 	width: 100%;
 	height: 35px;
 	padding: 10px;
@@ -67,7 +70,9 @@ input[type="text"] {
 	border: 1px solid $c-grey-med;
 	border-radius: 4px;
 	@include font-size(14);
-
+	+ p {
+		
+	}
 	@include bp-arb(xsmall) {
 		max-width: 75%;
 	}
@@ -76,6 +81,11 @@ input[type="text"] {
 
 	}
 
+}
+#firstName {
+	@include bp(small) {
+		margin: 10px auto;
+	}	
 }
 
 select {
@@ -103,10 +113,9 @@ a {
 	flex-flow: column;
 	margin: 0 auto;
 	padding: 30px 30px;
-	max-width: 850px;
-	min-width: 280px;
+	max-width: 50%;
+	min-width: 340px;
 	font-family: $f-text;
-	font-size: 1rem; 
 	border: none;
 	background-color: transparent;
 	color: $c-text;
@@ -131,21 +140,58 @@ a {
 		order: 1;
 		display: flex;
 		flex-direction: row;
+		text-align: center;
 		flex-wrap: nowrap;
+		padding: 0 0 0 15px;
+
+	}
+	.q1 {
+		display: flex;
+		order: 3;
+		flex-flow: column nowrap;
+	}
+	.q2 {
+		display: flex;
+		order: 4;
+		flex-flow: column nowrap;
+	}
+	.q3 {
+		display: flex;
+		order: 5;
+		flex-flow: column nowrap;	
+	}
+	.question {
+		// background-color: yellow;
+		display: flex;
+		flex-flow: column nowrap;
+		margin: 0 0 0 0 ;
+
+		@include bp(small) {
+			flex-flow: column wrap;
+		}
+		@include bp(medium) {
+			flex-flow: row wrap;
+			margin: 0 0 2% 0 ;
+		}
+
 	}
 	.error {
 		@include font-size(14);
-		display: block;
-		height: 1.5rem;
+		height: 30px;
 	    margin: 0 0 0 0;
 		font-style: italic;
 		color: $c-warning;
 
+		@include bp(medium) {
+			padding: 15px 0 0 0;
+			height: 35px;
+		}
+
 	}
-	.listings {
-		color: $c-text;
-		order: 2
-	}
+	// .listings {
+	// 	// color: $c-text;
+	// 	// order: 2
+	// }
 }
 
 button,
@@ -200,35 +246,26 @@ input[type="submit"]:hover {
 	text-decoration: none;
 }
 
-
-.q1 {
-	display: block;
-	order: 3;
-}
-.q2 {
-	display: block;
-	order: 4;
-}
-.q3 {
-	display: block;
-	order: 5;	
-}
-
 .listings {
 	display: block;
 	width: 100%;
+	margin: 0 auto;
 	order: 6;
+	@include font-size(18);
+
 	@include bp(xsmall) {
 		width: 90%;
-		margin: 0 auto;
-
-	}
-	p {
 		font-size: $baseFontSize;
-		@include bp(xsmall) {
-			@include font-size(14);
-		}
+	}
+	@include bp(small){
+		width: 75%;
+	}
+	@include bp(large){
+		width: 60%;
+	}
 
+	p {
+		
 	}		
 	.js-list1 {
 		order: 6;
@@ -269,16 +306,17 @@ span.error {
 	
 	.fb-share-button {
 		display: block;
-		height: 80px;
+		// height: 80px;
 		 a {
 			color: $c-text;
 			font-size: $baseFontSize;
+			&:hover {
+				border: none;
+				outline: none;
+			}
 			img {
 				height: 30px;
 			}
-		}
-		&:hover {
-			outline: none;
 		}
 	}
 }
@@ -292,7 +330,9 @@ span.error {
 		padding: 15px;
 		text-decoration: none;
 		&:hover {
-		outline: 1px solid $c-text;;
+		    border: 1px solid  $c-text;
+	    	outline: none;
+	    	border-radius: 4px;
 		}
 	}
 }
