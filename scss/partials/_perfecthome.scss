@@ -304,8 +304,12 @@ span.error {
 	display: block;
 	width: 100%;
 	
-	.fb-share-button {
+	.fb-quote {
 		display: block;
+		 p {
+		 	@include font-size(14);
+		 	display: inline-block;
+		 }
 		// height: 80px;
 		 a {
 			color: $c-text;

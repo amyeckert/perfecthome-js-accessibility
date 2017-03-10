@@ -655,15 +655,19 @@ span.error {
   margin: 1rem auto;
   display: block;
   width: 100%; }
-  .share .fb-share-button {
+  .share .fb-quote {
     display: block; }
-    .share .fb-share-button a {
+    .share .fb-quote p {
+      font-size: 0.875rem;
+      font-size: 14px;
+      display: inline-block; }
+    .share .fb-quote a {
       color: #3f3f3d;
       font-size: 16; }
-      .share .fb-share-button a:hover {
+      .share .fb-quote a:hover {
         border: none;
         outline: none; }
-      .share .fb-share-button a img {
+      .share .fb-quote a img {
         height: 30px; }
 
 .eliza {
