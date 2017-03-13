@@ -93,6 +93,7 @@ select {
 }
 option {
 	font-size: $baseFontSize;
+	text-transform: none;
 	@include bp(small){
 		@include font-size(27);
 	}
@@ -283,6 +284,9 @@ input[type="submit"]:hover {
 }
 span {
 	text-transform: lowercase;
+}
+span.landmark{
+	text-transform: none;
 }
 span.firstName,
 span.water,

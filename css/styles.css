@@ -457,7 +457,8 @@ select {
   -webkit-appearance: menu-list; }
 
 option {
-  font-size: 16; }
+  font-size: 16;
+  text-transform: none; }
   @media only screen and (min-width: 750px) {
     option {
       font-size: 1.6875rem;
@@ -635,6 +636,9 @@ input[type="submit"]:hover {
 
 span {
   text-transform: lowercase; }
+
+span.landmark {
+  text-transform: none; }
 
 span.firstName,
 span.water,
