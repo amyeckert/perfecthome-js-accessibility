@@ -10,7 +10,7 @@
 	<meta property="og:url"                content="http://www.amyeckert.github.io/perfecthome-js/index.html" />
 	<meta property="og:type"               content="website" />
 	<meta property="og:title"              content="Take This Quiz to Find Your Perfect Home!" />
-	<meta property="og:description"        content="This is where listing will go" />
+	<meta property="og:description"        content="I found my perfect home by taking this short quiz." />
 	<meta property="og:image"              content='../img/peek-hd.jpg' />
 	<!-- 	STYLES -->
 	<link rel="stylesheet" type="text/css" href="css/styles.min.css"/>
@@ -22,13 +22,13 @@
 	https://developers.facebook.com/docs/plugins/quote#example -->
 
 <div id="fb-root"></div>
-  	<script>(function(d, s, id) {
-	    var js, fjs = d.getElementsByTagName(s)[0];
-	    if (d.getElementById(id)) return;
-	    js = d.createElement(s); js.id = id;
-	    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
-	    fjs.parentNode.insertBefore(js, fjs);
-	  }(document, 'script', 'facebook-jssdk'));</script>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 	<div class="container">
@@ -269,7 +269,6 @@
 		</div>
 
 		<div class="listings">
-
 			<div class="js-list1 listing1 fb-quote">
 
 		 		<p><span class="firstName"></span>, this is something really special! Inspired by the <span class="adj1"></span> chateaus of <span class="favCountry"></span>, Chateau <span class="bestie"></span> is <span class="addN"> </span><span class="adj2"></span> and luxurious retreat that reflects that magical merging of <span class="noun1"></span>  and <span class="noun2"></span>. Created by renowned architects <span class="favCartoon"></span> and <span class="prez"></span>, the estate is a masterpiece of design and craftsmanship featuring intricately inlaid <span class="gem"></span>, hand-planed <span class="tree"></span> flooring,  artisan-painted <span class="basement"></span>, plus an elevator to transport from floor to floor. Luxuriate in sprawling entertaining spaces that flow outside to the stunning infinity pool, tennis courts and the tranquil <span class="water"></span> beyond. Enjoy private access to your own elegantly situated <span class="num1"></span> acre mini-estate. Chateau <span class="bestie"></span> is the crème de la crème in prestigious <span class="favAnimal"></span> <span class="verb1"></span> Ranch.</p>	
@@ -289,16 +288,22 @@
 		 		
 		 	</div>
 
-			<button class="btn btn-reset" type="reset" onClick="window.location.reload()">Not quite what you had in mind?</button>
+			<button class="btn-reset" type="reset" onClick="window.location.reload()">Not quite what you had in mind?</button>
 
 
 			<div class="share">
-				<div class="fb-quote" data-href="http://www.amyeckert.github.io/perfecthome-js/index.html">
 
-					<p class="shareBtn btn-reset">Select and share your Perfect Home Listing!</p>
+				<p class="shareBtn btn-reset">Select and share your Perfect Home Listing!</p>
 
-					<!-- <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.perfecthomequiz.com%2F&amp;src=sdkpreparse"><img src="img/fb_icon.svg"></a> -->
+			<!-- https://developers.facebook.com/docs/plugins/share-button/#configurator -->
+				<div class=class="fb-quote"  
+					data-href="https://amyeckert.github.io/perfecthome-js/" 
+					data-layout="button" 
+					data-size="small" 
+					data-mobile-iframe="true">
+					<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famyeckert.github.io%2Fperfecthome-js%2F&amp;src=sdkpreparse">Share</a>
 				</div>
+			
 	
 			</div>
 			
