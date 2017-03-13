@@ -1,7 +1,4 @@
 
-// * { outline: 1px solid red;}
-// @import url(https:fonts.googleapis.com/css?family=Open+Sans:400,700italic);
-
 body {
 	height: 100%;
 	background-attachment: fixed;
@@ -13,7 +10,6 @@ body {
 	font-size: $baseFontSize;
 	color: $c-text;
 }
-
 h1 {
 	margin: 0 0 12px 0;
 	font-family: $f-title;
@@ -33,7 +29,6 @@ h1 {
 		@inlcude font-size(110);
 	}
 }
-
 /*	FORM FIELD STYLES */
 fieldset, 
 form, 
@@ -55,7 +50,6 @@ label {
 		@include font-size(18);
 	}
 }
-
 select,
 input[type="number"],
 input[type="text"] {
@@ -80,14 +74,12 @@ input[type="text"] {
 		max-width: 50%;
 
 	}
-
 }
 #firstName {
 	@include bp(small) {
 		margin: 10px auto;
 	}	
 }
-
 select {
 	-webkit-appearance: menu-list;
 }
@@ -98,7 +90,6 @@ option {
 		@include font-size(27);
 	}
 }
-
 a {
 	color: $c-white;
 	&:hover {
@@ -122,9 +113,6 @@ a {
 	color: $c-text;
 	position: relative;
 
-	// @include bp(small) {
-	// 	padding: 30px 30px 0 30px;
-	// }
 	// semi-transparent white box
 	&:after {
 		content: "";
@@ -140,7 +128,6 @@ a {
 	h1 {
 		 order: 0;
 	}
-
 	.enter-name {
 		order: 1;
 		display: flex;
@@ -193,7 +180,6 @@ a {
 		}
 	}
 }
-
 button,
 button[type="submit"], 
 input[type="submit"] {
@@ -237,7 +223,6 @@ input[type="submit"]:hover {
 	color: $c-white;
 	text-decoration: none;
 }
-
 .listings {
 	display: block;
 	width: 100%;
@@ -296,7 +281,6 @@ span.favCity,
 span.error {
 	text-transform: capitalize;
 }
-
 .share {
 	order: 9;
 	width: 100%;
@@ -332,7 +316,7 @@ span.error {
 
 		.social-icon {
 			display: inline-block;
-			
+
 			 a {
 				color: $c-text;
 				font-size: $baseFontSize;
@@ -347,12 +331,3 @@ span.error {
 		}
 	}
 }
-
-// .isInvalid {
-// 	outline: 1px solid $c-warning;
-
-// }
-// .isValid {
-// 	outline: 1px solid $c-orange;
-
-// }
