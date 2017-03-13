@@ -292,7 +292,13 @@ $(document).ready(function() {
 	};
 
 	//-------  SHARE LISTING ON FACEBOOK -------------------------//
-
+	// document.getElementById('shareBtn').onclick = function() {
+ //  		FB.ui({
+	//     	method: 'share',
+	//     	display: 'popup',
+	//     	href: 'https://amyeckert.github.io/perfecthome-js/',
+	//   }, function(response){});
+	// }
 	// dynamically change content of <meta property="og:description" content=" $myListing" /> so it gets
 	//grabbed by the FB share functionality
 	var shareListing = function(myListing){
