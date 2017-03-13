@@ -113,7 +113,7 @@ a {
 	display: flex;
 	flex-flow: column;
 	margin: 0 auto;
-	padding: 30px 30px;
+	padding: 30px;
 	max-width: 50%;
 	min-width: 340px;
 	font-family: $f-text;
@@ -121,6 +121,10 @@ a {
 	background-color: transparent;
 	color: $c-text;
 	position: relative;
+
+	// @include bp(small) {
+	// 	padding: 30px 30px 0 30px;
+	// }
 	// semi-transparent white box
 	&:after {
 		content: "";
@@ -187,18 +191,13 @@ a {
 			padding: 15px 0 0 0;
 			height: 35px;
 		}
-
 	}
-	// .listings {
-	// 	// color: $c-text;
-	// 	// order: 2
-	// }
 }
 
 button,
 button[type="submit"], 
 input[type="submit"] {
-	// width: 100%;
+
     padding: 0.6rem 1rem;
 	border-radius: 4px;
 	border-style: none;
@@ -207,15 +206,7 @@ input[type="submit"] {
 	color: $c-white;
 	font-size: $baseFontSize;
 	outline-offset: 0;
-
-	// @include bp(small) {
-	// 	max-width: 50%;
-	// }
-	// @include bp(medium) {
-	// 	// max-width: 50%;
-	// }
 	
-
 	+ p {
 		display: inline-block;
 		@include font-size(14);
@@ -270,17 +261,21 @@ input[type="submit"]:hover {
 	}		
 	.js-list1 {
 		order: 6;
+	    margin: 0 0 3rem 0;
 	} 
 	.js-list2 {
 		order: 7;
+	    margin: 0 0 3rem 0;
 	} 
 	.js-list3 { 
 		order: 8;
+	    margin: 0 0 3rem 0;
 	}
 }
 .btn-reset {
-	display:block;
+	display: block;
 	order: 6;
+	margin: 0 auto;
 }
 span {
 	text-transform: lowercase;
@@ -304,43 +299,51 @@ span.error {
 
 .share {
 	order: 9;
-	margin: 1rem auto;
-	display: block;
 	width: 100%;
-	
-	.fb-quote {
-		display: block;
-		 p {
-		 	@include font-size(14);
-		 	display: inline-block;
-		 }
-		// height: 80px;
-		 a {
+	margin: 1rem auto;
+
+	.eliza {
+		text-align: center;
+		font-size: $baseFontSize;
+		color: $c-text;
+		a {
 			color: $c-text;
-			font-size: $baseFontSize;
+			border: 1px solid transparent;
+			@include font-size(14)
+			margin: 0 auto;
+			padding: 15px;
+			text-decoration: none;
 			&:hover {
-				border: none;
-				outline: none;
+			    border: 1px solid $c-text;
+		    	outline: none;
+		    	border-radius: 4px;
 			}
 			img {
-				height: 20px;
+				height: 12px;
+				margin: 0 0 0 3px;
 			}
 		}
 	}
-}
-.eliza {
-	order: 10;
-	font-size: $baseFontSize;
-	color: $c-text;
-	a {
-		color: $c-text;
-		@include font-size(14)
-		padding: 15px;
-		text-decoration: none;
-		&:hover {
-		    border: 1px solid  $c-text;
-	    	outline: none;
-	    	border-radius: 4px;
+	.icons {
+		display: inline-flex;
+		justify-content: center;
+		width: 100%;
+		margin: 1rem auto;
+
+		.social-icon {
+			display: inline-block;
+			
+			 a {
+				color: $c-text;
+				font-size: $baseFontSize;
+				&:hover {
+					border: none;
+					outline: none;
+				}
+				img {
+					height: 25px;
+				}
+			} 
 		}
 	}
 }
