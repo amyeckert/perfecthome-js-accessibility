@@ -138,7 +138,7 @@ $(document).ready(function() {
 	 		$(".q2").hide();
 			$(".q3").hide();
 			$('body').css({
-				"background-image" : "url('img/tablebeast-hd.jpg')"
+				"background-image" : "url('img/tablebeast-sm.jpg')"
 			});
 	 	}
 		 else if (chosen == q2) {
@@ -146,7 +146,7 @@ $(document).ready(function() {
 	 		$(".q1").hide();  
 	 		$(".q3").hide();
 	 		$('body').css({
-				"background-image" : "url('img/couches-hd.jpg')"
+				"background-image" : "url('img/couches-sm.jpg')"
 			});
 	 	}
 		else { 
@@ -154,7 +154,7 @@ $(document).ready(function() {
 	 		$(".q1").hide(); 
 	 		$(".q2").hide();
 	 		$('body').css({
-				"background-image" : "url('img/seam2-hd.jpg')"
+				"background-image" : "url('img/seam2-sm.jpg')"
 			});
 		};
 	};
