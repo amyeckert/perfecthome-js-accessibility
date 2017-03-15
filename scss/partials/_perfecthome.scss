@@ -282,13 +282,40 @@ span.error {
 	text-transform: capitalize;
 }
 .share {
+	display: flex;
+	flex-flow: column nowrap;
 	order: 9;
 	width: 100%;
-	margin: 1rem auto;
+	margin: 0.3rem auto 0 auto;
+	p {
+		flex: 0 1 auto;
+    	// width: 100%;
+    	margin: 1rem 0 0 0 ;
+		@include font-size(14);
+    	text-align: center;
+	}	
 
+
+	.icons {
+		display: inline-flex;
+		justify-content: center;
+		margin: 0.3rem auto 0 auto;
+		
+		.social-icon {
+			a {
+				&:hover {
+					border: none;
+					outline: none;
+				}
+				img {
+					height: 25px;
+				}
+			} 
+		}
+	}
 	.eliza {
+		margin: 1rem 0 0 0;
 		text-align: center;
-		font-size: $baseFontSize;
 		color: $c-text;
 		a {
 			color: $c-text;
@@ -306,30 +333,6 @@ span.error {
 				height: 12px;
 				margin: 0 0 0 3px;
 			}
-		}
-	}
-	.icons {
-		display: inline-flex;
-		justify-content: center;
-		width: 100%;
-		margin: 1rem auto;
-
-		.social-icon {
-			display: inline-block;
-			span {
-				display: none;
-			}
-			 a {
-				color: $c-text;
-				font-size: $baseFontSize;
-				&:hover {
-					border: none;
-					outline: none;
-				}
-				img {
-					height: 25px;
-				}
-			} 
 		}
 	}
 }

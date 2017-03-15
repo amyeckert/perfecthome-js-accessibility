@@ -658,13 +658,35 @@ span.error {
   text-transform: capitalize; }
 
 .share {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
   -ms-flex-order: 9;
       order: 9;
   width: 100%;
-  margin: 1rem auto; }
+  margin: 0.3rem auto 0 auto; }
+  .share p {
+    -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+    margin: 1rem 0 0 0;
+    font-size: 0.875rem;
+    font-size: 14px;
+    text-align: center; }
+  .share .icons {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    margin: 0.3rem auto 0 auto; }
+    .share .icons .social-icon a:hover {
+      border: none;
+      outline: none; }
+    .share .icons .social-icon a img {
+      height: 25px; }
   .share .eliza {
+    margin: 1rem 0 0 0;
     text-align: center;
-    font-size: 16;
     color: #3f3f3d; }
     .share .eliza a {
       color: #3f3f3d;
@@ -681,22 +703,3 @@ span.error {
       .share .eliza a img {
         height: 12px;
         margin: 0 0 0 3px; }
-  .share .icons {
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -ms-flex-pack: center;
-        justify-content: center;
-    width: 100%;
-    margin: 1rem auto; }
-    .share .icons .social-icon {
-      display: inline-block; }
-      .share .icons .social-icon span {
-        display: none; }
-      .share .icons .social-icon a {
-        color: #3f3f3d;
-        font-size: 16; }
-        .share .icons .social-icon a:hover {
-          border: none;
-          outline: none; }
-        .share .icons .social-icon a img {
-          height: 25px; }
