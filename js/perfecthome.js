@@ -204,7 +204,7 @@ $(document).ready(function() {
 		$(".js-list2").hide();
 		$(".js-list3").hide();
 
-		var myListing = $(".listing1").text();
+		myListing = $(".listing1").text();
 		shareListing(myListing);
 
 		$(".btn-reset").show();
@@ -242,7 +242,7 @@ $(document).ready(function() {
 		$(".js-list2").show();
 		$(".js-list3").hide();
 
-		var myListing = $(".listing2").text();	//get the text of element
+		myListing = $(".listing2").text();	//get the text of element
 		shareListing(myListing);
 
 		$(".btn-reset").show();	
@@ -280,8 +280,9 @@ $(document).ready(function() {
 		$(".js-list2").hide();
 		$(".js-list3").show();
 
-		var myListing = $(".listing3").text();	
+		myListing = $(".listing3").text();	
 		shareListing(myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
@@ -291,22 +292,76 @@ $(document).ready(function() {
 		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
 	};
 
-	//-------  SHARE LISTING ON FACEBOOK -------------------------//
-	// document.getElementById('shareBtn').onclick = function() {
- //  		FB.ui({
-	//     	method: 'share',
-	//     	display: 'popup',
-	//     	href: 'https://amyeckert.github.io/perfecthome-js/',
-	//   }, function(response){});
-	// }
-	// dynamically change content of <meta property="og:description" content=" $myListing" /> so it gets
-	//grabbed by the FB share functionality
+	//-------  SHARE LISTING ON FACEBOOK OR TWITTER -------------------------//
+	// store value of myListing to clipboard, 
+	// from: https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+	function copyTextToClipboard(text) {
+		var text = myListing;
+  		var textArea = document.createElement("textarea");
+
+	  //
+	  // *** This styling is an extra step which is likely not required. ***
+	  //
+	  // Why is it here? To ensure:
+	  // 1. the element is able to have focus and selection.
+	  // 2. if element was to flash render it has minimal visual impact.
+	  // 3. less flakyness with selection and copying which **might** occur if
+	  //    the textarea element is not visible.
+	  //
+	  // The likelihood is the element won't even render, not even a flash,
+	  // so some of these are just precautions. However in IE the element
+	  // is visible whilst the popup box asking the user for permission for
+	  // the web page to copy to the clipboard.
+	  //
+
+	  // Place in top-left corner of screen regardless of scroll position.
+	  textArea.style.position = 'fixed';
+	  textArea.style.top = 0;
+	  textArea.style.left = 0;
+
+	  // Ensure it has a small width and height. Setting to 1px / 1em
+	  // doesn't work as this gives a negative w/h on some browsers.
+	  textArea.style.width = '2em';
+	  textArea.style.height = '2em';
+
+	  // We don't need padding, reducing the size if it does flash render.
+	  textArea.style.padding = 0;
+
+	  // Clean up any borders.
+	  textArea.style.border = 'none';
+	  textArea.style.outline = 'none';
+	  textArea.style.boxShadow = 'none';
+
+	  // Avoid flash of white box if rendered for any reason.
+	  textArea.style.background = 'transparent';
+
+
+	  textArea.value = text;
+
+	  document.body.appendChild(textArea);
+
+	  textArea.select();
+
+	  try {
+	    var successful = document.execCommand('copy');
+	    var msg = successful ? 'successful' : 'unsuccessful';
+	    console.log('Copying text command was ' + msg);
+	  } catch (err) {
+	    console.log('Oops, unable to copy');
+	  }
+
+	  document.body.removeChild(textArea);
+	}
+
+	
+
 	var shareListing = function(myListing){
 		$("meta[property='og:description']").attr("content").innerHTML = myListing;
 		// ogDescription = myListing;
 		// $("meta[property='og:description']").text(myListing);
 
 		console.log(myListing);
+		$
 
 	};
 
@@ -363,7 +418,11 @@ $(document).ready(function() {
 			createListing3();
 		}
 	});
-	
 
+	$('.js-copy-listing').click(function(e) {
+		e.preventDefault();
+	  	copyTextToClipboard(myListing);
+
+	});
 
 }); //closes doc ready	
