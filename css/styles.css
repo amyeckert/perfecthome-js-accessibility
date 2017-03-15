@@ -684,6 +684,10 @@ span.error {
       outline: none; }
     .share .icons .social-icon a img {
       height: 25px; }
+    .share .icons .fb-share-button {
+      visibility: visible; }
+    .share .icons .fake-fb-button {
+      display: block; }
   .share .eliza {
     margin: 1rem 0 0 0;
     text-align: center;
