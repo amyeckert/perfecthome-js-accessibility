@@ -312,13 +312,11 @@ span.error {
 			} 
 		}
 		.fb-share-button {
-			visibility: visible;
+			span {
+				visibility: hidden;
+			}
+		
 		}
-		.fake-fb-button {
-			display: block;
-
-		}
-
 
 	}
 	.eliza {
