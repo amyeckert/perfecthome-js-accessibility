@@ -316,7 +316,9 @@ span.error {
 
 		.social-icon {
 			display: inline-block;
-
+			span {
+				display: none;
+			}
 			 a {
 				color: $c-text;
 				font-size: $baseFontSize;

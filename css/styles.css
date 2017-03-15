@@ -690,6 +690,8 @@ span.error {
     margin: 1rem auto; }
     .share .icons .social-icon {
       display: inline-block; }
+      .share .icons .social-icon span {
+        display: none; }
       .share .icons .social-icon a {
         color: #3f3f3d;
         font-size: 16; }
