@@ -10,16 +10,26 @@ body {
 	background-image: url("../img/peek-hd.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-
+	font-size: $baseFontSize;
+	color: $c-text;
 }
 
 h1 {
-	color: rgba(63,63,61,1);;
+	margin: 0 0 12px 0;
+	font-family: $f-title;
+	@include font-size(40);
+	letter-spacing: 1px;
+	text-align: center;
+	@include line-height(46);
+
+	@include bp(small) {
+		@include font-size(60);
+		margin: 0 0 30px 0;
+		
+	}
 }
 
-p {
-	font-size: 1rem;
-}
+p {}
 
 /*	FORM FIELD STYLES */
 fieldset, 
@@ -36,25 +46,50 @@ legend {
 
 }
 label {
-	margin-bottom: 10px;
-	font-size: 01.9rem;
+	font-size: $baseFontSize;
+
+	@include bp(small){
+		@include font-size(20);
+	}
 }
-input {
-	margin: 0 0 1.3rem 0;
-	border-radius: 0;
+
+select,
+input[type="number"],
+input[type="text"] {
+	box-sizing: border-box;
+	display: block;
+	margin: 10px 0 3px 0;
+	width: 100%;
+	height: 35px;
+	padding: 10px;
+	color: $c-grey-med;
+	background-color: transparent;
+	border: 1px solid $c-grey-med;
+	border-radius: 4px;
+	@include font-size(14);
+
+	@include bp-arb(xsmall) {
+		max-width: 75%;
+	}
+	@include bp(small){
+		max-width: 50%;
+
+	}
 
 }
-/*select {
-	height: 100%;
-	padding: ;
-	border-radius: 0;
-	font-size: 14px;
-	margin-bottom: 10px;*/
-/*}*/
-option {font-size: 1.2rem;}
 
-a {color: $c-white;
+select {
+	-webkit-appearance: menu-list;
+}
+option {
+	font-size: $baseFontSize;
+	@include bp(small){
+		@include font-size(27);
+	}
+}
 
+a {
+	color: $c-white;
 	&:hover {
 		color: $c-white;
 		text-decoration: none;
@@ -73,67 +108,80 @@ a {color: $c-white;
 	font-family: $f-text;
 	font-size: 1rem; 
 	border: none;
-	background-color: $c-white;
+	background-color: transparent;
 	color: $c-text;
-	opacity: 0.9;
-
-	h1 {
-		 order: 1;
+	position: relative;
+	// semi-transparent white box
+	&:after {
+		content: "";
+		background-color: $c-white;
+		position: absolute;
+		opacity: 0.8;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: -1;
 	}
+	h1 {
+		 order: 0;
+	}
+
 	.enter-name {
-		order: 2;
+		order: 1;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
 	.error {
-		font-size: 0.7rem;
+		@include font-size(14);
 		display: block;
-		height: 1rem;
-		margin: 0;
+		height: 1.5rem;
+	    margin: 0 0 0 0;
 		font-style: italic;
 		color: $c-warning;
 
 	}
 	.listings {
 		color: $c-text;
+		order: 2
 	}
-	
 }
 
-select,
-input[type="number"],
-input[type="text"] {
-	box-sizing: border-box;
-	display: block;
-	font-size: 14px;
-	margin-bottom: 10px;
-	width: 100%;
-	height: 35px;
-	padding: 10px;
-	color: $c-grey-med;
-	background-color: $c-white;
-	border: 1px solid $c-grey-med;
+button,
+button[type="submit"], 
+input[type="submit"] {
+	// width: 100%;
+    padding: 0.6rem 1rem;
 	border-radius: 4px;
+	border-style: none;
+	background-color: $c-orange;
+	outline-color: $c-white;
+	color: $c-white;
+	font-size: $baseFontSize;
+	outline-offset: 0;
 
-	@media only screen and (min-width: 700px) {
-		max-width: 50%;
+	// @include bp(small) {
+	// 	max-width: 50%;
+	// }
+	// @include bp(medium) {
+	// 	// max-width: 50%;
+	// }
+	
 
+	+ p {
+		display: inline-block;
+		@include font-size(14);
+		height: 1rem;
+		margin: 0;
+		font-style: italic;
+		color: $c-warning;
 	}
-
 }
-select {
-	height: 35px;
-	-webkit-appearance: menu-list;}
-
-input[type="text"].firstName {
-	margin: 10px 0 10px 0;
-}
-
 select:focus,
 button[type="submit"]:focus,
 button[type="select"]:active,
-button[type="submit"]:active:focus,
+button[type="submit"]:active,
 input[type="number"]:focus,
 input[type="text"]:focus {
 	border-color: $c-orange;
@@ -141,33 +189,6 @@ input[type="text"]:focus {
 	outline-color: $c-orange;
  	outline: none;
  	box-shadow: none;
-}
-button,
-button[type="submit"], 
-input[type="submit"] {
-	max-width: 66%;
-    padding: 0.6rem 1rem;
-	border-radius: 0;
-	border-style: none;
-	background-color: $c-orange;
-	outline-color: $c-white;
-	color: $c-white;
-	font-size: 1rem;
-	outline-offset: 0;
-
-	+ p {
-		display: inline-block;
-		font-size: 0.7rem;
-		height: 1rem;
-		margin: 0;
-		font-style: italic;
-		color: $c-warning;
-	}
-}
-
-.submit-name {
-	margin-bottom: 0;
-
 }
 
 button[type="submit"]:hover, 
@@ -187,28 +208,28 @@ input[type="submit"]:hover {
 .q2 {
 	display: block;
 	order: 4;
-	
 }
 .q3 {
 	display: block;
-	order: 5;
-	
+	order: 5;	
 }
 
-// .listings {
-// 	display: block;
-// 	width: 100%
-// } 
 .listings {
 	display: block;
-	width: 90%;
+	width: 100%;
 	order: 6;
+	@include bp(xsmall) {
+		width: 90%;
+		margin: 0 auto;
+
+	}
 	p {
-		font-size: 1.5rem;
-	}
-	span {
-		text-transform: lowercase;
-	}
+		font-size: $baseFontSize;
+		@include bp(xsmall) {
+			@include font-size(14);
+		}
+
+	}		
 	.js-list1 {
 		order: 6;
 	} 
@@ -223,7 +244,9 @@ input[type="submit"]:hover {
 	display:block;
 	order: 6;
 }
-span#time1,
+span {
+	text-transform: lowercase;
+}
 span.firstName,
 span.water,
 span.bestie,
@@ -239,17 +262,20 @@ span.error {
 }
 
 .share {
-	order: 7;
+	order: 9;
 	margin: 1rem auto;
 	display: block;
-	height: 65px;
+	width: 100%;
 	
 	.fb-share-button {
 		display: block;
 		height: 80px;
 		 a {
-			color: #878787;
-			font-size: 1.5rem;
+			color: $c-text;
+			font-size: $baseFontSize;
+			img {
+				height: 30px;
+			}
 		}
 		&:hover {
 			outline: none;
@@ -257,25 +283,25 @@ span.error {
 	}
 }
 .eliza {
-	order: 8;
-	font-size: 1rem;
-	color: #878787;
+	order: 10;
+	font-size: $baseFontSize;
+	color: $c-text;
 	a {
-		color: #878787;
-		font-size: 0.9rem;
+		color: $c-text;
+		@include font-size(14)
 		padding: 15px;
 		text-decoration: none;
 		&:hover {
-		outline: 1px solid #878787;
+		outline: 1px solid $c-text;;
 		}
 	}
 }
 
-.isInvalid {
-	outline: 1px solid $c-warning;
+// .isInvalid {
+// 	outline: 1px solid $c-warning;
 
-}
-.isValid {
-	outline: 1px solid $c-orange;
+// }
+// .isValid {
+// 	outline: 1px solid $c-orange;
 
-}
+// }
