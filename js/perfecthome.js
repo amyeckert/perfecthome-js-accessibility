@@ -98,21 +98,23 @@ $(document).ready(function() {
 				// if it's a number input, do this:
 				if(currentInputType === 'number') { 
 
-					// DO THESE RETURN NUMBERS AS strings? and is that the problem? 
-					var min = $(chosenInputs[i]).attr('min')
-					var max = $(chosenInputs[i]).attr('max');
-					
+					// convert string max and min values to numbers 
+					var min = 0;
+					var maxValue = $(chosenInputs[i]).attr('max');
+					var max = parseInt(maxValue, 10);
+					var numberEntered = parseInt(currentAnswer, 10);
+					// console.log(max, numberEntered);
 					
 					// check numbers are in correct range
-				 	if (currentAnswer < min || currentAnswer > max) {
+				 	if (numberEntered < min || numberEntered > max) {
 						currentErrorMessage = '\*Please pick a number in the correct range.';
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						formIsValid = false;
-						console.log(min,  max, currentAnswer + ' is too big, this block returns ' + formIsValid);
+						console.log(min,  max, numberEntered + ' is too big, this block returns ' + formIsValid);
 					} else {
 						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
-						console.log(min, max, currentAnswer + ' is in range.');
+						console.log(min, max, numberEntered + ' is in range.');
 					} 
 				// if it's a text field, do this
 				}
@@ -127,67 +129,11 @@ $(document).ready(function() {
 						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
 					}
-				}	
-				// else {
-				// 	formIsValid = true;
-				// }
-					
+				}			
 			}
 		} // closes for loop ------------------------//
-
 		return formIsValid; //returns t/f
 	}; //closes validate -------------------------//
-
-	//older version KEEP:
-	// var validateForm = function() {
-	// 		//which form is visible? 
-	// 		var chosenForm = $('body').find('form:visible').not( '#name' );
-	// 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
-	// 		var form1IsValid = true;
-		
-	// 		// check if each one is filled out correctly
-	// 		for (var i=0; i<chosenInputs.length; i++) {
-	// 			var currentAnswer = $(chosenInputs[i]).val();
-	// 			var currentInputId = $(chosenInputs[i]).attr('id');
-	// 			var currentErrorMessage = $(chosenInputs[i]).data('error-msg');
-	// 			var currentInputType = $(chosenInputs[i]).attr('type');		
-
-	// 			// check the input is filled out
-	// 			if(currentAnswer === '') {
-	// 				// remove any previous error msg
-	// 				$('#' + currentInputId).next().text(''); 
-	// 				// add error message
-	// 				$('#' + currentInputId).next().text('\*' + currentErrorMessage); // 
-	// 				console.log(currentInputId +' is missing');
-	// 				form1IsValid = false; 
-
-	// 			} else {
-	// 				if (currentInputType === 'number') {
-	// 					if(!cleanNumbers(currentAnswer)) {
-	// 						currentErrorMessage = '\*Please use only numbers, thanks!';
-	// 						$('#' + currentInputId).next().text(currentErrorMessage);
-	// 						form1IsValid = false;
-	// 					} 
-	// 					else {
-	// 						$('#' + currentInputId).next().text('');	
-	// 					}
-	// 				} else if (currentInputType ==='text') {
-	// 					if (!cleanText(currentAnswer)) {
-	// 						currentErrorMessage = '\*Please use only letters, thanks!';
-	// 						$('#' + currentInputId).next().text(currentErrorMessage);
-	// 						form1IsValid = false;
-	// 					} 
-	// 					else {
-	// 						$('#' + currentInputId).next().text('');
-	// 					}
-	// 				} else {
-	// 					formIsValid = true;
-	// 				}
-	// 			}	
-	// 		} // closes for loop ------------------------//
-
-	// 		return form1IsValid; //returns t/f
-	// 	}; //closes validate -------------------------//
 
 	var pickForm = function(){
 		//clear input values
