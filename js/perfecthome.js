@@ -71,54 +71,123 @@ $(document).ready(function() {
 	};
 
 	var validateForm = function() {
-		//which form is visible? 
+	//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
-		var form1IsValid = true;
-	
+		var formIsValid = true;
+
 		// check if each one is filled out correctly
 		for (var i=0; i<chosenInputs.length; i++) {
 			var currentAnswer = $(chosenInputs[i]).val();
 			var currentInputId = $(chosenInputs[i]).attr('id');
 			var currentErrorMessage = $(chosenInputs[i]).data('error-msg');
 			var currentInputType = $(chosenInputs[i]).attr('type');		
-
-			// check the input is filled out
+			
+			// remove any previous error msg
+			$('#' + currentInputId).next().text('');
+			
+			// check the input is empty
 			if(currentAnswer === '') {
-				// remove any previous error msg
-				$('#' + currentInputId).next().text(''); 
 				// add error message
 				$('#' + currentInputId).next().text('\*' + currentErrorMessage); // 
-				console.log(currentInputId +' is missing');
-				form1IsValid = false; 
-
+				formIsValid = false; 
+				console.log(currentInputId +' is missing ' + formIsValid);
+			//if it is not empty, proceed:
 			} else {
-				if (currentInputType === 'number') {
-					if(!cleanNumbers(currentAnswer)) {
-						currentErrorMessage = '\*Please use only numbers, thanks!';
+
+				// if it's a number input, do this:
+				if(currentInputType === 'number') { 
+
+					// DO THESE RETURN NUMBERS AS strings? and is that the problem? 
+					var min = $(chosenInputs[i]).attr('min')
+					var max = $(chosenInputs[i]).attr('max');
+					
+					
+					// check numbers are in correct range
+				 	if (currentAnswer < min || currentAnswer > max) {
+						currentErrorMessage = '\*Please pick a number in the correct range.';
 						$('#' + currentInputId).next().text(currentErrorMessage);
-						form1IsValid = false;
+						formIsValid = false;
+						console.log(min,  max, currentAnswer + ' is too big, this block returns ' + formIsValid);
+					} else {
+						// remove any previous error msg
+						$('#' + currentInputId).next().text('');
+						console.log(min, max, currentAnswer + ' is in range.');
 					} 
-					else {
-						$('#' + currentInputId).next().text('');	
-					}
-				} else if (currentInputType ==='text') {
+				// if it's a text field, do this
+				}
+				if (currentInputType ==='text') { 
+				// check for only letters
 					if (!cleanText(currentAnswer)) {
 						currentErrorMessage = '\*Please use only letters, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
-						form1IsValid = false;
-					} 
-					else {
+						formIsValid = false;
+						console.log('this block returns ' + formIsValid);
+					} else {
+						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
 					}
-				} else {
-					formIsValid = true;
-				}
-			}	
+				}	
+				// else {
+				// 	formIsValid = true;
+				// }
+					
+			}
 		} // closes for loop ------------------------//
 
-		return form1IsValid; //returns t/f
+		return formIsValid; //returns t/f
 	}; //closes validate -------------------------//
+
+	//older version KEEP:
+	// var validateForm = function() {
+	// 		//which form is visible? 
+	// 		var chosenForm = $('body').find('form:visible').not( '#name' );
+	// 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
+	// 		var form1IsValid = true;
+		
+	// 		// check if each one is filled out correctly
+	// 		for (var i=0; i<chosenInputs.length; i++) {
+	// 			var currentAnswer = $(chosenInputs[i]).val();
+	// 			var currentInputId = $(chosenInputs[i]).attr('id');
+	// 			var currentErrorMessage = $(chosenInputs[i]).data('error-msg');
+	// 			var currentInputType = $(chosenInputs[i]).attr('type');		
+
+	// 			// check the input is filled out
+	// 			if(currentAnswer === '') {
+	// 				// remove any previous error msg
+	// 				$('#' + currentInputId).next().text(''); 
+	// 				// add error message
+	// 				$('#' + currentInputId).next().text('\*' + currentErrorMessage); // 
+	// 				console.log(currentInputId +' is missing');
+	// 				form1IsValid = false; 
+
+	// 			} else {
+	// 				if (currentInputType === 'number') {
+	// 					if(!cleanNumbers(currentAnswer)) {
+	// 						currentErrorMessage = '\*Please use only numbers, thanks!';
+	// 						$('#' + currentInputId).next().text(currentErrorMessage);
+	// 						form1IsValid = false;
+	// 					} 
+	// 					else {
+	// 						$('#' + currentInputId).next().text('');	
+	// 					}
+	// 				} else if (currentInputType ==='text') {
+	// 					if (!cleanText(currentAnswer)) {
+	// 						currentErrorMessage = '\*Please use only letters, thanks!';
+	// 						$('#' + currentInputId).next().text(currentErrorMessage);
+	// 						form1IsValid = false;
+	// 					} 
+	// 					else {
+	// 						$('#' + currentInputId).next().text('');
+	// 					}
+	// 				} else {
+	// 					formIsValid = true;
+	// 				}
+	// 			}	
+	// 		} // closes for loop ------------------------//
+
+	// 		return form1IsValid; //returns t/f
+	// 	}; //closes validate -------------------------//
 
 	var pickForm = function(){
 		//clear input values
@@ -205,7 +274,8 @@ $(document).ready(function() {
 		$(".js-list3").hide();
 
 		myListing = $(".listing1").text();
-		shareListing(myListing);
+		// shareListing(myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
@@ -243,7 +313,8 @@ $(document).ready(function() {
 		$(".js-list3").hide();
 
 		myListing = $(".listing2").text();	//get the text of element
-		shareListing(myListing);
+		// shareListing(myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();	
 		$(".share").show();
@@ -281,7 +352,7 @@ $(document).ready(function() {
 		$(".js-list3").show();
 
 		myListing = $(".listing3").text();	
-		shareListing(myListing);
+		// shareListing(myListing);
 		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
@@ -293,77 +364,58 @@ $(document).ready(function() {
 	};
 
 	//-------  SHARE LISTING ON FACEBOOK OR TWITTER -------------------------//
-	// store value of myListing to clipboard, 
-	// from: https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+ 
+	// source: https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
 	function copyTextToClipboard(text) {
 		var text = myListing;
   		var textArea = document.createElement("textarea");
 
-	  //
-	  // *** This styling is an extra step which is likely not required. ***
-	  //
-	  // Why is it here? To ensure:
-	  // 1. the element is able to have focus and selection.
-	  // 2. if element was to flash render it has minimal visual impact.
-	  // 3. less flakyness with selection and copying which **might** occur if
-	  //    the textarea element is not visible.
-	  //
-	  // The likelihood is the element won't even render, not even a flash,
-	  // so some of these are just precautions. However in IE the element
-	  // is visible whilst the popup box asking the user for permission for
-	  // the web page to copy to the clipboard.
-	  //
+		// Place in top-left corner of screen regardless of scroll position.
+		textArea.style.position = 'fixed';
+		textArea.style.top = 0;
+		textArea.style.left = 0;
 
-	  // Place in top-left corner of screen regardless of scroll position.
-	  textArea.style.position = 'fixed';
-	  textArea.style.top = 0;
-	  textArea.style.left = 0;
+		// Ensure it has a small width and height. Setting to 1px / 1em
+		// doesn't work as this gives a negative w/h on some browsers.
+		textArea.style.width = '2em';
+		textArea.style.height = '2em';
 
-	  // Ensure it has a small width and height. Setting to 1px / 1em
-	  // doesn't work as this gives a negative w/h on some browsers.
-	  textArea.style.width = '2em';
-	  textArea.style.height = '2em';
+		// We don't need padding, reducing the size if it does flash render.
+		textArea.style.padding = 0;
 
-	  // We don't need padding, reducing the size if it does flash render.
-	  textArea.style.padding = 0;
+		// Clean up any borders.
+		textArea.style.border = 'none';
+		textArea.style.outline = 'none';
+		textArea.style.boxShadow = 'none';
 
-	  // Clean up any borders.
-	  textArea.style.border = 'none';
-	  textArea.style.outline = 'none';
-	  textArea.style.boxShadow = 'none';
+		// Avoid flash of white box if rendered for any reason.
+		textArea.style.background = 'transparent';
+		textArea.value = text;
 
-	  // Avoid flash of white box if rendered for any reason.
-	  textArea.style.background = 'transparent';
+		document.body.appendChild(textArea);
 
+		textArea.select();
 
-	  textArea.value = text;
+		try {
+		var successful = document.execCommand('copy');
+		var msg = successful ? 'successful' : 'unsuccessful';
+		console.log('Copying text command was ' + msg);
+		} catch (err) {
+		console.log('Oops, unable to copy');
+		}
 
-	  document.body.appendChild(textArea);
-
-	  textArea.select();
-
-	  try {
-	    var successful = document.execCommand('copy');
-	    var msg = successful ? 'successful' : 'unsuccessful';
-	    console.log('Copying text command was ' + msg);
-	  } catch (err) {
-	    console.log('Oops, unable to copy');
-	  }
-
-	  document.body.removeChild(textArea);
-	}
-
-	
-
-	var shareListing = function(myListing){
-		$("meta[property='og:description']").attr("content").innerHTML = myListing;
-		// ogDescription = myListing;
-		// $("meta[property='og:description']").text(myListing);
-
-		console.log(myListing);
-		$
-
+		document.body.removeChild(textArea);
 	};
+
+	// var shareListing = function(myListing){
+	// 	$("meta[property='og:description']").attr("content").innerHTML = myListing;
+	// 	// ogDescription = myListing;
+	// 	// $("meta[property='og:description']").text(myListing);
+
+	// 	console.log(myListing);
+	// 	$
+
+	// };
 
 	//-------  BUTTONS/ON-CLICK EVENTS -------------------------//
 
