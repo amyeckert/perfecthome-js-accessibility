@@ -70,58 +70,71 @@ $(document).ready(function() {
 		return nameIsValid;
 	};
 
-<<<<<<< HEAD
-	var validate = function() {
-=======
+
 	var validateForm = function() {
-		//which form is visible? 
+	//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
->>>>>>> 0ef9b31259dbf7a20acf67b0973fa2c8585de47b
-		var form1IsValid = true;
-	
+
+		var formIsValid = true;
+
 		// check if each one is filled out correctly
 		for (var i=0; i<chosenInputs.length; i++) {
 			var currentAnswer = $(chosenInputs[i]).val();
 			var currentInputId = $(chosenInputs[i]).attr('id');
 			var currentErrorMessage = $(chosenInputs[i]).data('error-msg');
 			var currentInputType = $(chosenInputs[i]).attr('type');		
-
-			// check the input is filled out
+			
+			// remove any previous error msg
+			$('#' + currentInputId).next().text('');
+			
+			// check the input is empty
 			if(currentAnswer === '') {
-				// remove any previous error msg
-				$('#' + currentInputId).next().text(''); 
 				// add error message
 				$('#' + currentInputId).next().text('\*' + currentErrorMessage); // 
-				console.log(currentInputId +' is missing');
-				form1IsValid = false; 
-
+				formIsValid = false; 
+				console.log(currentInputId +' is missing ' + formIsValid);
+			//if it is not empty, proceed:
 			} else {
-				if (currentInputType === 'number') {
-					if(!cleanNumbers(currentAnswer)) {
-						currentErrorMessage = '\*Please use only numbers, thanks!';
+
+				// if it's a number input, do this:
+				if(currentInputType === 'number') { 
+
+					// convert string max and min values to numbers 
+					var min = 0;
+					var maxValue = $(chosenInputs[i]).attr('max');
+					var max = parseInt(maxValue, 10);
+					var numberEntered = parseInt(currentAnswer, 10);
+					// console.log(max, numberEntered);
+					
+					// check numbers are in correct range
+				 	if (numberEntered < min || numberEntered > max) {
+						currentErrorMessage = '\*Please pick a number in the correct range.';
 						$('#' + currentInputId).next().text(currentErrorMessage);
-						form1IsValid = false;
+						formIsValid = false;
+						console.log(min,  max, numberEntered + ' is too big, this block returns ' + formIsValid);
+					} else {
+						// remove any previous error msg
+						$('#' + currentInputId).next().text('');
+						console.log(min, max, numberEntered + ' is in range.');
 					} 
-					else {
-						$('#' + currentInputId).next().text('');	
-					}
-				} else if (currentInputType ==='text') {
+				// if it's a text field, do this
+				}
+				if (currentInputType ==='text') { 
+				// check for only letters
 					if (!cleanText(currentAnswer)) {
 						currentErrorMessage = '\*Please use only letters, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
-						form1IsValid = false;
-					} 
-					else {
+						formIsValid = false;
+						console.log('this block returns ' + formIsValid);
+					} else {
+						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
 					}
-				} else {
-					formIsValid = true;
-				}
-			}	
+				}			
+			}
 		} // closes for loop ------------------------//
-
-		return form1IsValid; //returns t/f
+		return formIsValid; //returns t/f
 	}; //closes validate -------------------------//
 
 	var pickForm = function(){
@@ -142,7 +155,7 @@ $(document).ready(function() {
 	 		$(".q2").hide();
 			$(".q3").hide();
 			$('body').css({
-				"background-image" : "url('img/tablebeast-hd.jpg')"
+				"background-image" : "url('img/tablebeast-sm.jpg')"
 			});
 	 	}
 		 else if (chosen == q2) {
@@ -150,7 +163,7 @@ $(document).ready(function() {
 	 		$(".q1").hide();  
 	 		$(".q3").hide();
 	 		$('body').css({
-				"background-image" : "url('img/couches-hd.jpg')"
+				"background-image" : "url('img/couches-sm.jpg')"
 			});
 	 	}
 		else { 
@@ -158,7 +171,7 @@ $(document).ready(function() {
 	 		$(".q1").hide(); 
 	 		$(".q2").hide();
 	 		$('body').css({
-				"background-image" : "url('img/seam2-hd.jpg')"
+				"background-image" : "url('img/seam2-sm.jpg')"
 			});
 		};
 	};
@@ -208,8 +221,9 @@ $(document).ready(function() {
 		$(".js-list2").hide();
 		$(".js-list3").hide();
 
-		var myListing = $(".listing1").text();
-		console.log(myListing);
+		myListing = $(".listing1").text();
+		// shareListing(myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
@@ -246,12 +260,14 @@ $(document).ready(function() {
 		$(".js-list2").show();
 		$(".js-list3").hide();
 
-		var myListing = $(".listing2").text();	//get the text of element
-		console.log(myListing);
+		myListing = $(".listing2").text();	//get the text of element
+		// shareListing(myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();	
 		$(".share").show();
 		$(".eliza").show(); 
+
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
@@ -283,15 +299,71 @@ $(document).ready(function() {
 		$(".js-list2").hide();
 		$(".js-list3").show();
 
-		var myListing = $(".listing3").text();	
-		console.log(myListing);
+		myListing = $(".listing3").text();	
+		// shareListing(myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
+		// load the listing into fb share code
 
 		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
 	};
+
+	//-------  SHARE LISTING ON FACEBOOK OR TWITTER -------------------------//
+ 
+	// source: https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+	function copyTextToClipboard(text) {
+		var text = myListing;
+  		var textArea = document.createElement("textarea");
+
+		// Place in top-left corner of screen regardless of scroll position.
+		textArea.style.position = 'fixed';
+		textArea.style.top = 0;
+		textArea.style.left = 0;
+
+		// Ensure it has a small width and height. Setting to 1px / 1em
+		// doesn't work as this gives a negative w/h on some browsers.
+		textArea.style.width = '2em';
+		textArea.style.height = '2em';
+
+		// We don't need padding, reducing the size if it does flash render.
+		textArea.style.padding = 0;
+
+		// Clean up any borders.
+		textArea.style.border = 'none';
+		textArea.style.outline = 'none';
+		textArea.style.boxShadow = 'none';
+
+		// Avoid flash of white box if rendered for any reason.
+		textArea.style.background = 'transparent';
+		textArea.value = text;
+
+		document.body.appendChild(textArea);
+
+		textArea.select();
+
+		try {
+		var successful = document.execCommand('copy');
+		var msg = successful ? 'successful' : 'unsuccessful';
+		console.log('Copying text command was ' + msg);
+		} catch (err) {
+		console.log('Oops, unable to copy');
+		}
+
+		document.body.removeChild(textArea);
+	};
+
+	// var shareListing = function(myListing){
+	// 	$("meta[property='og:description']").attr("content").innerHTML = myListing;
+	// 	// ogDescription = myListing;
+	// 	// $("meta[property='og:description']").text(myListing);
+
+	// 	console.log(myListing);
+	// 	$
+
+	// };
 
 	//-------  BUTTONS/ON-CLICK EVENTS -------------------------//
 
@@ -306,7 +378,6 @@ $(document).ready(function() {
 			return false;
 		}
 	});
-
 
 	// assemble listing only if form is valid------------//
 	$("#btn-submit1").click(function(e) {
@@ -346,6 +417,12 @@ $(document).ready(function() {
 			console.log('form is valid');
 			createListing3();
 		}
+	});
+
+	$('.js-copy-listing').click(function(e) {
+		e.preventDefault();
+	  	copyTextToClipboard(myListing);
+
 	});
 
 }); //closes doc ready	
