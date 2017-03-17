@@ -89,21 +89,9 @@ $(document).ready(function() {
   
 		//	PICK A QUESTIONAIRE ------------//
 		if (chosen == q1) {
-	 	// 	$(".q1").show(); 
-	 	// 	$(".q2").hide();
-			// $(".q3").hide();
-			// $('body').css({
-			// 	"background-image" : "url('img/tablebeast-sm.jpg')"
-			// });
 			window.location.hash = '#q1'
 	 	}
 		 else if (chosen == q2) {
-	 	// 	$(".q2").show();
-	 	// 	$(".q1").hide();  
-	 	// 	$(".q3").hide();
-	 	// 	$('body').css({
-			// 	"background-image" : "url('img/couches-sm.jpg')"
-			// });
 			window.location.hash = '#q2';
 	 	}
 		else { 
@@ -230,7 +218,6 @@ $(document).ready(function() {
 		$(".js-list3").hide();
 
 		myListing = $(".listing1").text();
-		// shareListing(myListing);
 		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
@@ -268,7 +255,6 @@ $(document).ready(function() {
 		$(".js-list3").hide();
 
 		myListing = $(".listing2").text();	//get the text of element
-		// shareListing(myListing);
 		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();	
@@ -307,7 +293,6 @@ $(document).ready(function() {
 		$(".js-list3").show();
 
 		myListing = $(".listing3").text();	
-		// shareListing(myListing);
 		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
@@ -475,6 +460,35 @@ $(document).ready(function() {
 		e.preventDefault();
 	  	copyTextToClipboard(myListing);
 
+	});
+
+	//  MODAL: ABOUT --------------------------------//
+	var modal = function(state) {
+		//if state === 'open', fade in
+		
+		if(state === 'open') {
+			$('.modal-container').fadeIn(function(){
+				$('body').addClass('modal-on'); 
+			});
+		} 
+		//else, fade it out
+		else {
+			$('.modal-container').fadeOut(function(){
+				$('body').removeClass('modal-on');
+			});
+		}	
+	};
+
+	$('.js-modal-open').on('click', function(event) {
+		event.preventDefault();
+		modal('open');
+		console.log('clicked to open modal');
+	});
+
+	//close the modal
+	$('.close').on('click', function(event){
+		event.preventDefault();
+		modal('close');
 	});
 
 }); //closes doc ready	

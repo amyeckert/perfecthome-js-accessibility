@@ -42,7 +42,7 @@
 
 				<input id="firstName" class="firstName" name="firstName" type="text" data-error-msg-name="Psst! What's your name?" aria-required="true" autofocus>
 				<p class="error"></p>
-				<button id="btn-name" type="submit" class="btn submit-name" value="Let's go!">Let's go!</button>
+				<button id="btn-name" type="submit" class="btn btn-orange" value="Let's go!">Let's go!</button>
 
 			</form>
 		</div>
@@ -125,7 +125,7 @@
 					<input id="verb1" class="js-input verb1" name="verb1" type="text" data-error-msg="This one is still empty." placeholder="Action!" aria-required="true" >
 					<p class="error"></p>
 				</div>
-				<button id="btn-submit1" type="submit" class="btn" value="">Call the movers!</button>
+				<button id="btn-submit1" type="submit" class="btn btn-orange" value="">Call the movers!</button>
 				<p class=""></p>
 			</form>		
 		</div>
@@ -197,7 +197,7 @@
 						<option value="amazon"> Amazon Rainforest</option>
 					</select><p class="error"></p>
 				</div>
-				<button id="btn-submit2" type="submit" class="btn" value="">Get packing!</button>
+				<button id="btn-submit2" type="submit" class="btn btn-orange" value="">Get packing!</button>
 				<p class=""></p>	
 			</form>			
 		</div>
@@ -263,7 +263,7 @@
 					<label for="verb3">Enter a verb.</label>
 					<input id="verb3" class="js-input verb3" name="verb3" type="text" data-error-msg="Oops" placeholder="Argue? Relax?" aria-required="true"><p class="error"></p>
 				</div>
-				<button id="btn-submit3" class="btn" type="submit" value="">Call the bank!</button>
+				<button id="btn-submit3" class="btn btn-orange" type="submit" value="">Call the bank!</button>
 				<p class=""></p>	
 			</form>	
 		</div>
@@ -288,11 +288,11 @@
 		 		
 		 	</div>
 
-			<button class="btn-reset" type="reset" onClick="window.location.reload()">Not quite what you had in mind?</button>
+			<button class="btn btn-orange" type="reset" onClick="window.location.reload()">Not quite what you had in mind?</button>
 
 			<div class="share">
 
-				<button class="js-copy-listing btn-save">Click here to copy this listing, then share! <img src="img/copy-1.svg"></button>
+				<button class="js-copy-listing btn btn-ghost">Click here to copy this listing, then share! <img src="img/copy-1.svg"></button>
 				<!-- <button >Copy Listing</button> -->
 
 				<div class="icons">
@@ -315,10 +315,18 @@
 				<div class="eliza">
 					<a href="http://eliza.liveinsouthjersey.com" target="_blank">Looking for <em>actual</em> real estate listings?<img src="img/external_link.svg"></a>
 				</div>
+				<button class=" btn btn-ghost js-modal-open" >About this site.</button>
 
-				<div class="about">
-					<button class="btn-explain">Wondering what on Earth this is?</button>
-					<p class="explain">This quiz is an off-shoot of my larger project called <a href="http://www.manufacturinghome.com" title="Manufacturing Home" target="_blank">Manufacturing Home</a> which explores ideas about place, comfort, class and mobility through photographs of mass-market, factory-built homes in America. (And which I'm in the process of rebuilding as I learn Front End Web Development. Watch this space...)</p>
+				<!-- MODAL ABOUT SECTION -->
+				<div class="about modal-container">
+					<header class="modal-header">
+						<button class= "btn btn-ghost close">close</button>
+					</header>
+
+					<div class="modal-content">
+
+						<p class="explain">This quiz is an off-shoot of a larger project called <a href="http://www.manufacturinghome.com" title="Manufacturing Home" target="_blank">Manufacturing Home,</a> which explores ideas about place, comfort, class and mobility through photographs of mass-market, factory-built homes in America. For more about me and my work, visit <a href="http://www.amyeckertprojects.com" target="_blank"> www.amyeckertprojects.com</a> Cheers!</p>
+					</div>
 				</div>
 		</div>
 

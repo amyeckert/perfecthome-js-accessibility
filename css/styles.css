@@ -559,20 +559,14 @@ a {
         padding: 15px 0 0 0;
         height: 35px; } }
 
-button,
-button[type="submit"],
-input[type="submit"] {
+.btn {
   padding: 0.6rem 1rem;
-  border-radius: 4px;
   border-style: none;
-  background-color: #ff9b44;
-  outline-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
   color: #fff;
-  font-size: 16;
-  outline-offset: 0; }
-  button + p,
-  button[type="submit"] + p,
-  input[type="submit"] + p {
+  font-size: 16; }
+  .btn + p {
     display: inline-block;
     font-size: 0.875rem;
     font-size: 14px;
@@ -581,25 +575,40 @@ input[type="submit"] {
     font-style: italic;
     color: #ff0044; }
 
+.btn-orange {
+  background-color: #ff9b44; }
+  .btn-orange:hover {
+    box-shadow: none;
+    border: 1px solid #ff9b44;
+    color: #fff;
+    text-decoration: none; }
+
+.btn-ghost {
+  color: #3f3f3d;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-size: 14px;
+  margin: 0 auto;
+  padding: 15px;
+  text-decoration: none; }
+  .btn-ghost:hover {
+    border: 1px solid #3f3f3d;
+    outline: none;
+    border-radius: 4px; }
+  .btn-ghost img {
+    height: 12px;
+    margin: 0 0 0 3px; }
+
 select:focus,
 button[type="submit"]:focus,
-button[type="select"]:active,
 button[type="submit"]:active,
 input[type="number"]:focus,
 input[type="text"]:focus {
   border-color: #ff9b44;
   box-shadow: none;
-  outline-color: #ff9b44;
   outline: none;
   box-shadow: none; }
-
-button[type="submit"]:hover,
-input[type="submit"]:hover {
-  border-radius: 0;
-  box-shadow: none;
-  outline: 1px solid #ff9b44;
-  color: #fff;
-  text-decoration: none; }
 
 .listings {
   display: block;
@@ -631,12 +640,6 @@ input[type="submit"]:hover {
     -ms-flex-order: 8;
         order: 8;
     margin: 0 0 3rem 0; }
-
-.btn-reset {
-  display: block;
-  -ms-flex-order: 6;
-      order: 6;
-  margin: 0 auto; }
 
 span {
   text-transform: lowercase; }
@@ -673,22 +676,6 @@ span.error {
     font-size: 0.875rem;
     font-size: 14px;
     text-align: center; }
-  .share .btn-save {
-    color: #3f3f3d;
-    background-color: transparent;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-size: 14px;
-    margin: 0 auto;
-    padding: 15px;
-    text-decoration: none; }
-    .share .btn-save:hover {
-      border: 1px solid #3f3f3d;
-      outline: none;
-      border-radius: 4px; }
-    .share .btn-save img {
-      height: 12px;
-      margin: 0 0 0 3px; }
   .share .icons {
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -723,3 +710,32 @@ span.error {
       .share .eliza a img {
         height: 12px;
         margin: 0 0 0 3px; }
+  .share .modal-on {
+    overflow: hidden; }
+  .share .modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(249, 184, 6, 0.6); }
+  .share .modal {
+    background-color: #f9b806;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 20px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .share .modal-header {
+    width: 90%;
+    margin: 0 auto;
+    position: relative; }
+  .share .close {
+    position: absolute;
+    right: 0;
+    top: 0; }
+  .share .modal-content {
+    width: 90%;
+    margin: 0 auto; }
