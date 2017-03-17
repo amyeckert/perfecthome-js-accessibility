@@ -2,9 +2,14 @@
 
 $(document).ready(function() {	
 	//clear any input values
-	$(".js-input").val("");
+	$(".js-input").val('');
 
-	// HIDE STUFF	----------------//
+	// var currentHash = window.location.hash;
+	window.location.hash = '';
+	// console.log(currentHash);
+	// $(".js-input").val('');
+
+	// // HIDE STUFF	----------------//
 	$(".q1").hide();
 	$(".q2").hide();
 	$(".q3").hide();
@@ -70,6 +75,47 @@ $(document).ready(function() {
 		return nameIsValid;
 	};
 
+	var pickForm = function(){
+		//clear input values
+		var clearedInputs = $(".js-input").val("");
+		//randomly choose a questionnaire
+		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+	 	console.log(chosen);
+	 	$(".enter-name").hide();
+	 	$(".firstName").empty().append($("input.firstName").val());
+		
+	 	//need code to check to see what previous selection was, so that it doesn't repeat in it's randomness.
+		// var recentChoice; etc.   
+  
+		//	PICK A QUESTIONAIRE ------------//
+		if (chosen == q1) {
+	 	// 	$(".q1").show(); 
+	 	// 	$(".q2").hide();
+			// $(".q3").hide();
+			// $('body').css({
+			// 	"background-image" : "url('img/tablebeast-sm.jpg')"
+			// });
+			window.location.hash = '#q1'
+	 	}
+		 else if (chosen == q2) {
+	 	// 	$(".q2").show();
+	 	// 	$(".q1").hide();  
+	 	// 	$(".q3").hide();
+	 	// 	$('body').css({
+			// 	"background-image" : "url('img/couches-sm.jpg')"
+			// });
+			window.location.hash = '#q2';
+	 	}
+		else { 
+			$(".q3").show();
+	 		$(".q1").hide(); 
+	 		$(".q2").hide();
+	 		$('body').css({
+				"background-image" : "url('img/seam2-sm.jpg')"
+			});
+			window.location.hash = 'q3';
+		};
+	};
 
 	var validateForm = function() {
 	//which form is visible? 
@@ -137,44 +183,6 @@ $(document).ready(function() {
 		return formIsValid; //returns t/f
 	}; //closes validate -------------------------//
 
-	var pickForm = function(){
-		//clear input values
-		var clearedInputs = $(".js-input").val("");
-		//randomly choose a questionnaire
-		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
-	 	console.log(chosen);
-	 	$(".enter-name").hide();
-	 	$(".firstName").empty().append($("input.firstName").val());
-		
-	 	//need code to check to see what previous selection was, so that it doesn't repeat in it's randomness.
-		// var recentChoice; etc.   
-  
-		//	PICK A QUESTIONAIRE ------------//
-		if (chosen == q1) {
-	 		$(".q1").show(); 
-	 		$(".q2").hide();
-			$(".q3").hide();
-			$('body').css({
-				"background-image" : "url('img/tablebeast-sm.jpg')"
-			});
-	 	}
-		 else if (chosen == q2) {
-	 		$(".q2").show();
-	 		$(".q1").hide();  
-	 		$(".q3").hide();
-	 		$('body').css({
-				"background-image" : "url('img/couches-sm.jpg')"
-			});
-	 	}
-		else { 
-			$(".q3").show();
-	 		$(".q1").hide(); 
-	 		$(".q2").hide();
-	 		$('body').css({
-				"background-image" : "url('img/seam2-sm.jpg')"
-			});
-		};
-	};
 	// inject answers into the madlibs and grab all text
 	var createListing1= function(){
 	    // if input starts with a vowel, add an n to make an before it.
@@ -231,7 +239,6 @@ $(document).ready(function() {
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-	
 	};
 
 	var createListing2 = function(){
@@ -355,31 +362,73 @@ $(document).ready(function() {
 		document.body.removeChild(textArea);
 	};
 
-	// var shareListing = function(myListing){
-	// 	$("meta[property='og:description']").attr("content").innerHTML = myListing;
-	// 	// ogDescription = myListing;
-	// 	// $("meta[property='og:description']").text(myListing);
+	//-------  HASH CHANGE EVENTS -------------------------//
 
-	// 	console.log(myListing);
-	// 	$
+	$(window).on('hashchange', function(e) {
+		var currentHash = window.location.hash;
 
-	// };
+		if(currentHash === '#q1') {
+			console.log(currentHash);
+			$(".q1").show(); 
+	 		$(".q2").hide();
+			$(".q3").hide();
+			$('body').css({
+				"background-image" : "url('img/tablebeast-sm.jpg')"
+			});
+			$(".listings").hide();
+		}
 
-	//-------  BUTTONS/ON-CLICK EVENTS -------------------------//
+		if(currentHash === '#q2') {
+			console.log(currentHash);
+			$(".q2").show();
+	 		$(".q1").hide();  
+	 		$(".q3").hide();
+	 		$('body').css({
+				"background-image" : "url('img/couches-sm.jpg')"
+			});
+			$(".listings").hide();
+		
+		}
 
-	// validates that name is entered, chooses questionnaire
+		if(currentHash === '#q3') {
+			console.log(currentHash);
+			$(".q3").show();
+	 		$(".q1").hide(); 
+	 		$(".q2").hide();
+	 		$('body').css({
+				"background-image" : "url('img/seam2-sm.jpg')"
+			});
+			$(".listings").hide();
+				
+		}
+
+		if(currentHash === '#listing1' ) {
+			console.log(currentHash);
+			createListing1();					
+		}
+		if(currentHash === '#listing2' ) {
+			console.log(currentHash);
+			createListing2();					
+		}
+		if(currentHash === '#listing3' ) {
+			console.log(currentHash);
+			createListing3();					
+		}
+	});
+
+	//validates that name is entered, chooses questionnaire
 	$('#name').on('submit', function(e){
 		e.preventDefault();
 		// if fails
-		if (validateName()){
+		if (validateName()) {
 			// proceed to questionnaire
-			pickForm();
+			pickForm();	
 		} else {
 			return false;
 		}
 	});
-
-	// assemble listing only if form is valid------------//
+	
+	//assemble listing only if form is valid------------//
 	$("#btn-submit1").click(function(e) {
 		e.preventDefault();
 		if(!validateForm()) {
@@ -388,8 +437,9 @@ $(document).ready(function() {
 			return false;
 		} else {
 			$('#btn-submit1').next().text('');
+			window.location.hash = '#listing1';
 			console.log('form is valid');
-			createListing1();				
+			// createListing1();				
 		}	 
 	});
 
@@ -401,8 +451,9 @@ $(document).ready(function() {
 			return false;
 		} else {
 		$('#btn-submit2').next().text('');
+			window.location.hash = '#listing2';
 			console.log('form is valid');		
-			createListing2();			   		
+			// createListing2();			   		
 		}
 	});
 	
@@ -414,8 +465,9 @@ $(document).ready(function() {
 			return false;
 		} else {
 			$('#btn-submit3').next().text('');
+			window.location.hash = '#listing3';
 			console.log('form is valid');
-			createListing3();
+			// createListing3();
 		}
 	});
 
