@@ -9,6 +9,7 @@ $(document).ready(function() {
 	// console.log(currentHash);
 	// $(".js-input").val('');
 
+
 	// // HIDE STUFF	----------------//
 	$(".q1").hide();
 	$(".q2").hide();
@@ -26,7 +27,7 @@ $(document).ready(function() {
 	var q1 = $(".q1");
  	var q2 = $(".q2");
  	var q3 = $(".q3");
-	var allQuestions = [q1, q2, q3];
+	
 
 	var allInputs = $('.js-input');
 
@@ -76,32 +77,47 @@ $(document).ready(function() {
 	};
 
 	var pickForm = function(){
-		//clear input values
-		var clearedInputs = $(".js-input").val("");
+
 		//randomly choose a questionnaire
+		var allQuestions = [q1, q2, q3];
 		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
-	 	console.log(chosen);
+		console.log(chosen);
+		
+		//for future investigation: 
+		// source https://stackoverflow.com/questions/6625551/math-random-number-without-repeating-a-previous-number //
+
+		// var getRand = (function() {
+		//     var nums = [0,1,2,3,4,5,6];
+		//     var current = [];
+		//     function rand(n) {
+		//         return (Math.random() * n)|0;
+		//     }
+		//     return function() {
+		//       if (!current.length) current = nums.slice();
+		//       return current.splice(rand(current.length), 1);
+		//     }
+		// }());
+
+		//clear input values
+		$(".js-input").val("");
+
+		
 	 	$(".enter-name").hide();
 	 	$(".firstName").empty().append($("input.firstName").val());
-		
-	 	//need code to check to see what previous selection was, so that it doesn't repeat in it's randomness.
-		// var recentChoice; etc.   
   
 		//	PICK A QUESTIONAIRE ------------//
 		if (chosen == q1) {
 			window.location.hash = '#q1'
+			// previousChoice = chosen;
+			// console.log(previousChoice);
 	 	}
 		 else if (chosen == q2) {
 			window.location.hash = '#q2';
+			// previousChoice = chosen;
 	 	}
 		else { 
-			$(".q3").show();
-	 		$(".q1").hide(); 
-	 		$(".q2").hide();
-	 		$('body').css({
-				"background-image" : "url('img/seam2-sm.jpg')"
-			});
 			window.location.hash = 'q3';
+			// previousChoice = chosen;
 		};
 	};
 
@@ -404,10 +420,11 @@ $(document).ready(function() {
 	//validates that name is entered, chooses questionnaire
 	$('#name').on('submit', function(e){
 		e.preventDefault();
-		// if fails
+		// if passes
 		if (validateName()) {
-			// proceed to questionnaire
-			pickForm();	
+			//clear input values
+			$(".js-input").val("");
+			pickForm();
 		} else {
 			return false;
 		}
@@ -423,8 +440,7 @@ $(document).ready(function() {
 		} else {
 			$('#btn-submit1').next().text('');
 			window.location.hash = '#listing1';
-			console.log('form is valid');
-			// createListing1();				
+			console.log('form is valid');				
 		}	 
 	});
 
@@ -437,8 +453,7 @@ $(document).ready(function() {
 		} else {
 		$('#btn-submit2').next().text('');
 			window.location.hash = '#listing2';
-			console.log('form is valid');		
-			// createListing2();			   		
+			console.log('form is valid');					   		
 		}
 	});
 	
@@ -452,7 +467,6 @@ $(document).ready(function() {
 			$('#btn-submit3').next().text('');
 			window.location.hash = '#listing3';
 			console.log('form is valid');
-			// createListing3();
 		}
 	});
 
@@ -490,5 +504,13 @@ $(document).ready(function() {
 		event.preventDefault();
 		modal('close');
 	});
+
+    //	UPDATE COPYRIGHT ------------------------------//
+    var date = new Date();
+    var year = date.getFullYear();
+
+    var copyright = $('p.copyright').text();
+    var copyrightNotice = 'All images © ' + `${year}` + ' Amy Eckert';
+    $('p.copyright').html(copyrightNotice);
 
 }); //closes doc ready	

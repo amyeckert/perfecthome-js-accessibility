@@ -431,7 +431,7 @@ input[type="text"] {
   margin: 5px 0 3px 0;
   width: 100%;
   height: 35px;
-  padding: 10px;
+  padding: 8px;
   color: #878787;
   background-color: transparent;
   border: 1px solid #878787;
@@ -465,7 +465,7 @@ option {
       font-size: 27px; } }
 
 a {
-  color: #fff; }
+  color: #3f3f3d; }
   a:hover {
     color: #fff;
     text-decoration: none;
@@ -560,9 +560,11 @@ a {
         height: 35px; } }
 
 .btn {
+  display: block;
+  margin: 0 auto;
   padding: 0.6rem 1rem;
   border-style: none;
-  border: 1px solid #fff;
+  border: 1px solid transparent;
   border-radius: 4px;
   color: #fff;
   font-size: 16; }
@@ -631,15 +633,24 @@ input[type="text"]:focus {
   .listings .js-list1 {
     -ms-flex-order: 6;
         order: 6;
-    margin: 0 0 3rem 0; }
+    margin: 0 0 30 0; }
+    @media only screen and (min-width: 750px) {
+      .listings .js-list1 {
+        margin: 0 0 3rem 0; } }
   .listings .js-list2 {
     -ms-flex-order: 7;
         order: 7;
     margin: 0 0 3rem 0; }
+    @media only screen and (min-width: 750px) {
+      .listings .js-list2 {
+        margin: 0 0 3rem 0; } }
   .listings .js-list3 {
     -ms-flex-order: 8;
         order: 8;
     margin: 0 0 3rem 0; }
+    @media only screen and (min-width: 750px) {
+      .listings .js-list3 {
+        margin: 0 0 3rem 0; } }
 
 span {
   text-transform: lowercase; }
@@ -691,51 +702,69 @@ span.error {
       visibility: hidden; }
       .share .icons .fb-share-button span .svg {
         fill: #fff; }
-  .share .eliza {
-    margin: 1rem 0 0 0;
-    text-align: center;
-    color: #3f3f3d; }
-    .share .eliza a {
-      color: #3f3f3d;
-      border: 1px solid transparent;
-      font-size: 0.875rem;
-      font-size: 14px;
-      margin: 0 auto;
-      padding: 15px;
-      text-decoration: none; }
-      .share .eliza a:hover {
-        border: 1px solid #3f3f3d;
-        outline: none;
-        border-radius: 4px; }
-      .share .eliza a img {
-        height: 12px;
-        margin: 0 0 0 3px; }
-  .share .modal-on {
-    overflow: hidden; }
-  .share .modal-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(249, 184, 6, 0.6); }
-  .share .modal {
-    background-color: #f9b806;
-    width: 40%;
+
+.eliza {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: #3f3f3d; }
+  .eliza a {
+    color: #3f3f3d;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 15px;
+    text-decoration: none; }
+    .eliza a:hover {
+      border: 1px solid #3f3f3d;
+      outline: none;
+      border-radius: 4px; }
+    .eliza a img {
+      height: 12px;
+      margin: 0 0 0 3px; }
+
+.modal-on {
+  overflow: hidden; }
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff3e8; }
+  .modal-container .modal {
+    background-color: #fff3e8;
+    width: 80%;
     margin: 0 auto;
     border-radius: 20px;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%); }
-  .share .modal-header {
+    top: 30%;
+    transform: translateY(-50%);
+    text-align: left; }
+    @media only screen and (min-width: 750px) {
+      .modal-container .modal {
+        width: 40%; } }
+  .modal-container .modal-header {
     width: 90%;
     margin: 0 auto;
     position: relative; }
-  .share .close {
+  .modal-container .close {
     position: absolute;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-size: 12px;
     right: 0;
     top: 0; }
-  .share .modal-content {
+  .modal-container .modal-content {
     width: 90%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    text-align: left; }
+    .modal-container .modal-content p.explain {
+      text-align: left; }
+      .modal-container .modal-content p.explain a {
+        color: #3f3f3d; }
+    .modal-container .modal-content p.copyright {
+      font-size: 0.75rem;
+      font-size: 12px; }
