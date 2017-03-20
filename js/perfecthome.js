@@ -74,6 +74,7 @@ $(document).ready(function() {
 	 		return true;
 	 	}
 		return nameIsValid;
+		console.log(playerName);
 	};
 
 	var pickForm = function(){
@@ -187,21 +188,31 @@ $(document).ready(function() {
 		return formIsValid; //returns t/f
 	}; //closes validate -------------------------//
 
-	//	save to JSON file
+	//	save data ------------------------//
 
-	var saveData = function(formToSave) {
-	
+	var saveData = function(data, listing) {
+		var listing = myListing;
 		var data = formToSave.serializeArray();
-		console.log(data);
-        // $.each(data, function(i, field){
-        //     console.log(field.name + ":" + field.value + " ");
-        // });
+		console.log(data, listing);
+
+		//add each formToSave object to data.json. or buildJson.php?
+		//also save myLisiting the whole text as a string
+	
+		// $.ajax({
+		//    	type: "POST",
+		//    	url: "buildJson.php", //the name and location of your php file
+		//    	data: data,      //add the data to a document.
+		//   	 success: function() {alert('sucess');} //just to make sure it got to this point.
+		// });
+        
 	}	
 		
 	// }
 
 	// inject answers into the madlibs and grab all text
 	var createListing1= function(){
+		// print name
+
 	    // if input starts with a vowel, add an n to make an before it.
 	    var inputStartsWithVowel = $("input.adj2").val();
 		var addN = $(".adj2").prev();
@@ -224,6 +235,7 @@ $(document).ready(function() {
 		 };
 
 		// grab the values from the input boxes, then append them to the DOM
+		$(".firstName").empty().append($("input.firstName").val());
 	    $(".adj1").empty().append($("input.adj1").val());
 	    $(".favCountry").empty().append($("input.favCountry").val());
 	    $(".bestie").empty().append($("input.bestie").val());
@@ -238,10 +250,9 @@ $(document).ready(function() {
 	    $(".favAnimal").empty().append($("input.favAnimal").val());
 	    $(".verb1").empty().append($("input.verb1").val());
 
-	    // save data to JSON
+	    // save data 
 	    formToSave = $('#questions1');
 		console.log(formToSave);
-		saveData(formToSave);
 
 	    // hide the questions
 	    $(".q1").hide();
@@ -255,6 +266,7 @@ $(document).ready(function() {
 
 		myListing = $(".listing1").text();
 		copyTextToClipboard(myListing);
+		saveData(formToSave, myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
@@ -268,7 +280,8 @@ $(document).ready(function() {
 
   		var dir = $("#direction option:selected" ).text();
 		var landmark = $("#landmark :selected").text();
-		
+
+		$(".firstName").empty().append($("input.firstName").val());
 		$(".num5").empty().append($("input.num5").val());
 		$(".adj3").empty().append($("input.adj3").val());
 		$(".num2").empty().append($("input.num2").val());
@@ -285,7 +298,6 @@ $(document).ready(function() {
 		//dave data to JSON
 		formToSave = $('.questions2');
 		console.log(formToSave);
-		saveData();		
 
 		// hide the questions
 		$(".q2").hide();
@@ -299,6 +311,7 @@ $(document).ready(function() {
 
 		myListing = $(".listing2").text();	//get the text of element
 		copyTextToClipboard(myListing);
+		saveData(formToSave, myListing);		
 
 		$(".btn-reset").show();	
 		$(".share").show();
@@ -312,6 +325,7 @@ $(document).ready(function() {
 
 		var time = $("#time option:selected" ).text();
 
+		$(".firstName").empty().append($("input.firstName").val());
 		$(".num6").empty().append($("input.num6").val());
 		$(".num7").empty().append($("input.num7").val());
 		$(".disaster").empty().append($("input.disaster").val());
@@ -329,7 +343,6 @@ $(document).ready(function() {
 		//dave data to JSON
 		formToSave = $('#questions3');
 		console.log(formToSave);
-		saveData();
 		
 		// hide the questions
 		$(".q3").hide();
@@ -343,6 +356,7 @@ $(document).ready(function() {
 
 		myListing = $(".listing3").text();	
 		copyTextToClipboard(myListing);
+		saveData(formToSave, myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
