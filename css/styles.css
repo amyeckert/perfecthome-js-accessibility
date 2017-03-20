@@ -494,7 +494,7 @@ a {
   margin: 0 auto;
   padding: 30px;
   max-width: 50%;
-  min-width: 340px;
+  min-width: 255px;
   font-family: "Raleway", sans-serif;
   border: none;
   background-color: transparent;
@@ -572,15 +572,18 @@ a {
   .container .error {
     font-size: 0.875rem;
     font-size: 14px;
-    height: 30px;
+    height: 20px;
     margin: 0 0 0 0;
     font-style: italic;
     color: #ff0044;
-    max-width: 50%;
+    max-width: 100%;
     -ms-flex-order: 3;
         order: 3;
     -ms-flex: 2 0 auto;
         flex: 2 0 auto; }
+    @media only screen and (min-width: 750px) {
+      .container .error {
+        height: 25px; } }
     @media only screen and (min-width: 1024px) {
       .container .error {
         padding: 15px 0 0 0;
@@ -588,7 +591,7 @@ a {
 
 .btn {
   display: block;
-  margin: 0 auto;
+  margin: 0;
   padding: 0.6rem 1rem;
   border-style: none;
   border: 1px solid transparent;
@@ -632,6 +635,10 @@ a {
   .btn-ghost img {
     height: 12px;
     margin: 0 0 0 3px; }
+
+#btn-name,
+.btn-reset {
+  margin: 0 auto; }
 
 select:focus,
 button[type="submit"]:focus,

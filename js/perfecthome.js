@@ -136,7 +136,7 @@ $(document).ready(function() {
 			var currentInputType = $(chosenInputs[i]).attr('type');		
 			
 			// remove any previous error msg
-			// $('#' + currentInputId).next().text('');
+			$('#' + currentInputId).next().text('');
 			
 			// check the input is empty
 			if(currentAnswer === '') {
@@ -227,6 +227,8 @@ $(document).ready(function() {
 
 	    // hide the questions
 	    $(".q1").hide();
+	    //jump to top of page
+	    $(window).scrollTop(0);
 	    //	show the listing; 
 	    $(".listings").show();
 		$(".js-list1").show();
@@ -264,6 +266,8 @@ $(document).ready(function() {
 
 		// hide the questions
 		$(".q2").hide();
+		 //jump to top of page
+	    $(window).scrollTop(0);
 		//	show the listing
 		$(".listings").show();
 		$(".js-list1").hide();
@@ -302,6 +306,8 @@ $(document).ready(function() {
 		
 		// hide the questions
 		$(".q3").hide();
+		 //jump to top of page
+	    $(window).scrollTop(0);
 		//show the listing
 		$(".listings").show();
 		$(".js-list1").hide();

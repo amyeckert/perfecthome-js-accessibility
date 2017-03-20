@@ -47,9 +47,7 @@ label {
 	font-size: $baseFontSize;
 	order: 1;
 	min-width: 100%;
-	// position: absolute;
-	// top: 0;
-	// left: 0;
+
 	@include bp(small){
 		@include font-size(18);
 	}
@@ -69,7 +67,6 @@ input[type="text"] {
 	border: 1px solid $c-grey-med;
 	border-radius: 4px;
 	flex:1 0 0;
-	
 	@include font-size(14);
 	
 	@include bp-arb(xsmall) {
@@ -116,7 +113,7 @@ a {
 	margin: 0 auto;
 	padding: 30px;
 	max-width: 50%;
-	min-width: 340px;
+	min-width: 255px;
 	font-family: $f-text;
 	border: none;
 	background-color: transparent;
@@ -188,20 +185,21 @@ a {
 	.error {
 		// background-color: yellow;
 		@include font-size(14);
-		height: 30px;
+		height: 20px;
 	    margin: 0 0 0 0;
 		font-style: italic;
 		color: $c-warning;
-		max-width: 50%;
+		max-width: 100%;
 		order: 3;
 		flex: 2 0 auto;
+
+		@include bp(small) {
+			height: 25px;
+		}
 
 		@include bp(medium) {
 			padding: 15px 0 0 0;
 			height: 35px;
-			// position: absolute;
-			// top: 30%;
-			// left: 51%;
 		}
 	}
 }
@@ -209,7 +207,7 @@ a {
 //	 BUTTONS ----------------------//
 .btn {
 	display: block;
-    margin: 0 auto;
+    margin: 0 ;
 	padding: 0.6rem 1rem;
 	border-style: none;
 	border: 1px solid transparent;
@@ -257,6 +255,10 @@ a {
 		margin: 0 0 0 3px;
 	}
 
+}
+#btn-name, 
+.btn-reset {
+	margin: 0 auto;
 }
 select:focus,
 button[type="submit"]:focus,
