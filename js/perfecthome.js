@@ -136,7 +136,7 @@ $(document).ready(function() {
 			var currentInputType = $(chosenInputs[i]).attr('type');		
 			
 			// remove any previous error msg
-			$('#' + currentInputId).next().text('');
+			// $('#' + currentInputId).next().text('');
 			
 			// check the input is empty
 			if(currentAnswer === '') {

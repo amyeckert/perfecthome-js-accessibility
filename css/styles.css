@@ -417,7 +417,10 @@ legend {
   vertical-align: baseline; }
 
 label {
-  font-size: 16; }
+  font-size: 16;
+  -ms-flex-order: 1;
+      order: 1;
+  min-width: 100%; }
   @media only screen and (min-width: 750px) {
     label {
       font-size: 1.125rem;
@@ -433,9 +436,13 @@ input[type="text"] {
   height: 35px;
   padding: 8px;
   color: #878787;
+  -ms-flex-order: 2;
+      order: 2;
   background-color: transparent;
   border: 1px solid #878787;
   border-radius: 4px;
+  -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
   font-size: 0.875rem;
   font-size: 14px; }
   @media only screen and (min-width: xsmallpx) {
@@ -474,8 +481,14 @@ a {
     outline: 1px solid #ff9b44; }
 
 .container {
-  display: -ms-flexbox;
   display: flex;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
   -ms-flex-flow: column;
       flex-flow: column;
   margin: 0 auto;
@@ -503,8 +516,14 @@ a {
   .container .enter-name {
     -ms-flex-order: 1;
         order: 1;
-    display: -ms-flexbox;
     display: flex;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
     -ms-flex-direction: row;
         flex-direction: row;
     text-align: center;
@@ -535,9 +554,12 @@ a {
   .container .question {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: column nowrap;
-        flex-flow: column nowrap;
-    margin: 0 0 0 0; }
+    -ms-flex-flow: column wrap;
+        flex-flow: column wrap;
+    position: relative;
+    margin: 0 0 0 0;
+    -ms-flex-order: 3;
+        order: 3; }
     @media only screen and (min-width: 750px) {
       .container .question {
         -ms-flex-flow: column wrap;
@@ -546,14 +568,19 @@ a {
       .container .question {
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
-        margin: 0 0 2% 0; } }
+        margin: 0 0 0 0; } }
   .container .error {
     font-size: 0.875rem;
     font-size: 14px;
     height: 30px;
     margin: 0 0 0 0;
     font-style: italic;
-    color: #ff0044; }
+    color: #ff0044;
+    max-width: 50%;
+    -ms-flex-order: 3;
+        order: 3;
+    -ms-flex: 2 0 auto;
+        flex: 2 0 auto; }
     @media only screen and (min-width: 1024px) {
       .container .error {
         padding: 15px 0 0 0;
@@ -567,7 +594,9 @@ a {
   border: 1px solid transparent;
   border-radius: 4px;
   color: #fff;
-  font-size: 16; }
+  font-size: 16;
+  -ms-flex-order: 3;
+      order: 3; }
   .btn + p {
     display: inline-block;
     font-size: 0.875rem;
@@ -575,7 +604,9 @@ a {
     height: 1rem;
     margin: 0;
     font-style: italic;
-    color: #ff0044; }
+    color: #ff0044;
+    -ms-flex-order: 4;
+        order: 4; }
 
 .btn-orange {
   background-color: #ff9b44; }
@@ -683,6 +714,7 @@ span.error {
   .share p {
     -ms-flex: 0 1 auto;
         flex: 0 1 auto;
+    width: 100%;
     margin: 1rem 0 0 0;
     font-size: 0.875rem;
     font-size: 14px;
@@ -741,7 +773,8 @@ span.error {
     border-radius: 20px;
     position: relative;
     top: 30%;
-    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
     text-align: left; }
     @media only screen and (min-width: 750px) {
       .modal-container .modal {
