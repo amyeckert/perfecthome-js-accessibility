@@ -441,8 +441,8 @@ input[type="text"] {
   background-color: transparent;
   border: 1px solid #878787;
   border-radius: 4px;
-  -ms-flex: 1 0 auto;
-      flex: 1 0 auto;
+  -ms-flex: 1 0 0px;
+      flex: 1 0 0;
   font-size: 0.875rem;
   font-size: 14px; }
   @media only screen and (min-width: xsmallpx) {

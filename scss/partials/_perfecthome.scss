@@ -68,10 +68,8 @@ input[type="text"] {
 	background-color: transparent;
 	border: 1px solid $c-grey-med;
 	border-radius: 4px;
-	flex: 1 0 auto;
-	// position: absolute; 
-	// top: 25%;
-	// left: 0;
+	flex:1 0 0;
+	
 	@include font-size(14);
 	
 	@include bp-arb(xsmall) {
