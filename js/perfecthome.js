@@ -252,7 +252,6 @@ $(document).ready(function() {
 
 	    // save data 
 	    formToSave = $('#questions1');
-		console.log(formToSave);
 
 	    // hide the questions
 	    $(".q1").hide();
@@ -297,7 +296,6 @@ $(document).ready(function() {
 
 		//dave data to JSON
 		formToSave = $('.questions2');
-		console.log(formToSave);
 
 		// hide the questions
 		$(".q2").hide();
@@ -342,7 +340,6 @@ $(document).ready(function() {
 
 		//dave data to JSON
 		formToSave = $('#questions3');
-		console.log(formToSave);
 		
 		// hide the questions
 		$(".q3").hide();
