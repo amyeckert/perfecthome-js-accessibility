@@ -81,7 +81,7 @@ $(document).ready(function() {
 		//randomly choose a questionnaire
 		var allQuestions = [q1, q2, q3];
 		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
-		console.log(chosen);
+		// console.log(chosen);
 		
 		//for future investigation: 
 		// source https://stackoverflow.com/questions/6625551/math-random-number-without-repeating-a-previous-number //
@@ -125,7 +125,7 @@ $(document).ready(function() {
 	//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
-
+		console.log(chosenInputs);
 		var formIsValid = true;
 
 		// check if each one is filled out correctly
@@ -187,6 +187,19 @@ $(document).ready(function() {
 		return formIsValid; //returns t/f
 	}; //closes validate -------------------------//
 
+	//	save to JSON file
+
+	var saveData = function(formToSave) {
+	
+		var data = formToSave.serializeArray();
+		console.log(data);
+        // $.each(data, function(i, field){
+        //     console.log(field.name + ":" + field.value + " ");
+        // });
+	}	
+		
+	// }
+
 	// inject answers into the madlibs and grab all text
 	var createListing1= function(){
 	    // if input starts with a vowel, add an n to make an before it.
@@ -224,6 +237,11 @@ $(document).ready(function() {
 	    $(".num1").empty().append($("input.num1").val());
 	    $(".favAnimal").empty().append($("input.favAnimal").val());
 	    $(".verb1").empty().append($("input.verb1").val());
+
+	    // save data to JSON
+	    formToSave = $('#questions1');
+		console.log(formToSave);
+		saveData(formToSave);
 
 	    // hide the questions
 	    $(".q1").hide();
@@ -264,6 +282,11 @@ $(document).ready(function() {
 		$(".favCity").empty().append($("input.favCity").val());
 		$(".landmark").empty().append(landmark);
 
+		//dave data to JSON
+		formToSave = $('.questions2');
+		console.log(formToSave);
+		saveData();		
+
 		// hide the questions
 		$(".q2").hide();
 		 //jump to top of page
@@ -280,7 +303,6 @@ $(document).ready(function() {
 		$(".btn-reset").show();	
 		$(".share").show();
 		$(".eliza").show(); 
-
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
@@ -303,6 +325,11 @@ $(document).ready(function() {
 		$(".time").empty().append(time);
 		$(".pluAnimals").empty().append($("input.pluAnimals").val());
 		$(".verb3").empty().append($("input.verb3").val());	
+
+		//dave data to JSON
+		formToSave = $('#questions3');
+		console.log(formToSave);
+		saveData();
 		
 		// hide the questions
 		$(".q3").hide();
@@ -370,12 +397,11 @@ $(document).ready(function() {
 	};
 
 	//-------  HASH CHANGE EVENTS -------------------------//
-
 	$(window).on('hashchange', function(e) {
 		var currentHash = window.location.hash;
-
+		var formToSave;
 		if(currentHash === '#q1') {
-			console.log(currentHash);
+			// console.log(currentHash);
 			$(".q1").show(); 
 	 		$(".q2").hide();
 			$(".q3").hide();
@@ -384,9 +410,8 @@ $(document).ready(function() {
 			});
 			$(".listings").hide();
 		}
-
 		if(currentHash === '#q2') {
-			console.log(currentHash);
+			// console.log(currentHash);
 			$(".q2").show();
 	 		$(".q1").hide();  
 	 		$(".q3").hide();
@@ -396,30 +421,30 @@ $(document).ready(function() {
 			$(".listings").hide();
 		
 		}
-
 		if(currentHash === '#q3') {
-			console.log(currentHash);
+			// console.log(currentHash);
 			$(".q3").show();
 	 		$(".q1").hide(); 
 	 		$(".q2").hide();
 	 		$('body').css({
 				"background-image" : "url('img/seam2-sm.jpg')"
 			});
-			$(".listings").hide();
-				
+			$(".listings").hide();				
 		}
-
 		if(currentHash === '#listing1' ) {
-			console.log(currentHash);
-			createListing1();					
+			// console.log(currentHash);
+			createListing1();
+								
 		}
 		if(currentHash === '#listing2' ) {
-			console.log(currentHash);
-			createListing2();					
+			// console.log(currentHash);
+			createListing2();
+						
 		}
 		if(currentHash === '#listing3' ) {
-			console.log(currentHash);
-			createListing3();					
+			// console.log(currentHash);
+			createListing3();
+								
 		}
 	});
 
@@ -444,6 +469,10 @@ $(document).ready(function() {
 			console.log('form is not valid');
 			return false;
 		} else {
+			//write inputs to JSON
+			// console.log( $('.questions1').serializeArray());
+			// $(".questions1").serializeObject();
+			// console.log(formData);
 			$('#btn-submit1').next().text('');
 			window.location.hash = '#listing1';
 			console.log('form is valid');				
@@ -457,7 +486,9 @@ $(document).ready(function() {
 			console.log('form is not valid');
 			return false;
 		} else {
-		$('#btn-submit2').next().text('');
+			//write inputs to JSON
+			// console.log( $('.questions2').serializeArray());
+			$('#btn-submit2').next().text('');
 			window.location.hash = '#listing2';
 			console.log('form is valid');					   		
 		}
@@ -470,6 +501,8 @@ $(document).ready(function() {
 			console.log('form is not valid');
 			return false;
 		} else {
+			//write inputs to JSON
+			// console.log( $('.questions3').serializeArray());
 			$('#btn-submit3').next().text('');
 			window.location.hash = '#listing3';
 			console.log('form is valid');

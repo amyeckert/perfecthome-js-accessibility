@@ -59,7 +59,7 @@ input[type="text"] {
 	display: block;
 	margin: 5px 0 3px 0;
 	width: 100%;
-	height: 35px;
+	min-height: 35px;
 	padding: 8px;
 	color: $c-grey-med;
 	order: 2;
@@ -74,16 +74,12 @@ input[type="text"] {
 	}
 	@include bp(small){
 		max-width: 50%;
-
 	}
 }
 #firstName {
 	@include bp(small) {
 		margin: 10px auto;
 	}	
-}
-select {
-	-webkit-appearance: menu-list;
 }
 option {
 	font-size: $baseFontSize;
@@ -170,15 +166,13 @@ a {
 		position: relative;
 		margin: 0 0 0 0 ;
 		order: 3;
-		// position: relative;
-
 
 		@include bp(small) {
 			flex-flow: column wrap;
 		}
 		@include bp(medium) {
 			flex-flow: row wrap;
-			margin: 0 0 0 0 ;
+			margin: 0 0 1rem 0 ;
 		}
 
 	}
@@ -193,13 +187,9 @@ a {
 		order: 3;
 		flex: 2 0 auto;
 
-		@include bp(small) {
-			height: 25px;
-		}
-
 		@include bp(medium) {
 			padding: 15px 0 0 0;
-			height: 35px;
+			
 		}
 	}
 }
@@ -260,6 +250,13 @@ a {
 .btn-reset {
 	margin: 0 auto;
 }
+.btn-copy {
+	display: none;
+	@include bp(medium) {
+		display: block;
+	}
+}
+a:active,
 select:focus,
 button[type="submit"]:focus,
 button[type="submit"]:active,
@@ -371,6 +368,7 @@ span.error {
 		
 		}
 
+
 	}
 }
 .eliza {
@@ -384,11 +382,21 @@ span.error {
 		margin: 0 auto;
 		padding: 15px;
 		text-decoration: none;
-		&:hover {
+    	&:hover {
 		    border: 1px solid $c-text;
 	    	outline: none;
 	    	border-radius: 4px;
+
 		}
+		&:active {
+			color: $c-orange;
+	
+	    }
+    	@include bp(xsmall) {
+	    	&:hover {
+	    		border: none;
+	    	}
+    	}
 		img {
 			height: 12px;
 			margin: 0 0 0 3px;
