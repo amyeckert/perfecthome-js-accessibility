@@ -59,7 +59,7 @@ $(document).ready(function() {
 
 	var validateName = function(){
 		var nameIsValid = false;
-	 	var playerName = $('.firstName').val();
+	 	playerName = $('.firstName').val();
 	 	var errNameRequired = 'Pssst! What\'s your name?';
 
 	 	if(!playerName) {
@@ -192,8 +192,9 @@ $(document).ready(function() {
 
 	var saveData = function(data, listing) {
 		var listing = myListing;
+		var player = playerName;
 		var data = formToSave.serializeArray();
-		console.log(data, listing);
+		console.log(data, player, listing);
 
 		//add each formToSave object to data.json. or buildJson.php?
 		//also save myLisiting the whole text as a string
@@ -467,6 +468,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		// if passes
 		if (validateName()) {
+
 			//clear input values
 			$(".js-input").val("");
 			pickForm();

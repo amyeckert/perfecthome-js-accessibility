@@ -434,6 +434,7 @@ input[type="text"] {
   margin: 5px 0 3px 0;
   width: 100%;
   min-height: 35px;
+  height: 35px;
   padding: 8px;
   color: #878787;
   -ms-flex-order: 2;
