@@ -73,8 +73,8 @@ $(document).ready(function() {
 	 	} else {
 	 		return true;
 	 	}
-		return nameIsValid;
 		console.log(playerName);
+		return nameIsValid;
 	};
 
 	var pickForm = function(){
@@ -108,7 +108,7 @@ $(document).ready(function() {
   
 		//	PICK A QUESTIONAIRE ------------//
 		if (chosen == q1) {
-			window.location.hash = '#q1'
+			window.location.hash = '#q1';
 			// previousChoice = chosen;
 			// console.log(previousChoice);
 	 	}
@@ -119,7 +119,7 @@ $(document).ready(function() {
 		else { 
 			window.location.hash = 'q3';
 			// previousChoice = chosen;
-		};
+		}
 	};
 
 	var validateForm = function() {
@@ -205,7 +205,7 @@ $(document).ready(function() {
 		//   	 success: function() {alert('sucess');} //just to make sure it got to this point.
 		// });
         
-	}	
+	};	
 		
 	// }
 
@@ -223,7 +223,7 @@ $(document).ready(function() {
 		 } else {
 		 	addN.empty().text('a ');
 		 	$(".adj2").empty().append(inputStartsWithVowel).val();
-		 };
+		 }
 
 		 //check for and remove "the" before name of body of water
 		 var waterInput = $("input.water").val(); 
@@ -232,7 +232,7 @@ $(document).ready(function() {
 	    	$(".water").empty().append(waterInput).val();
 		 } else {
 	    	$(".water").empty().append(waterInput).val();	
-		 };
+		 }
 
 		// grab the values from the input boxes, then append them to the DOM
 		$(".firstName").empty().append($("input.firstName").val());
@@ -405,7 +405,7 @@ $(document).ready(function() {
 		}
 
 		document.body.removeChild(textArea);
-	};
+	}
 
 	//-------  HASH CHANGE EVENTS -------------------------//
 	$(window).on('hashchange', function(e) {

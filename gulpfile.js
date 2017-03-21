@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
     uglify = require('gulp-uglify'),
+    jshint = require('gulp-jshint');
     livereload = require('gulp-livereload');
 
 
@@ -25,24 +26,28 @@ gulp.task('styles', function () {
         .pipe(notify("SCSS compiled!"));
 });
 
-// gulp.task('js', function () {
+gulp.task('js', function () {
 
-//     gulp.src('./js/vendor/plugins/*.js')
-//         .pipe(plumber())
-//         .pipe(concat('plugins.min.js'))
-//         //.pipe(uglify())
-//         .pipe(gulp.dest('./js/vendor'))
-//         .pipe(notify({message: 'Plugins Compiled and Minified!'}));
+    // gulp.src('./js/vendor/plugins/*.js')
+    //     .pipe(plumber())
+    //     .pipe(concat('plugins.min.js'))
+    //     //.pipe(uglify())
+    //     .pipe(gulp.dest('./js/vendor'))
+    //     .pipe(notify({message: 'Plugins Compiled and Minified!'}));
 
+    gulp.src('./js/perfecthome.js')
+    return gulp.src('js/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(plumber())
+        .pipe(uglify())
+        .pipe(gulp.dest('/js'))
+        .pipe(rename({suffix: '-min'}))
+        .pipe(gulp.dest('js/min'))
+        .pipe(notify({message: 'JS Compiled!'}))
+        .pipe(livereload());
+});
 
-//     gulp.src('./js/script.js')
-//         .pipe(plumber())
-//         .pipe(uglify())
-//         .pipe(rename({suffix: '-min'}))
-//         .pipe(gulp.dest('js/min'))
-//         .pipe(notify({message: 'JS Compiled!'}))
-//         .pipe(livereload());
-// });
 
 gulp.task('watch', function () {
     // livereload.listen();
@@ -50,9 +55,9 @@ gulp.task('watch', function () {
     gulp.watch('./scss/vendor/*.scss', ['styles']);
     // gulp.watch('./js/vendor/plugins/*.js', ['js']);
     // gulp.watch('./js/vendor/plugins/**/*.js', ['js']);
-    // gulp.watch('./js/script.js', ['js']);
+    gulp.watch('./js/perfecthome.js', ['js']);
 });
 
 gulp.task('default', function() {
-  gulp.start('watch','styles');
+  gulp.start('watch','styles', 'js');
 });
