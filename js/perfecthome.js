@@ -198,12 +198,14 @@ $(document).ready(function() {
 		//add each formToSave object to data.json. or buildJson.php?
 		//also save myLisiting the whole text as a string
 	
-		// $.ajax({
-		//    	type: "POST",
-		//    	url: "buildJson.php", //the name and location of your php file
-		//    	data: data,      //add the data to a document.
-		//   	 success: function() {alert('sucess');} //just to make sure it got to this point.
-		// });
+/*		$.ajax({
+		   	type: "POST",
+		   	url: "buildJson.php", //the name and location of your php file
+		   	data: data,      //add the data to a document.
+		  	success: function() {
+		  		alert('success');
+		  		} //just to make sure it got to this point.
+		});*/
         
 	};	
 		
@@ -252,7 +254,7 @@ $(document).ready(function() {
 
 	    // save data 
 	    formToSave = $('#questions1');
-
+	    
 	    // hide the questions
 	    $(".q1").hide();
 	    //jump to top of page
@@ -273,6 +275,7 @@ $(document).ready(function() {
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
+
 	};
 
 	var createListing2 = function(){
