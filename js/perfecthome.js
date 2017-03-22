@@ -195,8 +195,9 @@ $(document).ready(function() {
 		var player = playerName;
 		var data = formToSave.serializeArray();
 		data.unshift({name: player});
+		data.push({listing: listing});
 		// data.JSON.stringify();
-		console.log(data, listing);
+		console.log(data);
 
 		//add each formToSave object to data.json. or buildJson.php?
 		//also save myLisiting the whole text as a string
