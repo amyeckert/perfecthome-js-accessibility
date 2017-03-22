@@ -59,8 +59,7 @@ $(document).ready(function() {
 
 	var validateName = function(){
 		var nameIsValid = false;
-		currentPlayer = $('#firstName');
-	 	playerName = $('#firstName').val();
+	 	playerName = $('.firstName').val();
 	 	var errNameRequired = 'Pssst! What\'s your name?';
 
 	 	if(!playerName) {

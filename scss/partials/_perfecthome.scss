@@ -432,13 +432,16 @@ span.error {
 		margin: 0 auto;
 		border-radius: 20px;
 		position: relative;
-		top: 30%;
+		top: 50%;
 		transform: translateY(-50%); //centers it. 
 		text-align: left;
 
 		@include bp(small){
 			width: 40%;
 
+		}
+		@include bp(medium){
+			top: 30%;
 		}
 	}
 
