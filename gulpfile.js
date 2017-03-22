@@ -1,3 +1,5 @@
+// jshint esversion: 6 
+
 var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
@@ -37,10 +39,12 @@ gulp.task('js', function () {
 
     gulp.src('./js/perfecthome.js')
     return gulp.src('js/*.js')
-        // .pipe(jshint())
-        // .pipe(jshint.reporter('default'))
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
         .pipe(plumber())
-        .pipe(uglify())
+        .pipe(uglify({
+            esversion: '6'
+        }))
         .pipe(gulp.dest('/js'))
         .pipe(rename({suffix: '-min'}))
         .pipe(gulp.dest('js/min'))
