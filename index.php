@@ -25,7 +25,7 @@
 		<h1 class="message">Find Your Perfect Home!</h1>
 
 		<div class="enter-name">
-			<form id="name" name="name" action="perfecthome.html" method="post">
+			<form id="name" name="name" action="buildJson.php" method="post">
 
 				<label class="name" for="firstName">Hi! What is your first name?</label>
 
@@ -37,7 +37,7 @@
 		</div>
 
 		<div class="q1">
-			<form id="questions1" name="questions1" method='post'>
+			<form id="questions1" name="questions1" action="buildJson.php" method='post'>
 				<div class="question"> 	
 					<label for="adj1">Enter an adjective.</label>
 					<input id="adj1" class="js-input adj1" name="adj1" type="text" data-error-msg="Don't forget this one." placeholder="Adjective..." aria-required="true">
@@ -120,7 +120,7 @@
 		</div>
 	
 		<div class="q2">
-			<form id="questions2" name="questions2" method='post'>
+			<form id="questions2" name="questions2" action="buildJson.php" method='post'>
 
 				<div class="question">
 					<label for="num5">Enter a number from 0 - 10.</label>
@@ -194,7 +194,7 @@
 		</div>
 
 		<div class="q3">
-			<form id="questions3" name="questions3" method='post'>
+			<form id="questions3" name="questions3" action="buildJson.php" method='post'>
 				<div class="question">
 					<label for="num6">Enter a number from 0 - 5.</label>
 					<input id="num6" class="js-input num6" name="num6" type="number" min="0" max="5" data-error-msg="Oops" placeholder="#" aria-required="true"><p class="error"></p>

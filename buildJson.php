@@ -1,6 +1,6 @@
 <?php
 
-	// $month = $_POST['in_month'];
+	$formData = $_POST['data'];
 	// $day = $_POST['in_day'];
 	// $year = (int)$_POST['in_year'];
 	// $date = $month . '/' . $day . '/' . $year;
@@ -18,13 +18,13 @@
 
     $fh = fopen($file, 'a+');  //'a' will append the data to the end of the file. there are other arguemnts for fopen that might help you a little more. google 'fopen php'.
 
-    $new_data = $_POST["newData"]; //put POST data from ajax request in a variable
+    $new_data = $_POST["data"]; //put POST data from ajax request in a variable
+    
 
     fwrite($fh, $new_data);  //write the data with fwrite.
-
-
-
-
+	file_put_contents($file, json_encode($json, JSON_PRETTY_PRINT TRUE));
+	echo json_encode($json);
+    fclose($fh);  //close the file
 
 
 	// $fileBKP='back_'.date('m-d-Y_hia').'.txt';
@@ -41,15 +41,8 @@
 	// $json[$date] = array("date" => $date, "year" => $year, "white" => $white, "black" => $black, "notes" => $notes);
 
 	// rebuild refuse.json
-	file_put_contents($file, json_encode($json, TRUE));
-
-
-	echo json_encode($json);
 
 
 
-
-
-    fclose($fh);  //close the file
 ?>
 

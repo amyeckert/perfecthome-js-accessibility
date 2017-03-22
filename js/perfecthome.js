@@ -126,7 +126,7 @@ $(document).ready(function() {
 	//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
-		console.log(chosenInputs);
+		// console.log(chosenInputs);
 		var formIsValid = true;
 
 		// check if each one is filled out correctly
@@ -163,11 +163,11 @@ $(document).ready(function() {
 						currentErrorMessage = '\*Please pick a number in the correct range.';
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						formIsValid = false;
-						console.log(min,  max, numberEntered + ' is too big, this block returns ' + formIsValid);
+						// console.log(min,  max, numberEntered + ' is too big, this block returns ' + formIsValid);
 					} else {
 						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
-						console.log(min, max, numberEntered + ' is in range.');
+						// console.log(min, max, numberEntered + ' is in range.');
 					} 
 				// if it's a text field, do this
 				}
@@ -194,20 +194,27 @@ $(document).ready(function() {
 		var listing = myListing;
 		var player = playerName;
 		var data = formToSave.serializeArray();
-		console.log(data, player, listing);
+		data.unshift({name: player});
+		// data.JSON.stringify();
+		console.log(data, listing);
 
 		//add each formToSave object to data.json. or buildJson.php?
 		//also save myLisiting the whole text as a string
 	
-/*		$.ajax({
+		$.ajax({
 		   	type: "POST",
 		   	url: "buildJson.php", //the name and location of your php file
 		   	data: data,      //add the data to a document.
 		  	success: function() {
 		  		alert('success');
 		  		} //just to make sure it got to this point.
-		});*/
-        
+		});
+
+		// https://stackoverflow.com/questions/1255948/post-data-in-json-format
+		// let data = {};
+		// let formdata = new FormData(theform);
+		// for (let tuple of formdata.entries()) data[tuple[0]] = tuple[1];
+		        
 	};	
 		
 	// }

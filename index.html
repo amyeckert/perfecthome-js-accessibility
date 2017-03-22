@@ -6,7 +6,6 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	 <!-- FB OG Tags -->
-	<!-- <meta property="og:url"                content="http://www.perfecthomequiz.com/index.html" /> -->
 	<meta property="og:url"                content="http://https://perfecthomequiz.com" />
 	<meta property="og:type"               content="website" />
 	<meta property="og:title"              content="Take This Quiz to Find Your Perfect Home!" />
@@ -23,7 +22,7 @@
 		<h1 class="message">Find Your Perfect Home!</h1>
 
 		<div class="enter-name">
-			<form id="name" name="name" action="perfecthome.html" method="post">
+			<form id="name" name="name" action="buildJson.php" method="post">
 
 				<label class="name" for="firstName">Hi! What is your first name?</label>
 
@@ -35,7 +34,7 @@
 		</div>
 
 		<div class="q1">
-			<form id="questions1" name="questions1" method='post'>
+			<form id="questions1" name="questions1" action="buildJson.php" method='post'>
 				<div class="question"> 	
 					<label for="adj1">Enter an adjective.</label>
 					<input id="adj1" class="js-input adj1" name="adj1" type="text" data-error-msg="Don't forget this one." placeholder="Adjective..." aria-required="true">
@@ -118,7 +117,7 @@
 		</div>
 	
 		<div class="q2">
-			<form id="questions2" name="questions2" method='post'>
+			<form id="questions2" name="questions2" action="buildJson.php" method='post'>
 
 				<div class="question">
 					<label for="num5">Enter a number from 0 - 10.</label>
@@ -192,7 +191,7 @@
 		</div>
 
 		<div class="q3">
-			<form id="questions3" name="questions3" method='post'>
+			<form id="questions3" name="questions3" action="buildJson.php" method='post'>
 				<div class="question">
 					<label for="num6">Enter a number from 0 - 5.</label>
 					<input id="num6" class="js-input num6" name="num6" type="number" min="0" max="5" data-error-msg="Oops" placeholder="#" aria-required="true"><p class="error"></p>
@@ -290,6 +289,17 @@
 					<div class="fb-share-icon social-icon">
 						<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.perfecthomequiz.com" target="_blank">
 							<img src="img/fb_icon_grey.svg">
+							<!-- <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 1280 800">
+							  <style type="text/css">
+							    
+								.st0{fill:#878787;}
+
+							  </style>
+							  <switch>
+							    <foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" width="1" height="1"/>
+							        <path id="Shape_17" class="st0" d="M1830 862h-533.3c-73.3 0-133.3 60-133.3 133.3v533.3c0 73.4 60 133.3 133.3 133.3H1830c73.3 0 133.3-60 133.3-133.4V995.3C1963.3 922 1903.3 862 1830 862zM1843.5 1262h-130.1v350h-150v-350H1491v-114.5h72.3v-74.4c0-101.1 43.6-161.1 162.4-161.1h136.9v123.9h-111.8c-33.2 0-37.3 17.3-37.3 49.6l-0.2 62h150L1843.5 1262z"/>
+							  </switch>
+							</svg> -->
 						</a>
 					</div>
 

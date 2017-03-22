@@ -738,6 +738,8 @@ span.error {
       outline: none; }
     .share .icons .social-icon a img {
       height: 25px; }
+      .share .icons .social-icon a img:hover {
+        fill: #ff9b44; }
     .share .icons .fb-share-button span {
       visibility: hidden; }
       .share .icons .fb-share-button span .svg {

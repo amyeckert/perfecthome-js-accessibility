@@ -356,6 +356,9 @@ span.error {
 				}
 				img {
 					height: 25px;
+					&:hover {
+						fill: $c-orange;
+					}
 				}
 			} 
 		}
