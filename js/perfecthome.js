@@ -32,10 +32,10 @@ $(document).ready(function() {
 	var allInputs = $('.js-input');
 
 	// regular expressions  -------------------------------//
-	const vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
+	var vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
 	var theRegExp = /\bthe\b/gi; //remove the word the
-	const lettersRegExp = /[^a-z ]$/gi; // allow ONLY alphabetic and whitespace
-	const numbersRegExp = /[^0-9]$/gi;
+	var lettersRegExp = /[^a-z ]$/gi; // allow ONLY alphabetic and whitespace
+	var numbersRegExp = /[^0-9]$/gi;
 
 	// VALIDATIONS ---------------------------//
 
@@ -59,13 +59,13 @@ $(document).ready(function() {
 
 	var validateName = function(){
 		var nameIsValid = false;
-	 	playerName = $('.firstName').val();
+		currentPlayer = $('#firstName');
+	 	playerName = currentPlayer.val();
 	 	var errNameRequired = 'Pssst! What\'s your name?';
 
 	 	if(!playerName) {
 	 		nameIsValid = false;
 			$('#' + 'firstName').next().text(errNameRequired);
-			console.log(errNameRequired);
 	 	} else if(!cleanText(playerName)){
 	 		nameIsValid = false;
 	 		errNameRequired = '\*Please use only letters, thanks!';
@@ -73,7 +73,6 @@ $(document).ready(function() {
 	 	} else {
 	 		return true;
 	 	}
-		console.log(playerName);
 		return nameIsValid;
 	};
 
@@ -191,23 +190,34 @@ $(document).ready(function() {
 	//	save data ------------------------//
 
 	var saveData = function(data, listing) {
-		var listing = myListing;
-		var player = playerName;
+		var listing = $.trim(myListing);
+		var nameOfInput = currentPlayer.name;
+		// var value = currentPlayer.name();
+		// var label = currentPlayer.name;//.serializeArray();
+
+		var newName = [
+			{name: 'firstName',
+			value: playerName }
+			];
+
 		var data = formToSave.serializeArray();
-		data.unshift({name: player});
+		data.unshift(newName[0]);
+		// data.unshift({name: value});
 		data.push({listing: listing});
-		// data.JSON.stringify();
-		console.log(data);
-		$.post('data.json', data);
+
+		console.log(newName, data);
+
+		// $.post('buildJson.php', data);
+		// JSON.stringify(data, null, '\t');
 	
-		// $.ajax({
-		//    	type: "POST",
-		//    	url: "buildJson.php", //the name and location of your php file
-		//    	data: data,      //add the data to a document.
-		//   	success: function() {
-		//   		alert('success');
-		//   		} //just to make sure it got to this point.
-		// });
+		$.ajax({
+		   	type: "POST",
+		   	url: "buildJson.php", //the name and location of your php file
+		   	data: data,      //add the data to a document.
+		  	success: function() {
+		  		alert('success');
+		  		} //just to make sure it got to this point.
+		});
 
 		// https://stackoverflow.com/questions/1255948/post-data-in-json-format
 		// let data = {};

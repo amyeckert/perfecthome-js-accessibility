@@ -20,10 +20,10 @@
 
     // $newData = $_POST['data']; //put POST data from ajax request in a variable
     $newData = $_POST; //put POST data from ajax request in a variable
-    print_r($_POST['name']);
+    print_r($_POST);
 
     // fwrite($fh, $newData);  //write the data with fwrite.
-	file_put_contents($file, json_encode($newData, JSON_PRETTY_PRINT));
+	// file_put_contents($file, json_encode($newData, JSON_PRETTY_PRINT));
 	file_append($file, json_encode($newData, JSON_PRETTY_PRINT));
 	// file_put_contents($file, $newData);
 	echo json_encode($newData);
