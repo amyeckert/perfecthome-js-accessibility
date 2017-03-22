@@ -60,7 +60,7 @@ $(document).ready(function() {
 	var validateName = function(){
 		var nameIsValid = false;
 		currentPlayer = $('#firstName');
-	 	playerName = currentPlayer.val();
+	 	playerName = $('#firstName').val();
 	 	var errNameRequired = 'Pssst! What\'s your name?';
 
 	 	if(!playerName) {
@@ -191,24 +191,18 @@ $(document).ready(function() {
 
 	var saveData = function(data, listing) {
 		var listing = $.trim(myListing);
-		var nameOfInput = currentPlayer.name;
-		// var value = currentPlayer.name();
-		// var label = currentPlayer.name;//.serializeArray();
-
 		var newName = [
-			{name: 'firstName',
-			value: playerName }
+			{name: 'firstName', value: playerName }
+			];
+		var newListing = [
+			{ name: "listing", value: listing }
 			];
 
 		var data = formToSave.serializeArray();
 		data.unshift(newName[0]);
-		// data.unshift({name: value});
-		data.push({listing: listing});
+		data.push(newListing[0]);
 
-		console.log(newName, data);
-
-		// $.post('buildJson.php', data);
-		// JSON.stringify(data, null, '\t');
+		console.log(data);
 	
 		$.ajax({
 		   	type: "POST",
