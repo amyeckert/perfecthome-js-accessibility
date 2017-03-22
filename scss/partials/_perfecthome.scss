@@ -71,15 +71,17 @@ input[type="text"] {
 	@include font-size(14);
 	
 	@include bp-arb(xsmall) {
-		max-width: 75%;
+		min-width: 75%;
 	}
 	@include bp(small){
-		max-width: 50%;
+		min-width: 50%;
 	}
 }
 #firstName {
+	max-width: 50%;
 	@include bp(small) {
 		margin: 10px auto;
+		min-width: 50%;
 	}	
 }
 option {

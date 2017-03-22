@@ -18,13 +18,15 @@
 
     $fh = fopen($file, 'a+');  //'a' will append the data to the end of the file. there are other arguemnts for fopen that might help you a little more. google 'fopen php'.
 
-    $json = $_POST['data']; //put POST data from ajax request in a variable
-    
+    // $newData = $_POST['data']; //put POST data from ajax request in a variable
+    $newData = $_POST; //put POST data from ajax request in a variable
+    print_r($_POST['name']);
 
-    fwrite($fh, $json);  //write the data with fwrite.
-	// file_put_contents($file, json_encode($json, JSON_PRETTY_PRINT TRUE));
-	file_put_contents($file, $json);
-	echo json_encode($json);
+    // fwrite($fh, $newData);  //write the data with fwrite.
+	file_put_contents($file, json_encode($newData, JSON_PRETTY_PRINT));
+	file_append($file, json_encode($newData, JSON_PRETTY_PRINT));
+	// file_put_contents($file, $newData);
+	echo json_encode($newData);
     fclose($fh);  //close the file
 
 

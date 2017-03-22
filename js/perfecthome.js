@@ -198,18 +198,16 @@ $(document).ready(function() {
 		data.push({listing: listing});
 		// data.JSON.stringify();
 		console.log(data);
-
-		//add each formToSave object to data.json. or buildJson.php?
-		//also save myLisiting the whole text as a string
+		$.post('data.json', data);
 	
-		$.ajax({
-		   	type: "POST",
-		   	url: "buildJson.php", //the name and location of your php file
-		   	data: data,      //add the data to a document.
-		  	success: function() {
-		  		alert('success');
-		  		} //just to make sure it got to this point.
-		});
+		// $.ajax({
+		//    	type: "POST",
+		//    	url: "buildJson.php", //the name and location of your php file
+		//    	data: data,      //add the data to a document.
+		//   	success: function() {
+		//   		alert('success');
+		//   		} //just to make sure it got to this point.
+		// });
 
 		// https://stackoverflow.com/questions/1255948/post-data-in-json-format
 		// let data = {};

@@ -450,16 +450,19 @@ input[type="text"] {
     select,
     input[type="number"],
     input[type="text"] {
-      max-width: 75%; } }
+      min-width: 75%; } }
   @media only screen and (min-width: 750px) {
     select,
     input[type="number"],
     input[type="text"] {
-      max-width: 50%; } }
+      min-width: 50%; } }
 
-@media only screen and (min-width: 750px) {
-  #firstName {
-    margin: 10px auto; } }
+#firstName {
+  max-width: 50%; }
+  @media only screen and (min-width: 750px) {
+    #firstName {
+      margin: 10px auto;
+      min-width: 50%; } }
 
 option {
   font-size: 16;
