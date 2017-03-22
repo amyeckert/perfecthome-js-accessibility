@@ -209,14 +209,9 @@ $(document).ready(function() {
 		   	url: "buildJson.php", //the name and location of your php file
 		   	data: data,      //add the data to a document.
 		  	success: function() {
-		  		alert('success');
-		  		} //just to make sure it got to this point.
+		  		console.log('written to data.json');
+		  		} 
 		});
-
-		// https://stackoverflow.com/questions/1255948/post-data-in-json-format
-		// let data = {};
-		// let formdata = new FormData(theform);
-		// for (let tuple of formdata.entries()) data[tuple[0]] = tuple[1];
 		        
 	};	
 		

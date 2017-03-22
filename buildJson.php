@@ -1,31 +1,14 @@
 <?php
 	
-	// $formData = $_POST['data'];
-	// $day = $_POST['in_day'];
-	// $year = (int)$_POST['in_year'];
-	// $date = $month . '/' . $day . '/' . $year;
-	// $white = (int)$_POST['in_white'];
-	// $black = (int)$_POST['in_black'];
-	// $notes = $_POST['in_notes'];
+    $file = "data.json";  //name and location of json file. if the file doesn't exist, it will be created with this name
 
-	// if(isset($notes)){
-	// 	$notes = $_POST['in_notes'];
-	// } else {
-	// 	$notes = '';
-	// }
+    $fh = fopen($file, 'a');  //'a' will append the data to the end of the file. there are other arguemnts for fopen that might help you a little more. google 'fopen php'.
 
-    $file = "data.json";  //name and location of json file. if the file doesn't exist, it   will be created with this name
-
-    $fh = fopen($file, 'a+');  //'a' will append the data to the end of the file. there are other arguemnts for fopen that might help you a little more. google 'fopen php'.
-
-    // $newData = $_POST['data']; //put POST data from ajax request in a variable
     $newData = $_POST; //put POST data from ajax request in a variable
     print_r($_POST);
 
-    // fwrite($fh, $newData);  //write the data with fwrite.
-	file_put_contents($file, json_encode($newData, JSON_PRETTY_PRINT));
-	// file_append($file, json_encode($newData, JSON_PRETTY_PRINT));
-	// file_put_contents($file, $newData);
+    fwrite($fh, json_encode($newData, JSON_PRETTY_PRINT));  //write the data with fwrite.
+
 	echo json_encode($newData);
     fclose($fh);  //close the file
 
