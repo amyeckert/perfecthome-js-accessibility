@@ -352,31 +352,35 @@ span.error {
 		justify-content: center;
 		margin: 0.3rem auto 0 auto;
 		
-		.social-icon {
+		.share-icon {
+			margin: 0 10px;
 			a {
 				&:hover {
 					border: none;
 					outline: none;
+					// fill: $c-orange;
 				}
-				img {
+				svg {
 					height: 25px;
-					&:hover {
-						fill: $c-orange;
-					}
+					// &:hover path {
+					// 	fill: $c-orange;
+					// }
 				}
-			} 
+			}
 		}
-		.fb-share-button {
+		.email {
+			svg{
+				height: 30px;}
+			
+		} 
+		.fb-share-icon {
 			span {
 				visibility: hidden;
 				.svg {
 					fill: $c-white;
 				}
 			}
-		
 		}
-
-
 	}
 }
 .eliza {

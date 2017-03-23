@@ -30,7 +30,6 @@ $(document).ready(function() {
  	var q2 = $(".q2");
  	var q3 = $(".q3");
 	var allInputs = $('.js-input');
-	// var listingToSave = '';
 
 	// regular expressions  -------------------------------//
 	var vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
@@ -202,8 +201,8 @@ $(document).ready(function() {
 	
 		$.ajax({
 		   	type: "POST",
-		   	url: "buildJson.php", //the name and location of your php file
-		   	data: newData,      //add the data to a document.
+		   	url: "buildJson.php", //the name and location of php file
+		   	data: newData,      //add the answers to a document.
 		  	success: function() {
 		  		console.log('written to data.json');
 		  		} 
@@ -255,27 +254,28 @@ $(document).ready(function() {
 	    
 	    // hide the questions
 	    $(".q1").hide();
+
 	    //jump to top of page
 	    $(window).scrollTop(0);
+
 	    //	show the listing; 
 	    $(".listings").show();
 		$(".js-list1").show();
 		$(".js-list2").hide();
 		$(".js-list3").hide();
-		 
-		// clear the listing from the variable   
+
+		//store listing and pass to saveData(); 
 		var myListing = $(".listing1").text();
 		myListing = $.trim(myListing);
 		saveData(form1, myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
 
 	    //change the h1 message
-	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-	   	// listingToSave = '';
-		// console.log(listingToSave); 
+	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";	   	
 	};
 
 	var createListing2 = function(){
@@ -302,18 +302,21 @@ $(document).ready(function() {
 
 		// hide the questions
 		$(".q2").hide();
+
 		 //jump to top of page
 	    $(window).scrollTop(0);
+
 		//	show the listing
 		$(".listings").show();
 		$(".js-list1").hide();
 		$(".js-list2").show();
 		$(".js-list3").hide();
 
-		// clear the listing from the variable  
+		//store listing and pass to saveData();
 		var myListing = $(".listing2").text();
 		myListing = $.trim(myListing);
 		saveData(form2, myListing);
+		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();	
 		$(".share").show();
@@ -321,8 +324,6 @@ $(document).ready(function() {
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
-	   	// listingToSave = '';
-		// console.log(listingToSave, myListing2); 
 	};
 
 	var createListing3 = function(){
@@ -349,34 +350,34 @@ $(document).ready(function() {
 		
 		// hide the questions
 		$(".q3").hide();
+
 		 //jump to top of page
 	    $(window).scrollTop(0);
+
 		//show the listing
 		$(".listings").show();
 		$(".js-list1").hide();
 		$(".js-list2").hide();
 		$(".js-list3").show();
 
-		// clear the listing from the variable  
+		//store listing and pass to saveData();
 		var myListing = $(".listing3").text();
 		myListing = $.trim(myListing);
 		saveData(form3, myListing);
-		// console.log(listingToSave); 
+		copyTextToClipboard(myListing);
 	
 		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
 
 		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
-		// listingToSave = '';
-		// console.log(listingToSave, myListing3);
 	};
 
 	//-------  SHARE LISTING ON FACEBOOK OR TWITTER -------------------------//
  
 	// source: https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
 	function copyTextToClipboard(text) {
-		var copyText = listingToSave;
+		var textToCopy = text;
   		var textArea = document.createElement("textarea");
 
 		// Place in top-left corner of screen regardless of scroll position.
@@ -399,7 +400,7 @@ $(document).ready(function() {
 
 		// Avoid flash of white box if rendered for any reason.
 		textArea.style.background = 'transparent';
-		textArea.value = text;
+		textArea.value = textToCopy;
 
 		document.body.appendChild(textArea);
 
@@ -520,7 +521,10 @@ $(document).ready(function() {
 
 	$('.js-copy-listing').click(function(e) {
 		e.preventDefault();
-	  	copyTextToClipboard(myListing);
+		var textToCopy = $('.listings > :visible');
+		textToCopy = textToCopy[0];
+		textToCopy = $.trim($(textToCopy).text());
+	  	copyTextToClipboard(textToCopy);
 
 	});
 

@@ -736,16 +736,18 @@ span.error {
     -ms-flex-pack: center;
         justify-content: center;
     margin: 0.3rem auto 0 auto; }
-    .share .icons .social-icon a:hover {
-      border: none;
-      outline: none; }
-    .share .icons .social-icon a img {
-      height: 25px; }
-      .share .icons .social-icon a img:hover {
-        fill: #ff9b44; }
-    .share .icons .fb-share-button span {
+    .share .icons .share-icon {
+      margin: 0 10px; }
+      .share .icons .share-icon a:hover {
+        border: none;
+        outline: none; }
+      .share .icons .share-icon a svg {
+        height: 25px; }
+    .share .icons .email svg {
+      height: 30px; }
+    .share .icons .fb-share-icon span {
       visibility: hidden; }
-      .share .icons .fb-share-button span .svg {
+      .share .icons .fb-share-icon span .svg {
         fill: #fff; }
 
 .eliza {
