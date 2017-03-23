@@ -79,7 +79,6 @@ $(document).ready(function() {
 		//randomly choose a questionnaire
 		var allQuestions = [q1, q2, q3];
 		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
-		// console.log(chosen);
 		
 		//for future investigation: 
 		// source https://stackoverflow.com/questions/6625551/math-random-number-without-repeating-a-previous-number //
@@ -106,16 +105,12 @@ $(document).ready(function() {
 		//	PICK A QUESTIONAIRE ------------//
 		if (chosen == q1) {
 			window.location.hash = '#q1';
-			// previousChoice = chosen;
-			// console.log(previousChoice);
 	 	}
 		 else if (chosen == q2) {
 			window.location.hash = '#q2';
-			// previousChoice = chosen;
 	 	}
 		else { 
 			window.location.hash = 'q3';
-			// previousChoice = chosen;
 		}
 	};
 
@@ -123,7 +118,6 @@ $(document).ready(function() {
 	//which form is visible? 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
-		// console.log(chosenInputs);
 		var formIsValid = true;
 
 		// check if each one is filled out correctly
@@ -141,10 +135,8 @@ $(document).ready(function() {
 				// add error message
 				$('#' + currentInputId).next().text('\*' + currentErrorMessage); // 
 				formIsValid = false; 
-				console.log(currentInputId +' is missing ' + formIsValid);
 			//if it is not empty, proceed:
 			} else {
-
 				// if it's a number input, do this:
 				if(currentInputType === 'number') { 
 
@@ -154,22 +146,19 @@ $(document).ready(function() {
 					var max = parseInt(maxValue, 10);
 					var numberEntered = parseInt(currentAnswer, 10);
 				
-					
 					// check numbers are in correct range
 				 	if (numberEntered < min || numberEntered > max) {
 						currentErrorMessage = '\*Please pick a number in the correct range.';
 						$('#' + currentInputId).next().text(currentErrorMessage);
-						formIsValid = false;
-						
+						formIsValid = false;	
 					} else {
 						// remove any previous error msg
-						$('#' + currentInputId).next().text('');
-						
+						$('#' + currentInputId).next().text('');		
 					} 
 				// if it's a text field, do this
 				}
 				if (currentInputType ==='text') { 
-				// check for only letters
+					// check for only letters
 					if (!cleanText(currentAnswer)) {
 						currentErrorMessage = '\*Please use only letters, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
@@ -196,18 +185,15 @@ $(document).ready(function() {
 		var newData = answers.serializeArray();
 		newData.unshift(newName[0]);
 		newData.push(newListing[0]);
-
-		console.log(newData, listing);
 	
 		$.ajax({
 		   	type: "POST",
 		   	url: "buildJson.php", //the name and location of php file
 		   	data: newData,      //add the answers to a document.
 		  	success: function() {
-		  		console.log('written to data.json');
-		  		} 
+		  		// console.log('written to data.json');
+	  		} 
 		});
-
 	};	
 		
 	// inject answers into the madlibs and grab all text----------------------//
@@ -407,11 +393,11 @@ $(document).ready(function() {
 		textArea.select();
 
 		try {
-		var successful = document.execCommand('copy');
-		var msg = successful ? 'successful' : 'unsuccessful';
-		console.log('Copying text command was ' + msg);
+			var successful = document.execCommand('copy');
+			var msg = successful ? 'successful' : 'unsuccessful';
+			console.log('Copying text command was ' + msg);
 		} catch (err) {
-		console.log('Oops, unable to copy');
+			console.log('Oops, unable to copy');
 		}
 
 		document.body.removeChild(textArea);
@@ -438,7 +424,6 @@ $(document).ready(function() {
 				"background-image" : "url('img/couches-sm.jpg')"
 			});
 			$(".listings").hide();
-		
 		}
 		if(currentHash === '#q3') {
 			$(".q3").show();
@@ -450,16 +435,13 @@ $(document).ready(function() {
 			$(".listings").hide();				
 		}
 		if(currentHash === '#listing1' ) {
-			createListing1();
-								
+			createListing1();						
 		}
 		if(currentHash === '#listing2' ) {
 			createListing2();
-						
 		}
 		if(currentHash === '#listing3' ) {
-			createListing3();
-								
+			createListing3();								
 		}
 	});
 
@@ -468,7 +450,6 @@ $(document).ready(function() {
 		e.preventDefault();
 		// if passes
 		if (validateName()) {
-
 			//clear input values
 			$(".js-input").val("");
 			pickForm();
@@ -511,8 +492,6 @@ $(document).ready(function() {
 			console.log('form is not valid');
 			return false;
 		} else {
-			//write inputs to JSON
-			// console.log( $('.questions3').serializeArray());
 			$('#btn-submit3').next().text('');
 			window.location.hash = '#listing3';
 			console.log('form is valid');
@@ -530,25 +509,21 @@ $(document).ready(function() {
 
 	//  MODAL: ABOUT --------------------------------//
 	var modal = function(state) {
-		//if state === 'open', fade in
-		
 		if(state === 'open') {
 			$('.modal-container').fadeIn(function(){
 				$('body').addClass('modal-on'); 
 			});
 		} 
-		//else, fade it out
 		else {
 			$('.modal-container').fadeOut(function(){
 				$('body').removeClass('modal-on');
 			});
 		}	
 	};
-
+	//open the modal
 	$('.js-modal-open').on('click', function(event) {
 		event.preventDefault();
 		modal('open');
-		console.log('clicked to open modal');
 	});
 
 	//close the modal
