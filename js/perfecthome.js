@@ -4,13 +4,15 @@ $(document).ready(function() {
 	//clear any input values
 	$(".js-input").val('');
 
-	// var currentHash = window.location.hash;
+	// //clear stored listings 
+ // 	var myListing1 = 'foo';
+ // 	var myListing2 = 'foofoo';
+ // 	var myListing3 = 'foofoofoo';
+
+ 	// reset window has to empty
 	window.location.hash = '';
-	// console.log(currentHash);
-	// $(".js-input").val('');
 
-
-	// // HIDE STUFF	----------------//
+	// // HIDE STUFF	---------------------------//
 	$(".q1").hide();
 	$(".q2").hide();
 	$(".q3").hide();
@@ -27,18 +29,16 @@ $(document).ready(function() {
 	var q1 = $(".q1");
  	var q2 = $(".q2");
  	var q3 = $(".q3");
-	
-
 	var allInputs = $('.js-input');
+	// var listingToSave = '';
 
 	// regular expressions  -------------------------------//
 	var vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
 	var theRegExp = /\bthe\b/gi; //remove the word the
-	var lettersRegExp = /[^a-z ]$/gi; // allow ONLY alphabetic and whitespace
-	var numbersRegExp = /[^0-9]$/gi;
+	var lettersRegExp = /[^a-z ]+$/gi; // allow ONLY alphabetic and whitespace
+	var numbersRegExp = /[^0-9] $/gi;
 
 	// VALIDATIONS ---------------------------//
-
 	var cleanText = function(inputText) {
 		var textIsClean = true;
 		if (inputText.match(lettersRegExp)) {
@@ -154,18 +154,18 @@ $(document).ready(function() {
 					var maxValue = $(chosenInputs[i]).attr('max');
 					var max = parseInt(maxValue, 10);
 					var numberEntered = parseInt(currentAnswer, 10);
-					// console.log(max, numberEntered);
+				
 					
 					// check numbers are in correct range
 				 	if (numberEntered < min || numberEntered > max) {
 						currentErrorMessage = '\*Please pick a number in the correct range.';
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						formIsValid = false;
-						// console.log(min,  max, numberEntered + ' is too big, this block returns ' + formIsValid);
+						
 					} else {
 						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
-						// console.log(min, max, numberEntered + ' is in range.');
+						
 					} 
 				// if it's a text field, do this
 				}
@@ -175,50 +175,44 @@ $(document).ready(function() {
 						currentErrorMessage = '\*Please use only letters, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						formIsValid = false;
-						console.log('this block returns ' + formIsValid);
 					} else {
 						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
 					}
 				}			
 			}
-		} // closes for loop ------------------------//
+		} 
 		return formIsValid; //returns t/f
-	}; //closes validate -------------------------//
+	}; 
 
 	//	save data ------------------------//
-
-	var saveData = function(data, listing) {
-		var listing = $.trim(myListing);
+	var saveData = function(answers, listing) {
+		var listing = listing;
 		var newName = [
 			{name: 'firstName', value: playerName }
 			];
 		var newListing = [
 			{ name: "listing", value: listing }
 			];
+		var newData = answers.serializeArray();
+		newData.unshift(newName[0]);
+		newData.push(newListing[0]);
 
-		var data = formToSave.serializeArray();
-		data.unshift(newName[0]);
-		data.push(newListing[0]);
-
-		console.log(data);
+		console.log(newData, listing);
 	
 		$.ajax({
 		   	type: "POST",
 		   	url: "buildJson.php", //the name and location of your php file
-		   	data: data,      //add the data to a document.
+		   	data: newData,      //add the data to a document.
 		  	success: function() {
 		  		console.log('written to data.json');
 		  		} 
 		});
-		        
+
 	};	
 		
-	// }
-
-	// inject answers into the madlibs and grab all text
+	// inject answers into the madlibs and grab all text----------------------//
 	var createListing1= function(){
-		// print name
 
 	    // if input starts with a vowel, add an n to make an before it.
 	    var inputStartsWithVowel = $("input.adj2").val();
@@ -231,7 +225,6 @@ $(document).ready(function() {
 		 	addN.empty().text('a ');
 		 	$(".adj2").empty().append(inputStartsWithVowel).val();
 		 }
-
 		 //check for and remove "the" before name of body of water
 		 var waterInput = $("input.water").val(); 
 		 if(waterInput.match(theRegExp)) {
@@ -258,7 +251,7 @@ $(document).ready(function() {
 	    $(".verb1").empty().append($("input.verb1").val());
 
 	    // save data 
-	    formToSave = $('#questions1');
+	    var form1 = $('#questions1');
 	    
 	    // hide the questions
 	    $(".q1").hide();
@@ -269,10 +262,11 @@ $(document).ready(function() {
 		$(".js-list1").show();
 		$(".js-list2").hide();
 		$(".js-list3").hide();
-
-		myListing = $(".listing1").text();
-		copyTextToClipboard(myListing);
-		saveData(formToSave, myListing);
+		 
+		// clear the listing from the variable   
+		var myListing = $(".listing1").text();
+		myListing = $.trim(myListing);
+		saveData(form1, myListing);
 
 		$(".btn-reset").show();
 		$(".share").show();
@@ -280,7 +274,8 @@ $(document).ready(function() {
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";
-
+	   	// listingToSave = '';
+		// console.log(listingToSave); 
 	};
 
 	var createListing2 = function(){
@@ -303,7 +298,7 @@ $(document).ready(function() {
 		$(".landmark").empty().append(landmark);
 
 		//dave data to JSON
-		formToSave = $('.questions2');
+		var form2 = $('.questions2');
 
 		// hide the questions
 		$(".q2").hide();
@@ -315,9 +310,10 @@ $(document).ready(function() {
 		$(".js-list2").show();
 		$(".js-list3").hide();
 
-		myListing = $(".listing2").text();	//get the text of element
-		copyTextToClipboard(myListing);
-		saveData(formToSave, myListing);		
+		// clear the listing from the variable  
+		var myListing = $(".listing2").text();
+		myListing = $.trim(myListing);
+		saveData(form2, myListing);
 
 		$(".btn-reset").show();	
 		$(".share").show();
@@ -325,6 +321,8 @@ $(document).ready(function() {
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
+	   	// listingToSave = '';
+		// console.log(listingToSave, myListing2); 
 	};
 
 	var createListing3 = function(){
@@ -347,7 +345,7 @@ $(document).ready(function() {
 		$(".verb3").empty().append($("input.verb3").val());	
 
 		//dave data to JSON
-		formToSave = $('#questions3');
+		var form3 = $('#questions3');
 		
 		// hide the questions
 		$(".q3").hide();
@@ -359,23 +357,26 @@ $(document).ready(function() {
 		$(".js-list2").hide();
 		$(".js-list3").show();
 
-		myListing = $(".listing3").text();	
-		copyTextToClipboard(myListing);
-		saveData(formToSave, myListing);
-
+		// clear the listing from the variable  
+		var myListing = $(".listing3").text();
+		myListing = $.trim(myListing);
+		saveData(form3, myListing);
+		// console.log(listingToSave); 
+	
 		$(".btn-reset").show();
 		$(".share").show();
 		$(".eliza").show();
-		// load the listing into fb share code
 
 		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
+		// listingToSave = '';
+		// console.log(listingToSave, myListing3);
 	};
 
 	//-------  SHARE LISTING ON FACEBOOK OR TWITTER -------------------------//
  
 	// source: https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
 	function copyTextToClipboard(text) {
-		var text = myListing;
+		var copyText = listingToSave;
   		var textArea = document.createElement("textarea");
 
 		// Place in top-left corner of screen regardless of scroll position.
@@ -420,7 +421,6 @@ $(document).ready(function() {
 		var currentHash = window.location.hash;
 		var formToSave;
 		if(currentHash === '#q1') {
-			// console.log(currentHash);
 			$(".q1").show(); 
 	 		$(".q2").hide();
 			$(".q3").hide();
@@ -430,7 +430,6 @@ $(document).ready(function() {
 			$(".listings").hide();
 		}
 		if(currentHash === '#q2') {
-			// console.log(currentHash);
 			$(".q2").show();
 	 		$(".q1").hide();  
 	 		$(".q3").hide();
@@ -441,7 +440,6 @@ $(document).ready(function() {
 		
 		}
 		if(currentHash === '#q3') {
-			// console.log(currentHash);
 			$(".q3").show();
 	 		$(".q1").hide(); 
 	 		$(".q2").hide();
@@ -451,17 +449,14 @@ $(document).ready(function() {
 			$(".listings").hide();				
 		}
 		if(currentHash === '#listing1' ) {
-			// console.log(currentHash);
 			createListing1();
 								
 		}
 		if(currentHash === '#listing2' ) {
-			// console.log(currentHash);
 			createListing2();
 						
 		}
 		if(currentHash === '#listing3' ) {
-			// console.log(currentHash);
 			createListing3();
 								
 		}
@@ -489,10 +484,6 @@ $(document).ready(function() {
 			console.log('form is not valid');
 			return false;
 		} else {
-			//write inputs to JSON
-			// console.log( $('.questions1').serializeArray());
-			// $(".questions1").serializeObject();
-			// console.log(formData);
 			$('#btn-submit1').next().text('');
 			window.location.hash = '#listing1';
 			console.log('form is valid');				
@@ -506,8 +497,6 @@ $(document).ready(function() {
 			console.log('form is not valid');
 			return false;
 		} else {
-			//write inputs to JSON
-			// console.log( $('.questions2').serializeArray());
 			$('#btn-submit2').next().text('');
 			window.location.hash = '#listing2';
 			console.log('form is valid');					   		
@@ -564,12 +553,12 @@ $(document).ready(function() {
 		modal('close');
 	});
 
-    //	UPDATE COPYRIGHT ------------------------------//
+    //	UPDATE COPYRIGHT yearly------------------------------//
+
     var date = new Date();
     var year = date.getFullYear();
-
     var copyright = $('p.copyright').text();
-    var copyrightNotice = 'All images © ' + `${year}` + ' Amy Eckert';
+    var copyrightNotice = '© ' + year + ' Amy Eckert';
     $('p.copyright').html(copyrightNotice);
 
 }); //closes doc ready	
