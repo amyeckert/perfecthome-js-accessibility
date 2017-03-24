@@ -4,11 +4,6 @@ $(document).ready(function() {
 	//clear any input values
 	$(".js-input").val('');
 
-	// //clear stored listings 
- // 	var myListing1 = 'foo';
- // 	var myListing2 = 'foofoo';
- // 	var myListing3 = 'foofoofoo';
-
  	// reset window has to empty
 	window.location.hash = '';
 
@@ -185,7 +180,8 @@ $(document).ready(function() {
 		var newData = answers.serializeArray();
 		newData.unshift(newName[0]);
 		newData.push(newListing[0]);
-	
+		
+		console.log(newData);
 		$.ajax({
 		   	type: "POST",
 		   	url: "buildJson.php", //the name and location of php file
