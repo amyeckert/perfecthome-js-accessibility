@@ -36,7 +36,7 @@ $(document).ready(function() {
 	var cleanText = function(inputText) {
 		var textIsClean = true;
 		if (inputText.match(lettersRegExp)) {
-			console.log(inputText + ' has illegal chars');
+			// console.log(inputText + ' has illegal chars');
 			textIsClean = false;
 		} 
 		return textIsClean; //returns t/f 
@@ -45,7 +45,7 @@ $(document).ready(function() {
 	var cleanNumbers = function(inputText) {
 		var numbersClean = true;
 		if (inputText.match(numbersRegExp)) {
-			console.log(inputText = ' can\'t have letters');
+			// console.log(inputText = ' can\'t have letters');
 			numbersClean = false;
 		}
 		return numbersClean; //returns t/f 
@@ -181,7 +181,7 @@ $(document).ready(function() {
 		newData.unshift(newName[0]);
 		newData.push(newListing[0]);
 		
-		console.log(newData);
+		// console.log(newData);
 		$.ajax({
 		   	type: "POST",
 		   	url: "buildJson.php", //the name and location of php file
@@ -391,9 +391,9 @@ $(document).ready(function() {
 		try {
 			var successful = document.execCommand('copy');
 			var msg = successful ? 'successful' : 'unsuccessful';
-			console.log('Copying text command was ' + msg);
+			// console.log('Copying text command was ' + msg);
 		} catch (err) {
-			console.log('Oops, unable to copy');
+			// console.log('Oops, unable to copy');
 		}
 
 		document.body.removeChild(textArea);
