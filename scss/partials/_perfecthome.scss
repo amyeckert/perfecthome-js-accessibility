@@ -257,6 +257,10 @@ a {
 }
 .btn-copy {
 	display: none;
+	svg {
+		height: 15px;
+		margin: 0 0 0 3px;
+	}
 	@include bp(medium) {
 		display: block;
 	}
@@ -351,28 +355,29 @@ span.error {
 		display: inline-flex;
 		justify-content: center;
 		margin: 0.3rem auto 0 auto;
+		height: 30px;
 		
+		.email {
+			a{
+				svg{
+					margin-top: 5px;
+					height: 30px;
+				}
+			}
+		} 
 		.share-icon {
 			margin: 0 10px;
+			height: 100%;
 			a {
 				&:hover {
 					border: none;
 					outline: none;
-					// fill: $c-orange;
 				}
 				svg {
 					height: 25px;
-					// &:hover path {
-					// 	fill: $c-orange;
-					// }
 				}
 			}
 		}
-		.email {
-			svg{
-				height: 30px;}
-			
-		} 
 		.fb-share-icon {
 			span {
 				visibility: hidden;
@@ -409,7 +414,7 @@ span.error {
 	    		border: none;
 	    	}
     	}
-		img {
+		svg {
 			height: 12px;
 			margin: 0 0 0 3px;
 		}

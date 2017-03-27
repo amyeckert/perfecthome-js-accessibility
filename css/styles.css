@@ -639,6 +639,9 @@ a {
 
 .btn-copy {
   display: none; }
+  .btn-copy svg {
+    height: 15px;
+    margin: 0 0 0 3px; }
   @media only screen and (min-width: 1024px) {
     .btn-copy {
       display: block; } }
@@ -735,16 +738,19 @@ span.error {
     display: inline-flex;
     -ms-flex-pack: center;
         justify-content: center;
-    margin: 0.3rem auto 0 auto; }
+    margin: 0.3rem auto 0 auto;
+    height: 30px; }
+    .share .icons .email a svg {
+      margin-top: 5px;
+      height: 30px; }
     .share .icons .share-icon {
-      margin: 0 10px; }
+      margin: 0 10px;
+      height: 100%; }
       .share .icons .share-icon a:hover {
         border: none;
         outline: none; }
       .share .icons .share-icon a svg {
         height: 25px; }
-    .share .icons .email svg {
-      height: 30px; }
     .share .icons .fb-share-icon span {
       visibility: hidden; }
       .share .icons .fb-share-icon span .svg {
@@ -771,7 +777,7 @@ span.error {
     @media only screen and (min-width: 340px) {
       .eliza a:hover {
         border: none; } }
-    .eliza a img {
+    .eliza a svg {
       height: 12px;
       margin: 0 0 0 3px; }
 
