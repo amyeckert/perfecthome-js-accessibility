@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 	// regular expressions  -------------------------------//
 	var vowelRegExp = /^[aeiou]/gi; // for adding a(n) in front of nouns where required.
-	var theRegExp = /\bthe\b/gi; //remove the word the
+	var theRegExp = /\bthe\b/gi; //remove the word "the"
 	var lettersRegExp = /[^a-z ]+$/gi; // allow ONLY alphabetic and whitespace
 	var numbersRegExp = /[^0-9] $/gi;
 
@@ -36,19 +36,17 @@ $(document).ready(function() {
 	var cleanText = function(inputText) {
 		var textIsClean = true;
 		if (inputText.match(lettersRegExp)) {
-			// console.log(inputText + ' has illegal chars');
 			textIsClean = false;
 		} 
-		return textIsClean; //returns t/f 
+		return textIsClean; 
 	};
 
 	var cleanNumbers = function(inputText) {
 		var numbersClean = true;
 		if (inputText.match(numbersRegExp)) {
-			// console.log(inputText = ' can\'t have letters');
 			numbersClean = false;
 		}
-		return numbersClean; //returns t/f 
+		return numbersClean;
 	};
 
 	var validateName = function(){
@@ -70,8 +68,6 @@ $(document).ready(function() {
 	};
 
 	var pickForm = function(){
-
-		//randomly choose a questionnaire
 		var allQuestions = [q1, q2, q3];
 		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
 		
@@ -93,48 +89,45 @@ $(document).ready(function() {
 		//clear input values
 		$(".js-input").val("");
 
-		
 	 	$(".enter-name").hide();
 	 	$(".firstName").empty().append($("input.firstName").val());
   
 		//	PICK A QUESTIONAIRE ------------//
 		if (chosen == q1) {
 			window.location.hash = '#q1';
+			console.log('form #1 chosen');
 	 	}
 		 else if (chosen == q2) {
 			window.location.hash = '#q2';
+			console.log('form #2 chosen');
 	 	}
 		else { 
 			window.location.hash = 'q3';
+			console.log('form #3 chosen');
 		}
 	};
 
 	var validateForm = function() {
-	//which form is visible? 
+		// determine which form is visible 
 		var chosenForm = $('body').find('form:visible').not( '#name' );
 		var chosenInputs = $('body').find('.js-input:visible').not('#firstName');
 		var formIsValid = true;
 
-		// check if each one is filled out correctly
+		// check if each input is filled out correctly
 		for (var i=0; i<chosenInputs.length; i++) {
 			var currentAnswer = $(chosenInputs[i]).val();
 			var currentInputId = $(chosenInputs[i]).attr('id');
 			var currentErrorMessage = $(chosenInputs[i]).data('error-msg');
 			var currentInputType = $(chosenInputs[i]).attr('type');		
-			
 			// remove any previous error msg
 			$('#' + currentInputId).next().text('');
 			
 			// check the input is empty
 			if(currentAnswer === '') {
-				// add error message
-				$('#' + currentInputId).next().text('\*' + currentErrorMessage); // 
+				$('#' + currentInputId).next().text('\*' + currentErrorMessage); 
 				formIsValid = false; 
-			//if it is not empty, proceed:
 			} else {
-				// if it's a number input, do this:
 				if(currentInputType === 'number') { 
-
 					// convert string max and min values to numbers 
 					var min = 0;
 					var maxValue = $(chosenInputs[i]).attr('max');
@@ -147,30 +140,26 @@ $(document).ready(function() {
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						formIsValid = false;	
 					} else {
-						// remove any previous error msg
 						$('#' + currentInputId).next().text('');		
 					} 
-				// if it's a text field, do this
 				}
 				if (currentInputType ==='text') { 
-					// check for only letters
 					if (!cleanText(currentAnswer)) {
 						currentErrorMessage = '\*Please use only letters, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
 						formIsValid = false;
 					} else {
-						// remove any previous error msg
 						$('#' + currentInputId).next().text('');
 					}
 				}			
 			}
 		} 
-		return formIsValid; //returns t/f
+		return formIsValid;
 	}; 
 
 	//	save data ------------------------//
 	var saveData = function(answers, listing) {
-		var listing = listing;
+		this.listing = listing;
 		var newName = [
 			{name: 'firstName', value: playerName }
 			];
@@ -180,21 +169,18 @@ $(document).ready(function() {
 		var newData = answers.serializeArray();
 		newData.unshift(newName[0]);
 		newData.push(newListing[0]);
-		
-		// console.log(newData);
+
 		$.ajax({
 		   	type: "POST",
-		   	url: "buildJson.php", //the name and location of php file
-		   	data: newData,      //add the answers to a document.
+		   	url: "buildJson.php", 
+		   	data: newData,  
 		  	success: function() {
-		  		// console.log('written to data.json');
 	  		} 
 		});
 	};	
 		
 	// inject answers into the madlibs and grab all text----------------------//
 	var createListing1= function(){
-
 	    // if input starts with a vowel, add an n to make an before it.
 	    var inputStartsWithVowel = $("input.adj2").val();
 		var addN = $(".adj2").prev();
@@ -280,7 +266,7 @@ $(document).ready(function() {
 		$(".landmark").empty().append(landmark);
 
 		//dave data to JSON
-		var form2 = $('.questions2');
+		var form2 = $('#questions2');
 
 		// hide the questions
 		$(".q2").hide();
@@ -536,4 +522,4 @@ $(document).ready(function() {
     var copyrightNotice = '© ' + year + ' Amy Eckert';
     $('p.copyright').html(copyrightNotice);
 
-}); //closes doc ready	
+});	

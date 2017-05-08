@@ -616,35 +616,9 @@ a {
     color: #fff;
     text-decoration: none; }
 
-.btn-ghost {
-  color: #3f3f3d;
-  background-color: transparent;
-  border: 1px solid transparent;
-  font-size: 0.875rem;
-  font-size: 14px;
-  margin: 0 auto;
-  padding: 15px;
-  text-decoration: none; }
-  .btn-ghost:hover {
-    border: 1px solid #3f3f3d;
-    outline: none;
-    border-radius: 4px; }
-  .btn-ghost img {
-    height: 12px;
-    margin: 0 0 0 3px; }
-
 #btn-name,
 .btn-reset {
   margin: 0 auto; }
-
-.btn-copy {
-  display: none; }
-  .btn-copy svg {
-    height: 15px;
-    margin: 0 0 0 3px; }
-  @media only screen and (min-width: 1024px) {
-    .btn-copy {
-      display: block; } }
 
 a:active,
 select:focus,
@@ -660,7 +634,7 @@ input[type="text"]:focus {
 .listings {
   display: block;
   width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto;
   -ms-flex-order: 6;
       order: 6;
   font-size: 1.125rem;
@@ -671,31 +645,32 @@ input[type="text"]:focus {
       font-size: 16; } }
   @media only screen and (min-width: 750px) {
     .listings {
-      width: 75%; } }
+      width: 75%;
+      margin: 0 auto 2rem auto; } }
   @media only screen and (min-width: 1200px) {
     .listings {
       width: 60%; } }
   .listings .js-list1 {
     -ms-flex-order: 6;
         order: 6;
-    margin: 0 0 30 0; }
+    margin: 0 0 0 0; }
     @media only screen and (min-width: 750px) {
       .listings .js-list1 {
-        margin: 0 0 3rem 0; } }
+        margin: 0 0 2rem 0; } }
   .listings .js-list2 {
     -ms-flex-order: 7;
         order: 7;
-    margin: 0 0 3rem 0; }
+    margin: 0 0 0 0; }
     @media only screen and (min-width: 750px) {
       .listings .js-list2 {
-        margin: 0 0 3rem 0; } }
+        margin: 0 0 2rem 0; } }
   .listings .js-list3 {
     -ms-flex-order: 8;
         order: 8;
-    margin: 0 0 3rem 0; }
+    margin: 0 0 0 0; }
     @media only screen and (min-width: 750px) {
       .listings .js-list3 {
-        margin: 0 0 3rem 0; } }
+        margin: 0 0 2rem 0; } }
 
 span {
   text-transform: lowercase; }
@@ -733,7 +708,31 @@ span.error {
     font-size: 0.875rem;
     font-size: 14px;
     text-align: center; }
+  .share .btn-copy {
+    -ms-flex-order: 1;
+        order: 1; }
+  .share .btn-ghost {
+    color: #3f3f3d;
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 15px;
+    text-decoration: none; }
+    .share .btn-ghost:hover {
+      border: 1px solid #3f3f3d;
+      outline: none;
+      border-radius: 4px; }
+    .share .btn-ghost svg {
+      height: 15px;
+      margin: 0 0 0 3px; }
+    @media only screen and (min-width: 1024px) {
+      .share .btn-ghost {
+        display: block; } }
   .share .icons {
+    -ms-flex-order: 2;
+        order: 2;
     display: -ms-inline-flexbox;
     display: inline-flex;
     -ms-flex-pack: center;
@@ -755,36 +754,42 @@ span.error {
       visibility: hidden; }
       .share .icons .fb-share-icon span .svg {
         fill: #fff; }
-
-.eliza {
-  margin: 1rem 0 0 0;
-  text-align: center;
-  color: #3f3f3d; }
-  .eliza a {
-    color: #3f3f3d;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-size: 14px;
-    margin: 0 auto;
-    padding: 15px;
-    text-decoration: none; }
-    .eliza a:hover {
-      border: 1px solid #3f3f3d;
-      outline: none;
-      border-radius: 4px; }
-    .eliza a:active {
-      color: #ff9b44; }
-    @media only screen and (min-width: 340px) {
-      .eliza a:hover {
-        border: none; } }
-    .eliza a svg {
-      height: 12px;
-      margin: 0 0 0 3px; }
+  .share .btn-about {
+    -ms-flex-order: 3;
+        order: 3; }
+  .share .eliza {
+    -ms-flex-order: 4;
+        order: 4;
+    margin: 1rem 0 0 0;
+    text-align: center;
+    color: #3f3f3d; }
+    .share .eliza a {
+      color: #3f3f3d;
+      border: 1px solid transparent;
+      font-size: 0.875rem;
+      font-size: 14px;
+      margin: 0 auto;
+      padding: 15px;
+      text-decoration: none; }
+      .share .eliza a:hover {
+        border: 1px solid #3f3f3d;
+        outline: none;
+        border-radius: 4px; }
+      .share .eliza a:active {
+        color: #ff9b44; }
+      @media only screen and (min-width: 340px) {
+        .share .eliza a:hover {
+          border: none; } }
+      .share .eliza a svg {
+        height: 12px;
+        margin: 0 0 0 3px; }
 
 .modal-on {
   overflow: hidden; }
 
 .modal-container {
+  -ms-flex-order: 3;
+      order: 3;
   display: none;
   position: fixed;
   top: 0;
