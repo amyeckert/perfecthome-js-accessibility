@@ -650,6 +650,8 @@ input[type="text"]:focus {
   @media only screen and (min-width: 1200px) {
     .listings {
       width: 60%; } }
+  .listings .img-print-only {
+    display: none; }
   .listings .js-list1 {
     -ms-flex-order: 6;
         order: 6;
@@ -835,3 +837,33 @@ span.error {
     .modal-container .modal-content p.copyright {
       font-size: 0.75rem;
       font-size: 12px; }
+
+@media print {
+  @page {
+    size: 8.5in 11in portrait;
+    margin: 0.5in 0.25in 0.25in 0.25in; }
+  body {
+    background: #fff;
+    width: 100% !important; }
+    body .container {
+      max-width: 70% !important;
+      border: 1px solid orange; }
+      body .container .message {
+        font-size: 50px; }
+      body .container .listings {
+        margin-bottom: 0; }
+        body .container .listings .img-print-only {
+          display: block;
+          max-width: 100%;
+          margin: auto; }
+      body .container .share .icons {
+        display: none; }
+      body .container .share button {
+        display: none; }
+      body .container .share .eliza a > svg {
+        display: none; }
+      body .container .share .eliza a[href^=http]:after {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        content: "Visit www.eliza.liveinsouthjersey.com"; } }

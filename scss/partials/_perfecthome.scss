@@ -267,6 +267,9 @@ input[type="text"]:focus {
 	@include bp(large){
 		width: 60%;
 	}
+	.img-print-only {
+		display: none;
+	}
 		
 	.js-list1 {
 		order: 6;
