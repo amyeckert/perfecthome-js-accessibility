@@ -37,6 +37,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "parsleyjs": "^2.6.2"
+    "parsleyjs": "^2.6.2",
+    "underscore": "^1.9.2"
   }
 }

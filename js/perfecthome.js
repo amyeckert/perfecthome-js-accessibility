@@ -4,7 +4,7 @@ $(document).ready(function() {
 	//clear any input values
 	$(".js-input").val('');
 
- 	// reset window has to empty
+ 	// reset window hash to empty
 	window.location.hash = '';
 
 	// // HIDE STUFF	---------------------------//
