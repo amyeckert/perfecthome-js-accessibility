@@ -3,22 +3,26 @@
 // https://www.smashingmagazine.com/2011/11/how-to-set-up-a-print-style-sheet/
 
 // ---------- specify page size and orientation:
+
+@use './variables' as vars;
+
+// ---------- specify page size and orientation:
 @media print {
 
-	// set up the page structure 
-	@page {
-		size: 8.5in 11in portrait;
-		margin: 0.5in 0.25in 0.25in 0.25in;
-	}
+  // set up the page structure 
+  @page {
+    size: 8.5in 11in portrait;
+    margin: 0.5in 0.25in 0.25in 0.25in;
+  }
 
 	// specific styles for elements
 	body {
 		background: #fff;
 		width: 100% !important;
 
-		.container {
-			max-width: 70% !important;
-			border: 1px solid orange;
+			.container {
+				max-width: 70% !important;
+				border: 1px solid vars.$c-brown;
 
 			.message {
 				font-size: 50px;

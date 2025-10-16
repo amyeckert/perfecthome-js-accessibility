@@ -1,9 +1,15 @@
-// ------- COLORS -------//
+// Module: variables
+// This file defines project-level variables and forwards them for module usage.
 
+// Enable media queries globally. Other modules can read this flag via the variables namespace.
+$MQs: true;
+
+// ------- COLORS -------//
+$c-brown: #6e4f1e;
 $c-orange: 	  rgba(255,155,68,1);
 $c-text: 	    rgba(63,63,61,1);
-$c-grey-med:  #878787;
-$c-warning:   rgba(255,0,68,1);
+$c-grey-med:  #636363;
+$c-warning:   #D9003A;
 $c-white: 	  #fff;
 $c-peach: 	 rgba(255, 243, 232,1);
 $c-mango:     rgba(249,184,6,1);
@@ -30,8 +36,8 @@ $c-mango:     rgba(249,184,6,1);
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Raleway');
 
 
-$baseFontSize:			16;
-$baseLineHeight:		$baseFontSize * 1.8;
+$baseFontSize:			16px;
+$baseLineHeight:		1.8;
 
 
 $f-text: 				'Raleway', sans-serif;
@@ -39,7 +45,7 @@ $f-title:   			'Majesti-Banner-Heavy', serif;
 
 // ------- BREAKPOINTS -------//
 $bp-xsmall:				340;
-$bp-small:        750;
+$bp-small:        768;
 $bp-medium:				1024;
 $bp-large:				1200;
 $bp-xlarge:				1500;

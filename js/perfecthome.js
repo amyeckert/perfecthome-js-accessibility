@@ -53,6 +53,8 @@ $(document).ready(function() {
 		var nameIsValid = false;
 	 	playerName = $('.firstName').val();
 	 	var errNameRequired = 'Pssst! What\'s your name?';
+		var errorField = $('.error-name');
+		console.log(errorField);
 
 	 	if(!playerName) {
 	 		nameIsValid = false;

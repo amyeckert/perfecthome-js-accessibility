@@ -24,10 +24,10 @@
 		<div class="enter-name">
 			<form id="name" name="name" action="buildJson.php" method="post">
 
-				<label class="name" for="firstName">Hi! What is your first name?</label>
+				<label class="name" for="firstName">Hi! What is your first name?<sup>*</sup></label>
 
 				<input id="firstName" class="firstName" name="firstName" type="text" data-error-msg-name="Psst! What's your name?" aria-required="true" autofocus>
-				<p class="error"></p>
+				<p class="error-name"></p>
 				<button id="btn-name" type="submit" class="btn btn-orange" value="Let's go!">Let's go!</button>
 
 			</form>
@@ -36,78 +36,79 @@
 		<div class="q1">
 			<form id="questions1" name="questions1" action="buildJson.php" method='post'>
 				<div class="question"> 	
-					<label for="adj1">Enter an adjective.</label>
+					<label for="adj1">Enter an adjective.<sup>*</sup></label>
 					<input id="adj1" class="js-input adj1" name="adj1" type="text" data-error-msg="Don't forget this one." placeholder="Adjective..." aria-required="true">
 					<p class="error"></p>
+					
 				</div>
 
 				<div class="question"> 
-					<label for="favCounty">What is your favorite country?</label>
+					<label for="favCounty">What is your favorite country?<sup>*</sup></label>
 					<input id="favCountry" class="js-input favCountry" name="favCountry" type="text" data-error-msg="Where would you rather be?" placeholder="New Zealand? Namibia?" aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="bestie">What is your best friend's first name?</label>
+					<label for="bestie">What is your best friend's first name?<sup>*</sup></label>
 					<input id="bestie" class="js-input bestie" name="bestie" type="text" data-error-msg="I know you have one friend, right?" placeholder="My bestie is..." aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="adj2">Enter another adjective.</label>
+					<label for="adj2">Enter another adjective.<sup>*</sup></label>
 					<input id="adj2" class="js-input adj2" name="adj2" type="text" data-error-msg="Oops" placeholder="Another adjective..." aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="noun1">Enter an noun.</label>
+					<label for="noun1">Enter an noun<sup>*</sup>.</label>
 					<input id="noun1" class="js-input noun1" name="noun1" type="text" data-error-msg="a noun is a person, place or thing..." placeholder="A person, place, or thing..." aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="noun2">Enter another noun.</label>
+					<label for="noun2">Enter another noun.<sup>*</sup></label>
 					<input id="noun2" class="js-input noun2" name="noun2" type="text" data-error-msg="skipped this one"placeholder="Another person, place, or thing..." aria-required="true">
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="favCartoon">Who is your favorite cartoon character?</label>
+					<label for="favCartoon">Who is your favorite cartoon character?<sup>*</sup></label>
 					<input id="favCartoon" class="js-input favCartoon" name="favCartoon" type="text" data-error-msg="Oopsies!" placeholder="Tigger? Shrek? Peppa Pig?" aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="prez">Name any US President.</label>
+					<label for="prez">Name any US President.<sup>*</sup></label>
 					<input id="prez" class="js-input prez" name="prez" type="text" data-error-msg="So many to choose from..." placeholder="Barack Obama? Millard Fillmore? " aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="gem">Enter the name of a precious substance.</label>
+					<label for="gem">Enter the name of a precious substance.<sup>*</sup></label>
 					<input id="gem" class="js-input gem" name="gem" type="text" data-error-msg="My Precioussss...." placeholder="Ruby? Istrian Marble?"data-parsley-error-message="Bling!" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="basement">What's something you'd find in a basement?</label>
+					<label for="basement">What's something you'd find in a basement?<sup>*</sup></label>
 					<input id="basement" class="js-input basement" name="basement" type="text" data-error-msg="What's that?!" placeholder="Furnace? Mold? Broken toys?" aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="tree">What is your favorite tree?</label>
+					<label for="tree">What is your favorite tree?<sup>*</sup></label>
 					<input id="tree" class="js-input tree" name="tree" type="text" data-error-msg="Missed this one." placeholder="Mulberry? Dogwood? " aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="water">Name any body of water.</label>
+					<label for="water">Name any body of water.<sup>*</sup></label>
 					<input id="water" class="js-input water" name="water" type="text" data-error-msg="Make a splash!" placeholder="Lake Como? Gowanus Canal?" aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="num1">Enter a number from 0 - 100.</label>
+					<label for="num1">Enter a number from 0 - 100.<sup>*</sup></label>
 					<input type="number" id="num1" class="js-input num1" name="num1" type="number" min="0" max="100" data-error-msg="Oops" placeholder="#" aria-required="true">
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="favAnimal">What is your favorite animal?</label>
+					<label for="favAnimal">What is your favorite animal?<sup>*</sup></label>
 					<input id="favAnimal" class="js-input favAnimal" name="favAnimal" type="text" data-error-msg="Missed this one." placeholder="Pig? Python? Pyrhana?" aria-required="true" >
 					<p class="error"></p>
 				</div>
 				<div class="question"> 
-					<label for="verb1">Enter a verb.</label>
+					<label for="verb1">Enter a verb.<sup>*</sup></label>
 					<input id="verb1" class="js-input verb1" name="verb1" type="text" data-error-msg="This one is still empty." placeholder="Action!" aria-required="true" >
 					<p class="error"></p>
 				</div>
@@ -120,24 +121,24 @@
 			<form id="questions2" name="questions2" action="buildJson.php" method='post'>
 
 				<div class="question">
-					<label for="num5">Enter a number from 0 - 10.</label>
+					<label for="num5">Enter a number from 0 - 10.<sup>*</sup></label>
 					<input id="num5" class="js-input num5" name="num5" type="number" min="0" max="10" data-error-msg="Oops." placeholder="#" aria-required="true">
 					<p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="adj3">Enter an adjective.</label>
+					<label for="adj3">Enter an adjective.<sup>*</sup></label>
 					<input id="adj3" class="js-input adj3" name="adj3" type="text"  data-error-msg="Don't forget this one." placeholder="Adjective..." aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="num2">Enter a number from 0 - 10.</label>
+					<label for="num2">Enter a number from 0 - 10.<sup>*</sup></label>
 					<input id="num2" class="js-input num2" name="num2" type="number" min="0" max="10" data-error-msg="Need another number, please."placeholder="#" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="num3">Enter a number from 0 - 100.</label>
+					<label for="num3">Enter a number from 0 - 100.<sup>*</sup></label>
 					<input id="num3" class="js-input num3" name="num3" type="number" min="0" max="100" data-error-msg="Yet another number!"placeholder="#" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="num4">Enter a number from 0 - 10.</label>
+					<label for="num4">Enter a number from 0 - 10.<sup>*</sup></label>
 					<input id="num4" class="js-input num4" name="num4" type="number" min="0" max="10" data-error-msg="Seriously, another number!"placeholder="#" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
@@ -145,7 +146,7 @@
 					<input id="emotion" class="js-input emotion" name="emotion" type="text"  data-error-msg="Did you win the lottery? No?" placeholder="Joy? Chagrin?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="direction">Choose a direction.</label>
+					<label for="direction">Choose a direction.<sup>*</sup></label>
 					<select name="direction" form="questions2" id="direction" class="js-input" data-error-msg="Which way?">
 						<option value=""></option>
 						<option value="N"> North</option>
@@ -156,23 +157,23 @@
 					<p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="room">Name any room in a house.</label>
+					<label for="room">Name any room in a house.<sup>*</sup></label>
 					<input id="room" class="js-input room" name="room" type="text" data-error-msg="Oops" placeholder="Breakfast nook? Bathroom?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="adj4">Enter an adjective.</label>
+					<label for="adj4">Enter an adjective.<sup>*</sup></label>
 					<input id="adj4" class="js-input adj4" type="text"  name="adj4" data-error-msg="Oops" placeholder="Adjective..." aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="pubInst">Enter a public institution or facility.</label>
+					<label for="pubInst">Enter a public institution or facility.<sup>*</sup></label>
 					<input id="pubInst" class="js-input pubInst" name="pubInst" type="text"  data-error-msg="Oops" placeholder="Prison? Elementary School?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="favCity">What's your favorite city?</label>
+					<label for="favCity">What's your favorite city?<sup>*</sup></label>
 					<input id="favCity" class="js-input favCity" name="favCity" type="text" data-error-msg="Assuming you like cities, of course." placeholder="Fresno? Nairobi? Brasilia?..." aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="landmark">Pick a landmark!</label>
+					<label for="landmark">Pick a landmark!<sup>*</sup></label>
 					<select name="landmark" form="questions2" id="landmark" class="js-input" data-error-msg="Oops.">
 						<option value=""></option>
 						<option value="niagara"> Niagara Falls</option>
@@ -193,39 +194,39 @@
 		<div class="q3">
 			<form id="questions3" name="questions3" action="buildJson.php" method='post'>
 				<div class="question">
-					<label for="num6">Enter a number from 0 - 5.</label>
+					<label for="num6">Enter a number from 0 - 5.<sup>*</sup></label>
 					<input id="num6" class="js-input num6" name="num6" type="number" min="0" max="5" data-error-msg="Oops" placeholder="#" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="num7">Enter a number from 0 - 10.</label>
+					<label for="num7">Enter a number from 0 - 10.<sup>*</sup></label>
 					<input id="num7" class="js-input num7" name="num7" type="number" min="0" max="10" data-error-msg="Need a number here, please." placeholder="#" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="disaster">What is your favorite natural disaster?</label>
+					<label for="disaster">What is your favorite natural disaster?<sup>*</sup></label>
 					<input id="disaster" class="js-input disaster" name="disaster" type="text"  data-error-msg="Oops" placeholder="Plague? Tsunami?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="clothing">Name an article of clothing.</label>
+					<label for="clothing">Name an article of clothing.<sup>*</sup></label>
 					<input id="clothing" class="js-input clothing" name="clothing" type="text"  data-error-msg="" placeholder="Socks? Tie?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="mood">How would you describe your mood today?</label>
+					<label for="mood">How would you describe your mood today?<sup>*</sup></label>
 					<input id="mood" class="js-input mood" name="mood" type="text" data-error-msg="Really, how ARE you?" placeholder="Pensive? Disgusted?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="adj6">Enter an adjective.</label>
+					<label for="adj6">Enter an adjective.<sup>*</sup></label>
 					<input id="adj6" class="js-input adj6" name="adj6" type="text"  data-error-msg="Need an adjective, please. " placeholder="Adjective..." aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">	
-					<label for="urban">Name a common feature of urban environments, plural.</label>
+					<label for="urban">Name a common feature of urban environments, plural.<sup>*</sup></label>
 					<input id="urban" class="js-input urban" name="urban" type="text"  data-error-msg="don't step in it!" placeholder="Sidewalks? Car alarms?"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="verb2">Enter a verb ending in -ing.</label>
+					<label for="verb2">Enter a verb ending in -ing.<sup>*</sup></label>
 					<input id="verb2" class="js-input verb2" name="verb2" type="text"  data-error-msg="Waiting, waiting..." placeholder="Chewing? Cogitating?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="time">Choose a length of time.</label>
+					<label for="time">Choose a length of time.<sup>*</sup></label>
 					<select name="time" form="questions3" id="time" class="js-input" data-error-msg="How long?">
 						<option value=""></option>	
 						<option value="minute">Minute</option>
@@ -237,15 +238,15 @@
 					<p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="pluAnimals">What is your least favorite animal, plural.</label>
+					<label for="pluAnimals">What is your least favorite animal, plural.<sup>*</sup></label>
 					<input id="pluAnimals" class="js-input pluAnimals" name="pluAnimals" type="text" data-error-msg="Do you secretly hate kittens?" placeholder="Rabbits? Tigers?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="room2">Name any room in a house.</label>
+					<label for="room2">Name any room in a house.<sup>*</sup></label>
 					<input id="room2" class="js-input room2" name="room2" type="text" data-error-msg="Oops" placeholder="Breakfast nook? Bathroom?" aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
-					<label for="adj7">Enter an adjective.</label>
+					<label for="adj7">Enter an adjective.<sup>*</sup></label>
 					<input id="adj7" class="js-input adj7" name="adj7" type="text" data-error-msg="Oops" placeholder="Adjective..." aria-required="true"><p class="error"></p>
 				</div>
 				<div class="question">
@@ -315,11 +316,11 @@
 			</div>
 
 			<div class="eliza">
-				<a href="http://eliza.liveinsouthjersey.com" target="_blank"><em>Pssst! Looking for actual real estate listings?</em>
+				<a href="https://www.prismahomesnj.com/" target="_blank"><em>Pssst! Looking for actual real estate listings?</em>
 				<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><title>Artboard 1</title><path d="M0,26c3-1,6-2.82,9-2.85C32.71,22.91,56.37,23,80,23c1.17,0,2.45-.3,3.47.1a15.89,15.89,0,0,1,3.32,2.37c-1,.86-2,2-3.16,2.47s-2.63.12-4,.12H5.44v94.47H99.91v-5.27q0-34.74,0-69.49a15.61,15.61,0,0,1,.22-4.46,3.62,3.62,0,0,1,2.36-2c.57-.13,1.85,1,2.08,1.72a15.59,15.59,0,0,1,.38,4.43c0,24,.11,48-.12,72,0,2.86-1.86,5.7-2.85,8.55H0Z"/><path d="M128,43c-3.63,2.59-5.13,1.28-5.13-2.8,0-10,0-19.94,0-31.13-2,1.81-3.25,2.91-4.45,4.1Q95.28,36.29,72.16,59.41a13.52,13.52,0,0,1-2.94,2.66c-.84.44-2.71.52-3,.08A4.12,4.12,0,0,1,66,58.76c.62-1.28,1.93-2.25,3-3.3q22.94-23,45.89-45.9C116,8.42,117,7.2,119,5.13c-11.1,0-21.15,0-31.2,0C83.57,5.14,82.52,3.54,85,0h43Z"/></svg>
 				</a>
 			</div>
-			<button class=" btn btn-ghost btn-about js-modal-open" >About this site.</button>
+			<button class="btn btn-ghost btn-about js-modal-open" >About this site.</button>
 			
 			<!-- MODAL / ABOUT -->
 			<div class="about modal-container">
@@ -335,7 +336,7 @@
 
 						<p class="explain"> I also love the euphemistic, hyperbolic language of real estate listings. Why not combine the two?</p>
 
-						<p class="explain">This quiz is an off-shoot of a project called <a href="http://www.manufacturinghome.com" title="Manufacturing Home" target="_blank">Manufacturing Home,</a> which explores ideas about home, comfort, class and mobility through photographs of mass-market, factory-built homes in America. For more about this and other projects, please visit <a href="http://www.amyeckertprojects.com" target="_blank"> www.amyeckertprojects.com</a></p>
+						<p class="explain">This quiz is an off-shoot of a project called <a href="https://amyeckertprojects.com/manhome.html" title="Manufacturing Home" target="_blank">Manufacturing Home,</a> which explores ideas about home, comfort, class and mobility through photographs of mass-market, factory-built homes in America. For more about this and other projects, please visit <a href="http://www.amyeckertprojects.com" target="_blank"> www.amyeckertprojects.com</a></p>
 						<p>Cheers! -Amy</p>
 						
 						<p class="copyright"></p>

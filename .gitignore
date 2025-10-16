@@ -6,6 +6,7 @@ images-copy/**
 wireframes/**
 opt/**
 node_modules/**
+.ddev/*
 
 
 # Compiled source #

@@ -1,22 +1,25 @@
+@use './variables' as vars;
+@use 'sass:math';
+
 @mixin bp($point) {
-  @if ($MQs) {
+  @if (vars.$MQs) {
     @if $point == xsmall {
-      @media #{$mq-xsmall} { @content; }
+      @media #{vars.$mq-xsmall} { @content; }
     }
     @else if $point == small {
-      @media #{$mq-small} { @content; }
+      @media #{vars.$mq-small} { @content; }
     }
     @else if $point == medium {
-      @media #{$mq-medium} { @content; }
+      @media #{vars.$mq-medium} { @content; }
     }
     @else if $point == large {
-      @media #{$mq-large}  { @content; }
+      @media #{vars.$mq-large}  { @content; }
     }
     @else if $point == xlarge {
-      @media #{$mq-xlarge}  { @content; }
+      @media #{vars.$mq-xlarge}  { @content; }
     }
     @else if $point == retina {
-      @media #{$mq-retina}  { @content; }
+      @media #{vars.$mq-retina}  { @content; }
     }
   }
   @else {
@@ -28,30 +31,41 @@
 
 @mixin bp-max($point) {
   @if $point == small {
-     @media (max-width: ($bp-small - 1px)) { @content; }
+    @media (max-width: (vars.$bp-small - 1px)) { @content; }
   }
   @else if $point == medium {
-     @media (max-width: ($bp-medium - 1px)) { @content; }
+    @media (max-width: (vars.$bp-medium - 1px)) { @content; }
   }
   @else if $point == large {
-     @media (max-width: ($bp-large - 1px)) { @content; }
+    @media (max-width: (vars.$bp-large - 1px)) { @content; }
   }
 }
 
 //Arbitrary Media Query Mixin
 @mixin bp-arb($val) {
-  @if ($MQs) {
+  @if (vars.$MQs) {
     @media only screen and (min-width: #{$val}px) { @content; }
   }
 }
 
-@mixin font-size($pixelSize: $baseFontSize) {
-  font-size: #{$pixelSize / $baseFontSize}rem;
-  font-size: #{$pixelSize}px;
+@mixin font-size($pixelSize: null) {
+  // fallback to module variable when no explicit pixel size provided
+  $size: if($pixelSize == null, vars.$baseFontSize, $pixelSize);
+  // if caller passed a unitless number (e.g. 18), treat it as pixels
+  @if math.unit($size) == "" {
+    $size: $size * 1px;
+  }
+  $ratio: math.div($size, vars.$baseFontSize);
+  font-size: #{$ratio}rem;
+  font-size: #{$size};
 }
 
-@mixin line-height($pixelSize: $baseLineHeight) {
-  line-height: #{$pixelSize / $baseFontSize}rem;
-  line-height: #{$pixelSize}px;
-
+@mixin line-height($pixelSize: null) {
+  $size: if($pixelSize == null, vars.$baseLineHeight, $pixelSize);
+  @if math.unit($size) == "" {
+    $size: $size * 1px;
+  }
+  $ratio: math.div($size, vars.$baseFontSize);
+  line-height: #{$ratio}rem;
+  line-height: #{$size};
 }
