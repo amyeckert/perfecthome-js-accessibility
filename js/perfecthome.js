@@ -17,8 +17,7 @@ $(document).ready(function() {
 	$(".js-list3").hide();
 	$(".replay").hide();   
 	$(".btn-reset").hide();
-	$(".share").hide();
-	$(".eliza").hide();
+	$(".about").hide();
 
 	// GLOBAL VBARIABLES -------------------------//
 	var q1 = $(".q1");
@@ -241,8 +240,7 @@ $(document).ready(function() {
 		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();
-		$(".share").show();
-		$(".eliza").show();
+		$(".about").show();
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "How about this little gem?";	   	
@@ -289,8 +287,7 @@ $(document).ready(function() {
 		copyTextToClipboard(myListing);
 
 		$(".btn-reset").show();	
-		$(".share").show();
-		$(".eliza").show(); 
+		$(".about").show(); 
 
 	    //change the h1 message
 	   	var message = document.querySelector(".message").innerHTML = "This one says YOU all over it!";
@@ -337,8 +334,8 @@ $(document).ready(function() {
 		copyTextToClipboard(myListing);
 	
 		$(".btn-reset").show();
-		$(".share").show();
-		$(".eliza").show();
+		$(".about").show();
+
 
 		var message = document.querySelector(".message").innerHTML = "Bring your toolbox!";
 	};
@@ -379,7 +376,7 @@ $(document).ready(function() {
 		try {
 			var successful = document.execCommand('copy');
 			var msg = successful ? 'successful' : 'unsuccessful';
-			// console.log('Copying text command was ' + msg);
+
 		} catch (err) {
 			// console.log('Oops, unable to copy');
 		}
