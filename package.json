@@ -4,7 +4,11 @@
   "description": " ",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "serve": "npx serve . -l 8080",
+  "a11y": "npx playwright test a11y-region.spec.js",
+  "a11y:serve": "npm run serve & npx playwright test a11y-region.spec.js",
+  "a11y:ci": "npx playwright test a11y-region.spec.js --reporter=list",
     "sass:dev": "sass --watch scss/styles.scss:css/styles.css --style=expanded --source-map",
     "sass:prod": "sass --watch scss/styles.scss:css/styles.min.css --style=compressed --no-source-map",
     "sass:watch": "concurrently \"npm run sass:dev\" \"npm run sass:prod\""
@@ -20,7 +24,9 @@
   },
   "homepage": "https://github.com/amyeckert/perfecthome-js#readme",
   "devDependencies": {
+    "@playwright/test": "^1.56.0",
     "autoprefixer": "^10.4.21",
+    "axe-playwright": "^2.2.2",
     "browserify": "^13.3.0",
     "concurrently": "^9.2.1",
     "del": "^8.0.1",
