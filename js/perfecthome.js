@@ -4,10 +4,22 @@ $(document).ready(function() {
 	//clear any input values
 	$(".js-input").val('');
 
+	// Focus 
+	// var currentFocused = document.activeElement;
+	// var nameFocused = $('input#firstName');
+	// body = $('body');
+	// body.blur();
+	// currentFocused.addClass('has-focus');
+	// nameFocused.focus();
+	// console.log(nameFocused);
+	// console.log(document.activeElement);
+
+
+
  	// reset window hash to empty
 	window.location.hash = '';
 
-	// // HIDE STUFF	---------------------------//
+	// HIDE STUFF	---------------------------//
 	$(".q1").hide();
 	$(".q2").hide();
 	$(".q3").hide();
@@ -48,29 +60,37 @@ $(document).ready(function() {
 		return numbersClean;
 	};
 
-	var validateName = function(){
+	var validateName = function() {
 		var nameIsValid = false;
-	 	playerName = $('.firstName').val();
+	 	var playerName = $('.firstName').val();
 	 	var errNameRequired = 'Pssst! What\'s your name?';
 		var errorField = $('.error-name');
-		console.log(errorField);
+		var errInput = $('#' + 'firstName');
+		errInput.removeClass('has-error');
 
 	 	if(!playerName) {
 	 		nameIsValid = false;
 			$('#' + 'firstName').next().text(errNameRequired);
+			errInput.addClass('has-error');
 	 	} else if(!cleanText(playerName)){
 	 		nameIsValid = false;
 	 		errNameRequired = '\*Please use only letters, thanks!';
 	 		$('#' + 'firstName').next().text(errNameRequired);
+			errInput.addClass('has-error');
 	 	} else {
+			// errInput.blur();
 	 		return true;
 	 	}
+		// focused.blur();
+
 		return nameIsValid;
 	};
 
 	var pickForm = function(){
 		var allQuestions = [q1, q2, q3];
 		var chosen = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+
+		// nameFocused.blur();
 		
 		//for future investigation: 
 		// source https://stackoverflow.com/questions/6625551/math-random-number-without-repeating-a-previous-number //
@@ -92,19 +112,28 @@ $(document).ready(function() {
 
 	 	$(".enter-name").hide();
 	 	$(".firstName").empty().append($("input.firstName").val());
+
+		var firstQuestion;
+		// focused.blur();
   
-		//	PICK A QUESTIONAIRE ------------//
+		//	PICK A QUESTIONAIRE and move focus to first input ------------//
 		if (chosen == q1) {
 			window.location.hash = '#q1';
-			console.log('form #1 chosen');
+			firstQuestion = q1.find('.question').first().find('input');
+			// firstQuestion.focus();
+			// console.log(firstQuestion);
 	 	}
 		 else if (chosen == q2) {
 			window.location.hash = '#q2';
-			console.log('form #2 chosen');
+			firstQuestion = q2.find('.question').first().find('input');
+			// firstQuestion.focus();
+			// console.log(firstQuestion);
 	 	}
 		else { 
 			window.location.hash = 'q3';
-			console.log('form #3 chosen');
+			firstQuestion = q3.find('.question').first().find('input');
+			// firstQuestion.focus();
+			// console.log(firstQuestion);
 		}
 	};
 
@@ -122,11 +151,13 @@ $(document).ready(function() {
 			var currentInputType = $(chosenInputs[i]).attr('type');		
 			// remove any previous error msg
 			$('#' + currentInputId).next().text('');
-			
+			$('#' + currentInputId).removeClass('has-error');
+
 			// check the input is empty
 			if(currentAnswer === '') {
 				$('#' + currentInputId).next().text('\*' + currentErrorMessage); 
-				formIsValid = false; 
+				$('#' + currentInputId).addClass('has-error');
+				formIsValid = false;
 			} else {
 				if(currentInputType === 'number') { 
 					// convert string max and min values to numbers 
@@ -139,18 +170,22 @@ $(document).ready(function() {
 				 	if (numberEntered < min || numberEntered > max) {
 						currentErrorMessage = '\*Please pick a number in the correct range.';
 						$('#' + currentInputId).next().text(currentErrorMessage);
-						formIsValid = false;	
+						$('#' + currentInputId).addClass('has-error');	
+						formIsValid = false;
 					} else {
-						$('#' + currentInputId).next().text('');		
+						$('#' + currentInputId).next().text('');
+						$('#' + currentInputId).removeClass('has-error');	
 					} 
 				}
 				if (currentInputType ==='text') { 
 					if (!cleanText(currentAnswer)) {
 						currentErrorMessage = '\*Please use only letters, thanks!';
 						$('#' + currentInputId).next().text(currentErrorMessage);
+						$('#' + currentInputId).addClass('has-error');
 						formIsValid = false;
 					} else {
 						$('#' + currentInputId).next().text('');
+						$('#' + currentInputId).removeClass('has-error');
 					}
 				}			
 			}
@@ -161,6 +196,9 @@ $(document).ready(function() {
 	//	save data ------------------------//
 	var saveData = function(answers, listing) {
 		this.listing = listing;
+
+		var playerName = $('.firstName').val();
+
 		var newName = [
 			{name: 'firstName', value: playerName }
 			];
@@ -388,6 +426,18 @@ $(document).ready(function() {
 	$(window).on('hashchange', function(e) {
 		var currentHash = window.location.hash;
 		var formToSave;
+
+		// Focus controls
+		// var currentFocused = document.activeElement;
+		// var nameFocused = $('input#firstName');
+		// body = $('body');
+		// body.blur();
+		// currentFocused.addClass('has-focus');
+		// nameFocused.focus();
+		// console.log(nameFocused);
+		// console.log(currentFocused);
+
+
 		if(currentHash === '#q1') {
 			$(".q1").show(); 
 	 		$(".q2").hide();

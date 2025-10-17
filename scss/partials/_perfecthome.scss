@@ -18,6 +18,11 @@ p {
   margin: 0 0 1rem 0; 
 }
 
+span { text-transform: lowercase; }
+span.landmark { text-transform: none; }
+span.firstName, span.water, span.bestie, span.favCartoon, span.favCountry, span.favAnimal, span.verb1, span.artist, span.prez, span.favCity, span.error, span.error-name { text-transform: capitalize; }
+
+/* LINKS*/
 a {
   color: vars.$c-text;
   text-decoration-line: underline;
@@ -35,26 +40,91 @@ a {
     fill: vars.$c-brown; 
   }
 
-  &:has(>svg){
+  &.share-icon {
     display: flex;
-    padding: 5px;
-    height: 40px;
-    width: 40px;
-    border-radius: 4px;
     align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.4s ease;
 
-    &:hover { 
+    svg {
+      height: 40px;
+      width: 40px; 
+      fill: vars.$c-brown; 
+    }
+
+    &:hover, 
+    &:active { 
       background-color: vars.$c-brown;
 
       svg { fill: vars.$c-white; }
     }
+
+    &:focus { outline: auto; }
+
+    &:first-child { margin-right: 1rem; }
   }
 }
 
-span { text-transform: lowercase; }
-span.landmark { text-transform: none; }
-span.firstName, span.water, span.bestie, span.favCartoon, span.favCountry, span.favAnimal, span.verb1, span.artist, span.prez, span.favCity, span.error, span.error-name { text-transform: capitalize; }
+/* BUTTONS */
+.btn {
+  display: flex;
+  margin: 0 0 1rem 0;
+  padding: 0.6rem 1rem;
+  border-style: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: vars.$c-white;
+  font-size: vars.$baseFontSize;
+  background-color: vars.$c-brown;
 
+  &:hover,
+  &:active {
+    box-shadow: none;
+    border: 1px solid vars.$c-brown;
+    background-color: vars.$c-white;
+    color: vars.$c-brown;
+    text-decoration: none;
+  }
+
+  &:focus { outline: auto;}
+
+  &.btn-copy {
+    width: 100%;
+    margin: 1rem auto;
+    justify-content: center;
+    background-color: transparent;
+    color: vars.$c-brown;
+
+    &:hover {
+      box-shadow: none;
+      text-decoration: underline;
+      color: vars.$c-brown;
+      text-decoration: none;
+    }
+  }
+
+  > svg { 
+    height: 15px;
+    margin-left: 5px
+  }
+
+  + p {
+    display: inline-block;
+    @include mixins.font-size(14);
+    height: 1rem;
+    margin: 0;
+    font-style: italic;
+    color: vars.$c-warning;
+
+  }
+}
+
+#btn-name, 
+.btn-reset { margin: 1rem auto; }
+
+/* HEADINGS */
 h1, 
 .h1 { 
   order: 0; 
@@ -64,7 +134,9 @@ h1,
   @include mixins.font-size(36);
 
   @include mixins.bp(small) { @include mixins.font-size(48); }
+
   @include mixins.bp(medium) { @include mixins.font-size(60); }
+
   @include mixins.bp(large) { @include mixins.font-size(72); }
 }
 
@@ -76,10 +148,11 @@ h2,
   @include mixins.font-size(24);
 
   @include mixins.bp(small) { @include mixins.font-size(32); }
+
   @include mixins.bp(medium) { @include mixins.font-size(40); }
+
   @include mixins.bp(large) { @include mixins.font-size(50); }
 }
-
 
 /* FORM FIELD STYLES */
 fieldset,
@@ -123,20 +196,21 @@ input[type="text"] {
   min-height: 35px;
   height: 35px;
   padding: 8px;
-  color: vars.$c-grey-med;
+  color: vars.$c-text;
   order: 2;
   background-color: transparent;
-  border: 1px solid vars.$c-grey-med;
+  border: 1px solid vars.$c-text;
   outline: none;
   border-radius: 4px;
   flex: 1 0 0;
   @include mixins.font-size(14);
 
-  @include mixins.bp-arb(vars.$bp-xsmall) {
-    min-width: 75%;
-  }
-  @include mixins.bp(small) {
-    min-width: 50%;
+  @include mixins.bp-arb(vars.$bp-xsmall) { min-width: 75%; }
+
+  @include mixins.bp(small) { min-width: 50%; }
+
+  &.has-error {
+    border-color: vars.$c-warning;
   }
 }
 
@@ -206,7 +280,7 @@ option {
     display: flex;
     flex-flow: column wrap;
     position: relative;
-    margin: 0;
+    margin: 0.3rem 0 1.3rem 0;
 
     @include mixins.bp(small) { flex-flow: column wrap; }
 
@@ -232,63 +306,6 @@ option {
 
 footer { border-top: 1px solid vars.$c-brown; }
 
-/* BUTTONS */
-.btn {
-  display: flex;
-  margin: 0 0 1rem 0;
-  padding: 0.6rem 1rem;
-  border-style: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: vars.$c-white;
-  font-size: vars.$baseFontSize;
-  background-color: vars.$c-brown;
-
-  &:hover,
-  &:active {
-    box-shadow: none;
-    border: 1px solid vars.$c-brown;
-    background-color: vars.$c-white;
-    color: vars.$c-brown;
-    text-decoration: none;
-  }
-
-  &:focus { outline: auto;}
-
-  &.btn-copy {
-
-    margin: 1rem 0;
-    background-color: transparent;
-    color: vars.$c-brown;
-
-    &:hover {
-      box-shadow: none;
-      text-decoration: underline;
-      color: vars.$c-brown;
-      text-decoration: none;
-    }
-  }
-
-  > svg { 
-    height: 15px;
-    margin-left: 5px
-  }
-
-  + p {
-    display: inline-block;
-    @include mixins.font-size(14);
-    height: 1rem;
-    margin: 0;
-    font-style: italic;
-    color: vars.$c-warning;
-
-  }
-}
-
-/* LINKS*/
-
-#btn-name, 
-.btn-reset { margin: 0 auto; }
 a:active, 
 select:focus, 
 button[type="submit"]:focus, 
@@ -304,7 +321,7 @@ input[type="text"]:focus {
   display: block;
   width: 100%;
   margin: 1rem auto;
-  // order: 6;
+
   @include mixins.font-size(18);
 
   @include mixins.bp(xsmall) {
@@ -332,7 +349,7 @@ input[type="text"]:focus {
 
 .share {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   margin: 0.3rem auto;
@@ -340,30 +357,10 @@ input[type="text"]:focus {
 
   @include mixins.bp(small) { flex-flow: row wrap; }
   
-  .share-icon { 
-    margin: 0 10px; 
-    height: 100%; 
-    
-    a {
-
-      &:hover { 
-        border: none; 
-        outline: none; 
-      }
-
-      &:focus { outline: auto; }
-      
-      svg { height: 25px; }
-    } 
-  }
-
-  .fb-share-icon { 
-
-    span { 
-      visibility: hidden; 
-
-      .svg { fill: vars.$c-white; } 
-    } 
+  .share-links {
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: center;
   }
 }
 
